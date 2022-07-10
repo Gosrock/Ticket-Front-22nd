@@ -1,4 +1,3 @@
-import { access } from 'fs';
 import { atom } from 'recoil';
 
 export interface IAuthType {
