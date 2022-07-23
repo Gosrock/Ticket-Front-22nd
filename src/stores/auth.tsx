@@ -7,9 +7,10 @@ export interface IAuthType {
 
 const getLocalStorage = (): IAuthType => {
   const token = localStorage.getItem('accessToken');
-  if (token) {
-    return { authenticated: true, accessToken: token };
-  } else return { authenticated: false, accessToken: null };
+  // if (token) {
+  //   return { authenticated: true, accessToken: token };
+  // } else return { authenticated: false, accessToken: null };
+  return { authenticated: true, accessToken: token };
 };
 
 export const authState = atom<IAuthType>({

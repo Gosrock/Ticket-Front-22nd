@@ -1,0 +1,12 @@
+http://localhost:3000/
+
+http://localhost:3000/auth/message
+http://localhost:3000/auth/validation
+http://localhost:3000/auth/deposit
+
+http://localhost:3000/reservation/select
+http://localhost:3000/reservation/check
+
+http://localhost:3000/mypage/myhome
+http://localhost:3000/mypage/myticketlist
+http://localhost:3000/mypage/:ticketid
