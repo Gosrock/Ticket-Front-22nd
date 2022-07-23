@@ -1,12 +1,14 @@
 http://localhost:3000/
 
-http://localhost:3000/auth/message
-http://localhost:3000/auth/validation
-http://localhost:3000/auth/deposit
-
+http://localhost:3000/reservation/message
+http://localhost:3000/reservation/validation
+http://localhost:3000/reservation/deposit
 http://localhost:3000/reservation/select
 http://localhost:3000/reservation/check
 
-http://localhost:3000/mypage/myhome
-http://localhost:3000/mypage/myticketlist
-http://localhost:3000/mypage/:ticketid
+http://localhost:3000/mypage
+http://localhost:3000/mypage/tickets
+http://localhost:3000/mypage/talk
+
+http://localhost:3000/tickets/:uuid
+
