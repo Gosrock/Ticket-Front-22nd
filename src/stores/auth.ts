@@ -9,7 +9,7 @@ export interface IAuthType {
 
 const initialState = {
   isAuthenticated: false,
-  accessToken: null,
+  accessToken: 'example',
   phoneNumber: null,
   userName: null,
 };
