@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.palette.mono.black_12};
+  background-color: #121212;
   /* 모바일 화면 */
   ${media.tablet} {
     width: 100%;
@@ -58,8 +58,9 @@ const Container = styled.div`
 const Mockup = styled.div`
   width: 390px;
   height: 744px;
-  box-shadow: inset -2px -10px 20px rgba(13, 10, 37, 0.25),
-    inset 10px 2px 20px #ffffff;
+  background-color: #363636;
+  box-shadow: 40px 60px 80px rgba(9, 8, 26, 0.15),
+    inset -2px -10px 20px rgba(13, 10, 37, 0.25), inset 10px 2px 20px #000;
   display: flex;
   justify-content: center;
   align-items: center;
