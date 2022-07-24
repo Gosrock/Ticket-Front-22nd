@@ -79,6 +79,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
+    "storybook-addon-paddings": "^4.3.0",
     "webpack": "^5.73.0"
   }
 }
