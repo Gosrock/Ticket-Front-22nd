@@ -41,4 +41,32 @@ export const parameters = {
     },
     defaultViewport: 'mobile1',
   },
+  backgrounds: {
+    values: [
+      {
+        name: 'black_12',
+        value: '#121212',
+      },
+      {
+        name: 'black_26',
+        value: '#262626',
+      },
+      {
+        name: 'black_36',
+        value: '#363636',
+      },
+      {
+        name: 'white',
+        value: '#ffffff',
+      },
+    ],
+    default: 'black_12',
+  },
+  paddings: {
+    values: [
+      { name: 'none', value: '0px' },
+      { name: 'default', value: '18px' },
+    ],
+    default: 'none',
+  },
 };

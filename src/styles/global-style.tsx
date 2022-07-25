@@ -14,6 +14,9 @@ export const GlobalStyle = createGlobalStyle`
       -moz-osx-font-smoothing: grayscale;
       box-sizing: border-box; /* 엘리먼트의 box-sizing 값을 border-box로 설정 */
       min-height: 100%;
+
+      background-color: #e5e5e5;
+      color: white;
     }
     #root {
       min-height: 100%;
@@ -40,6 +43,7 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0; 
       overflow: visible; 
       cursor: pointer;
+      color: white;
     }
     button:focus {
       outline: none;
