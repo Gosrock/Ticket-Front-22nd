@@ -12,23 +12,6 @@ export const axiosPrivate = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// private 요청에 어세스토큰 헤더로 껴서 실행
-axiosPrivate.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('accessToken');
-    if (config.headers && token !== null) {
-      config.headers.accessToken = `Bearer ${token}`;
-    } else {
-      config.headers = {};
-    }
-    return config;
-  },
-  (error) => {
-    // 요청 에러 직전 호출됩니다.
-    return Promise.reject(error);
-  },
-);
-
 // 토큰 오류시 만료된 토큰 지우고 알려주기
 axiosPrivate.interceptors.response.use(
   (response) => {
