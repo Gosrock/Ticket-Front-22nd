@@ -1,6 +1,7 @@
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import AuthApi from '../../apis/AuthApi';
 import { authState } from '../../stores/auth';
 
@@ -27,9 +28,9 @@ const Landing = () => {
           });
         }}
       >
-        인증번호 확인
+        회원가입
       </button>
-      <button
+      <StyledButton
         onClick={() => {
           AuthApi.register(
             {
@@ -40,9 +41,12 @@ const Landing = () => {
         }}
       >
         회원가입
-      </button>
+      </StyledButton>
     </>
   );
 };
 
 export default Landing;
+const StyledButton = styled.div`
+  ${({ theme }) => theme.typo.title_28_B}
+`;
