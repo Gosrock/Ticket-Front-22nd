@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import DepositStatus, { IDepositStatusProps } from './DepositStatus';
-import { ReactComponent as QRcode } from '../../assets/icons/QRcode.svg';
+import { ReactComponent as QRcode } from '../../assets/icons/qrcode.svg';
 
 interface ITicketInfoProps extends IDepositStatusProps {
   status: 'pending' | 'paid' | 'entered' | 'expired';
@@ -50,6 +50,7 @@ const Wrapper = styled.div`
   border-radius: 16px;
   box-sizing: border-box;
   padding-top: 8px;
+  margin-right: 16px;
 `;
 
 const Info = styled.div`

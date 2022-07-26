@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   border-radius: 16px;
   /* background-color: blue; */
   background: rgba(0, 0, 0, 0.49);
-  backdrop-filter: blur(33px);
+  backdrop-filter: blur(10px);
   width: 150px;
   height: 120px;
   padding: 84px 12px 6px 33px;

@@ -15,7 +15,7 @@ const Landing = () => {
       <button onClick={() => navigate('/mypage')}>예매 내역</button>
       <button
         onClick={() => {
-          AuthApi.messageSend({ phoneNumber: '01055364937' });
+          AuthApi.messageSend({ phoneNumber: '01020894275' });
         }}
       >
         인증번호 요청
@@ -23,7 +23,7 @@ const Landing = () => {
       <button
         onClick={() => {
           AuthApi.messageValidate({
-            phoneNumber: '01055364937',
+            phoneNumber: '01020894275',
             validationNumber: '3173',
           });
         }}
@@ -34,7 +34,7 @@ const Landing = () => {
         onClick={() => {
           AuthApi.register(
             {
-              name: '한규진',
+              name: '정상훈',
             },
             registerToken,
           );
