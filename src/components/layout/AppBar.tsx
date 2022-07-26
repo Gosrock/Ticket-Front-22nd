@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   }
 
   p {
-    //TODO : 보류
+    ${({ theme }) => theme.typo.appbar_18_R}
     color: ${({ theme }) => theme.palette.mono.font_main};
   }
 `;

@@ -1,8 +1,13 @@
 import { useParams } from 'react-router-dom';
+import AuthTemplate from '../../components/auth/AuthTemplate';
 
 const Login = () => {
   const { step } = useParams();
-  return <>login</>;
+  return (
+    <>
+      <AuthTemplate page="send" />
+    </>
+  );
 };
 
 export default Login;
