@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { axiosPrivate } from '../apis/axiosInstance';
+import { axiosPrivate } from '../apis/axios';
 
 export interface IAuthType {
   isAuthenticated: boolean;

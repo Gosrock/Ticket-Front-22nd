@@ -1,6 +1,4 @@
-import { useRecoilValue } from 'recoil';
-import { axiosPrivate, axiosPublic } from './axiosInstance';
-import { authState } from '../stores/auth';
+import { axiosPrivate, axiosPublic } from './axios';
 import {
   TMessageSendReqType,
   TMessageValidateReqType,
@@ -28,13 +26,16 @@ const AuthApi = {
 
   // 회원가입 : 입금자명 입력
   register: async (payload: TRegisterReqType, registerToken: string | null) => {
-    axiosPrivate.defaults.headers.common[
-      'registerToken'
-    ] = `Bearer ${registerToken}`;
-
-    const { data } = await axiosPrivate.post('/v1/auth/register', payload);
-    console.log(data);
-    return data;
+    // 레지스터토큰 받아서 헤더로 끼고 요청
+    if (registerToken) {
+      const { data } = await axiosPrivate.post('/v1/auth/register', payload, {
+        headers: { registerToken },
+      });
+      console.log(data);
+      return data;
+    } else {
+      throw new Error('no registerToken');
+    }
   },
 };
 
