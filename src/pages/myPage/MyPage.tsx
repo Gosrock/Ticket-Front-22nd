@@ -1,4 +1,4 @@
-import DepositStatus from '../../components/common/DepositStatus';
+import DepositStatus from '../../components/mypage/DepositStatus';
 import PurchaseTicket from '../../components/mypage/PurchaseTicket';
 import TicketInfo from '../../components/mypage/TicketInfo';
 import Slider from '../../components/mypage/Slider';

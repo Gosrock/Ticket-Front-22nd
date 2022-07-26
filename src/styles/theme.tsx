@@ -7,6 +7,7 @@ export const theme: DefaultTheme = {
       lavenderDark: '#372d3f',
       red: '#ff7785',
       mint: '#9fe8d6',
+      yellow_kakao: '#ffeb00',
     },
 
     mono: {

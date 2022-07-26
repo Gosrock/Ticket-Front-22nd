@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import DepositStatus, { IDepositStatusProps } from '../common/DepositStatus';
+import DepositStatus, { IDepositStatusProps } from './DepositStatus';
 import { ReactComponent as QRcode } from '../../assets/icons/QRcode.svg';
 
 interface ITicketInfoProps extends IDepositStatusProps {
