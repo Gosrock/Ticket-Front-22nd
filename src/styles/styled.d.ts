@@ -23,6 +23,19 @@ declare module 'styled-components' {
         font_placeholder: '#939393';
       };
     };
+    typo: {
+      title_28_B: string;
+      title_24_B: string;
+      text_18_B: string;
+      text_18_M: string;
+      text_16_R: string;
+      text_14_M: string;
+      text_14_R: string;
+      text_12_B: string;
+      placeholder_24_R: string;
+      appbar_18_R: string;
+      tag_8_b: string;
+    };
     boxShadow: {
       normal: '0 3px 8px 0 rgb(0 0 0 / 10%)';
     };
