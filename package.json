@@ -20,6 +20,7 @@
     "recoil": "^0.7.4",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.2",
+    "swiper": "^8.3.2",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
@@ -74,6 +75,7 @@
     "@storybook/storybook-deployer": "^2.8.11",
     "@storybook/testing-library": "^0.0.13",
     "@types/styled-components": "^5.1.25",
+    "@types/swiper": "^6.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",

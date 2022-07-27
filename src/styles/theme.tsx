@@ -8,13 +8,19 @@ export const theme: DefaultTheme = {
       lavender: '#bf94e4',
       lavenderDark: '#372d3f',
       red: '#ff7785',
+      mint: '#9fe8d6',
+      yellow_kakao: '#ffeb00',
     },
 
     mono: {
       white: '#fff',
+      white_e6: '#e6e6e6',
+      white_fa: '#fafafa',
+      black_00: '#000000',
       black_12: '#121212',
       black_26: '#262626',
       black_36: '#363636',
+      black_footer: '#24272B',
       font_main: '#fafafa',
       font_sub: '#b6b7b8',
       font_placeholder: '#939393',
@@ -33,6 +39,11 @@ export const theme: DefaultTheme = {
     text_18_M: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       18,
     )};line-height: 100%;font-weight: 500;`,
+    text_18_M_lessSpacing: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+      18,
+    )};line-height: ${calcRem(22)};font-weight: 500;letter-spacing:${calcRem(
+      -0.408,
+    )}`,
     text_16_R: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       16,
     )};line-height: 100%;font-weight: 400;`,
