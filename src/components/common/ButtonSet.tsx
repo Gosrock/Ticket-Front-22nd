@@ -5,18 +5,18 @@ import { darken } from 'polished';
 
 interface ButtonSetProps extends HTMLAttributes<HTMLButtonElement> {
   label?: string;
-  state?: boolean;
+  buttonDisabled?: boolean;
 }
 
 const ButtonSet = ({
   label = '다음으로',
-  state = true,
+  buttonDisabled = true,
   ...props
 }: ButtonSetProps) => {
   return (
     <Wrapper>
       <SetMargin>
-        <button disabled={!state} {...props}>
+        <button disabled={buttonDisabled} {...props}>
           {label}
         </button>
       </SetMargin>

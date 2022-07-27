@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { IBindState } from '../../hooks/useInput';
@@ -34,6 +35,19 @@ type TAuthTemplateProps = {
 };
 
 const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (page === 'send' && bind.value.length === 11) {
+      setButtonDisabled(false);
+    } else if (page === 'validate' && bind.value.length === 4) {
+      setButtonDisabled(false);
+    } else if (page === 'init' && bind.value.length > 0) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [bind]);
   return (
     <>
       <AppBar label={'뒤로 가기'} />
@@ -48,7 +62,7 @@ const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
         </Description>
         <InputForm page={page} bind={bind} />
       </SetMargin>
-      <ButtonSet onClick={handleClick} />
+      <ButtonSet onClick={handleClick} buttonDisabled={buttonDisabled} />
     </>
   );
 };

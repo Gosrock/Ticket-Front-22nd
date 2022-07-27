@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof ButtonSet> = (args) => (
 );
 
 export const _default = Template.bind({});
-_default.args = {};
+_default.args = { buttonDisabled: false };
 
 export const disabled = Template.bind({});
-disabled.args = { state: false };
+disabled.args = { buttonDisabled: true };

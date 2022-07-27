@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { IBindState } from '../../hooks/useInput';
 import useTimer from '../../hooks/useTimer';
@@ -29,15 +29,36 @@ const formContent = {
 const InputForm = ({ page, bind }: InputFormProps) => {
   const [time, reset] = useTimer();
   const { value, onChange } = bind;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleValidateNumber = (e: any, limit: number) => {
+    if (e.target.value.length >= limit) e.target.blur();
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      inputRef.current && inputRef.current.focus();
+    }, 300);
+  }, []);
 
   return (
     <Wrapper>
       <input
         value={value}
-        onChange={onChange}
+        onChange={(e) => {
+          onChange(e);
+          handleValidateNumber(e, formContent[page].limit);
+        }}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            e.target.blur();
+          }
+        }}
         className="input-box"
         type={formContent[page].type}
         placeholder={formContent[page].placeholder}
+        ref={inputRef}
+        maxLength={formContent[page].limit}
       />
       <div className="input-indicator">
         {page === 'validate' && (
