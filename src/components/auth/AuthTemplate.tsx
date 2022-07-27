@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import AppBar from '../layout/AppBar';
-import SetMargin from '../layout/SetMargin';
+import AppBar from '../common/AppBar';
+import ButtonSet from '../common/ButtonSet';
+import SetMargin from '../common/SetMargin';
+import InputForm from './InputForm';
 
 const renderText = {
   send: {
@@ -36,7 +38,9 @@ const AuthTemplate = ({ page }: { page: 'send' | 'validate' | 'register' }) => {
           <p>{renderText[page].descriptionTop}</p>
           <p>{renderText[page].descriptionBottom}</p>
         </Description>
+        <InputForm page="validate" />
       </SetMargin>
+      <ButtonSet />
     </>
   );
 };
@@ -57,4 +61,5 @@ const Description = styled.div`
     margin-bottom: 6px;
   }
   margin-top: 32px;
+  margin-bottom: 100px;
 `;
