@@ -1,6 +1,6 @@
 import { useState, ChangeEventHandler } from 'react';
 
-interface Bind<T> {
+export interface IBindState<T> {
   value: T;
   onChange: ChangeEventHandler<any>;
 }
@@ -12,7 +12,7 @@ const useInput = <T,>(initialValue: T) => {
     setValue(initialValue);
   };
 
-  const bind: Bind<T> = {
+  const bind: IBindState<T> = {
     value,
     onChange: (e) => {
       setValue(e.target.value);

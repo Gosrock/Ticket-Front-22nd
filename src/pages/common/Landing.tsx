@@ -11,8 +11,10 @@ const Landing = () => {
 
   return (
     <>
-      <button onClick={() => navigate('/ticketing/select')}>티켓 예매</button>
-      <button onClick={() => navigate('/mypage')}>예매 내역</button>
+      <button onClick={() => navigate('/ticketing/select')}>
+        티켓 예매하기
+      </button>
+      <button onClick={() => navigate('/mypage')}>예매 내역 보기</button>
       <button
         onClick={() => {
           AuthApi.messageSend({ phoneNumber: '01055364937' });

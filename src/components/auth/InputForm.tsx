@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { IBindState } from '../../hooks/useInput';
 import useTimer from '../../hooks/useTimer';
 
 interface InputFormProps extends HTMLAttributes<HTMLInputElement> {
-  //value: string | number;
-  //onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   page: 'send' | 'validate' | 'init';
+  bind: IBindState<string>;
 }
 
 const formContent = {
@@ -26,12 +26,15 @@ const formContent = {
   },
 };
 
-const InputForm = ({ page }: InputFormProps) => {
+const InputForm = ({ page, bind }: InputFormProps) => {
   const [time, reset] = useTimer();
+  const { value, onChange } = bind;
 
   return (
     <Wrapper>
       <input
+        value={value}
+        onChange={onChange}
         className="input-box"
         type={formContent[page].type}
         placeholder={formContent[page].placeholder}

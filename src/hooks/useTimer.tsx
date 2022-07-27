@@ -16,7 +16,7 @@ const useTimer = () => {
     let timer: ReturnType<typeof setInterval>;
     const tick = () => {
       savedCallback.current && savedCallback.current();
-      console.log('tick');
+      //console.log('tick');
     };
     if (isRunning) {
       timer = setInterval(tick, 1000);
@@ -31,11 +31,11 @@ const useTimer = () => {
     }
   }, [time]);
 
-  const reset = () => {
+  const resetTime = () => {
     setTime(180);
   };
 
-  return [time, reset] as const;
+  return [time, resetTime] as const;
 };
 
 export default useTimer;

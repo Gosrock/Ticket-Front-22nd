@@ -8,11 +8,17 @@ interface ButtonSetProps extends HTMLAttributes<HTMLButtonElement> {
   state?: boolean;
 }
 
-const ButtonSet = ({ label = '다음으로', state = true }: ButtonSetProps) => {
+const ButtonSet = ({
+  label = '다음으로',
+  state = true,
+  ...props
+}: ButtonSetProps) => {
   return (
     <Wrapper>
       <SetMargin>
-        <button disabled={!state}>{label}</button>
+        <button disabled={!state} {...props}>
+          {label}
+        </button>
       </SetMargin>
     </Wrapper>
   );

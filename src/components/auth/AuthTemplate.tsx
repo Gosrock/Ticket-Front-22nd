@@ -1,4 +1,6 @@
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { IBindState } from '../../hooks/useInput';
 import AppBar from '../common/AppBar';
 import ButtonSet from '../common/ButtonSet';
 import SetMargin from '../common/SetMargin';
@@ -17,7 +19,7 @@ const renderText = {
     descriptionTop: '문자에 답장을 하게 되면',
     descriptionBottom: '번호가 노출 되니 주의해 주세요',
   },
-  register: {
+  init: {
     titleTop: '입금자명으로 사용될 이름을',
     titleBotton: '입력해주세요',
     descriptionTop: '이름은 4자 이내로 입력해주세요',
@@ -25,7 +27,13 @@ const renderText = {
   },
 };
 
-const AuthTemplate = ({ page }: { page: 'send' | 'validate' | 'register' }) => {
+type TAuthTemplateProps = {
+  page: 'send' | 'validate' | 'init';
+  bind: IBindState<string>;
+  handleClick: () => void;
+};
+
+const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
   return (
     <>
       <AppBar label={'뒤로 가기'} />
@@ -38,9 +46,9 @@ const AuthTemplate = ({ page }: { page: 'send' | 'validate' | 'register' }) => {
           <p>{renderText[page].descriptionTop}</p>
           <p>{renderText[page].descriptionBottom}</p>
         </Description>
-        <InputForm page="validate" />
+        <InputForm page={page} bind={bind} />
       </SetMargin>
-      <ButtonSet />
+      <ButtonSet onClick={handleClick} />
     </>
   );
 };
