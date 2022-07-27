@@ -9,7 +9,7 @@ const RequireAuth = () => {
   const { pathname } = useLocation();
   const { accessToken, registerToken, userName } = useRecoilValue(authState);
   const setRedirectUri = useSetRecoilState(redirectState);
-  // 인증이 되어 있지 않으면 문자인증 페이지로, 입금자명이 설정되어 있지 않으면 입금자명 입력페이지로 리다이렉트
+
   useEffect(() => {
     setRedirectUri(pathname);
   }, []);
