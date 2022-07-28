@@ -35,6 +35,7 @@ declare module 'styled-components' {
       text_14_M: string;
       text_14_R: string;
       text_12_B: string;
+      text_12_B_lessSpacing: string;
       placeholder_24_R: string;
       appbar_18_R: string;
       tag_8_b: string;

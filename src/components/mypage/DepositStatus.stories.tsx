@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof DepositStatus> = (args) => (
 
 export const 입금상태 = Template.bind({});
 입금상태.args = {
-  status: 'pending',
+  status: '입금확인',
 };

@@ -90,9 +90,7 @@ const Contents = styled.div`
     display: none;
   }
   & p {
-    line-height: 17px;
-    font-size: 14px;
-    margin: 0 auto 0 0;
+    font: ${({ theme }) => theme.typo.text_14_M};
   }
   & span {
     color: ${({ theme }) => theme.palette.point.red};
@@ -104,13 +102,13 @@ const Title = styled.div<{ onClick: () => void }>`
   height: 24px;
   background: ${({ theme }) => theme.palette.mono.white};
   border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   & p {
     height: 14px;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 100%;
+    font: ${({ theme }) => theme.typo.text_14_M};
     text-align: center;
     letter-spacing: -0.408px;
     color: ${({ theme }) => theme.palette.point.lavenderDark};

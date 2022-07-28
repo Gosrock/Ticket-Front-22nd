@@ -2,7 +2,7 @@ import PurchaseTicket from '../../components/mypage/PurchaseTicket';
 import TicketInfo from '../../components/mypage/TicketInfo';
 import Slider from '../../components/mypage/Slider';
 import styled from 'styled-components';
-import Footer from '../../components/layout/Footer';
+import Footer from '../../components/common/Footer';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useNavigate } from 'react-router-dom';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
+import { IGetTicketRes } from '../../apis/type/ticket';
 
 const Mypage = () => {
   const navigate = useNavigate();

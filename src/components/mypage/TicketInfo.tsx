@@ -57,10 +57,7 @@ const Info = styled.div`
   height: 24px;
   margin: 10px 0px 0px 9px;
 
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 8px;
+  font: ${({ theme }) => theme.typo.tag_8_b};
   line-height: 12px;
   color: ${({ theme }) => theme.palette.mono.black_12};
 
@@ -91,15 +88,9 @@ const ShowQR = styled.div`
     height: 12px;
     text-align: center;
 
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-
+    font: ${({ theme }) => theme.typo.text_12_B_lessSpacing};
     /* margin-top없으면 글씨가 위로 치우침 */
-    margin: 2px 8px 0px 0px;
-    line-height: 12px;
-    letter-spacing: -0.408px;
+    margin: 1px 8px 0px 0px;
 
     color: ${({ theme }) => theme.palette.mono.black_00};
   }

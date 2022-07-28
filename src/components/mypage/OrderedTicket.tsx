@@ -71,12 +71,7 @@ const Item = styled.div`
   padding: 3px 0px;
 
   & p {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 14px;
-
+    font: ${({ theme }) => theme.typo.text_14_M};
     color: ${({ theme }) => theme.palette.mono.font_sub};
     margin-bottom: 16px;
   }
@@ -100,12 +95,7 @@ const Content = styled.div`
   padding: 3px 0px;
 
   & p {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 14px;
-
+    font: ${({ theme }) => theme.typo.text_14_M};
     color: ${({ theme }) => theme.palette.mono.white};
     margin-bottom: 16px;
   }
