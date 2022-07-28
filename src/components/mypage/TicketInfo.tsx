@@ -53,13 +53,16 @@ const Wrapper = styled.div`
 `;
 
 const Info = styled.div`
-  width: 90px;
+  width: 100%;
   height: 24px;
-  margin: 10px 0px 0px 9px;
+  margin: 10px 0px 0px 7px;
 
   font: ${({ theme }) => theme.typo.tag_8_b};
-  line-height: 12px;
+  font-size: 0.625em;
   color: ${({ theme }) => theme.palette.mono.black_12};
+  & p:first-child {
+    margin-bottom: 4px;
+  }
 
   & span {
     color: ${({ theme }) => theme.palette.mono.font_sub};

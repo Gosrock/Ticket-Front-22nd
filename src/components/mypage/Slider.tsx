@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import map1 from '../../assets/maps/map1.png';
 import map2 from '../../assets/maps/map2.png';
 
-interface ISliderProps {
+export interface ISliderProps {
   title: string;
   titleHighlight: string;
   content: string;
@@ -19,7 +19,6 @@ const Slider = ({
   team,
   onClick,
 }: ISliderProps) => {
-  // 토글은 swiper로 나중에 추가할 예정
   return (
     <Wrapper team={team}>
       <Background team={team}>
