@@ -1,6 +1,6 @@
 import PurchaseTicket from '../../components/mypage/PurchaseTicket';
 import TicketInfo from '../../components/mypage/TicketInfo';
-import Slider from '../../components/mypage/Slider';
+import Slider, { ISliderProps } from '../../components/mypage/Slider';
 import styled from 'styled-components';
 import Footer from '../../components/common/Footer';
 
@@ -10,7 +10,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useNavigate } from 'react-router-dom';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
-import { IGetTicketRes } from '../../apis/type/ticket';
 
 const Mypage = () => {
   const navigate = useNavigate();
@@ -46,62 +45,60 @@ const Mypage = () => {
       minute >= 10 ? minute.toString() : '0' + minute.toString();
     return { convertedMonth, convertedDay, convertedHour, convertedMinute };
   };
+  const sliderData: Array<ISliderProps> = [
+    {
+      title: '응원 톡',
+      titleHighlight: '남기기',
+      content:
+        '“긴 입력 예시야. 아좌좌좌!!  긴 입력 예...”아아아아아 아아아아 아아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아 아아아아아아 ',
+      contentWriter: '서도철',
+      team: null,
+      onClick: () => {
+        navigate('talk');
+      },
+    },
+    {
+      title: '오시는 길',
+      titleHighlight: '바로가기',
+      content: '돌다리도 두들겨보고 건너라\n공연장의 위치는?',
+      team: 'YB',
+      onClick: () => {},
+    },
+    {
+      title: '입금계좌',
+      titleHighlight: '확인하기',
+      content: '혹시 깜빡하고 입금을 못하셨나요??',
+      team: null,
+      onClick: () => {},
+    },
+    {
+      title: '개발자들',
+      titleHighlight: '칭찬해주기',
+      content: '이 프로젝트에 참여한 사람들이에요',
+      team: null,
+      onClick: () => {},
+    },
+    {
+      title: '카카오 채널',
+      titleHighlight: '바로가기',
+      content: '고스락의 소식을 제일 빨리 받아보고 싶다면',
+      team: null,
+      onClick: () => {},
+    },
+  ];
   return (
     <BackGround>
       <Wrapper>
         <h1>{UserInfo && UserInfo.name}님,</h1>
         <h1>만나서 반가워요!</h1>
         <Swiper {...swiperParams}>
-          <SwiperSlide>
-            <Slider
-              title={'응원 톡'}
-              titleHighlight={'남기기'}
-              content={
-                '“긴 입력 예시야. 아좌좌좌!!  긴 입력 예...”아아아아아 아아아아 아아아아아아아아 아아아아아아 '
-              }
-              contentWriter={'서도철'}
-              team={null}
-              onClick={() => {
-                navigate('talk');
-              }}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slider
-              title={'오시는 길'}
-              titleHighlight={'바로가기'}
-              content={'돌다리도 두들겨보고 건너라\n공연장의 위치는?'}
-              team={'YB'}
-              onClick={() => {}}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slider
-              title={'입금계좌'}
-              titleHighlight={'확인하기'}
-              content={'혹시 깜빡하고 입금을 못하셨나요??'}
-              team={null}
-              onClick={() => {}}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slider
-              title={'개발자들'}
-              titleHighlight={'칭찬해주기'}
-              content={'이 프로젝트에 참여한 사람들이에요'}
-              team={null}
-              onClick={() => {}}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slider
-              title={'카카오 채널'}
-              titleHighlight={'바로가기'}
-              content={'고스락의 소식을 제일 빨리 받아보고 싶다면'}
-              team={null}
-              onClick={() => {}}
-            />
-          </SwiperSlide>
+          {sliderData.map((el: ISliderProps, idx: number) => {
+            return (
+              <SwiperSlide key={idx}>
+                <Slider {...el} />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
         <h2>내 예매 티켓</h2>
         <h3>9월 1일 (목)</h3>
@@ -121,7 +118,7 @@ const Mypage = () => {
                   <TicketInfo
                     key={el.uuid}
                     status={el.status}
-                    createat={`${convertedMonth}월 ${convertedDay}일 ${convertedHour}:${convertedMinute}`}
+                    createat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
                     ticketNum={el.id}
                     onClick={() => navigate(`/tickets/${el.id}`)}
                   />
