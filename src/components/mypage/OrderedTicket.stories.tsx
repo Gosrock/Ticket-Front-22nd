@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof OrderedTicket> = (args) => (
 
 export const 주문목록티켓 = Template.bind({});
 주문목록티켓.args = {
-  status: 'paid',
+  status: '입금확인',
   orderDate: '22.08.30 (화)',
   ticketNum: 10001,
   concertDate: 'BOTH',

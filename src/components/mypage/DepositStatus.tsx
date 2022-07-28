@@ -48,16 +48,15 @@ const Wrapper = styled.div<{
       background: ${({ theme }) => theme.palette.point.red}; ;
     `}
 
-  /* 확인대기 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   & p {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 8px;
+    font: ${({ theme }) => theme.typo.tag_8_b};
 
     /* line-height 12px로 하면 글씨가 위로 치우침 */
     margin-top: 1px;
     line-height: 11px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.palette.mono.white};
   }
 `;

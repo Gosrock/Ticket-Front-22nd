@@ -56,6 +56,10 @@ export const theme: DefaultTheme = {
     text_12_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       12,
     )};line-height: 100%;font-weight: 700;`,
+
+    text_12_B_lessSpacing: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+      12,
+    )};line-height: 100%;font-weight: 700;letter-spacing:${calcRem(-0.408)}`,
     placeholder_24_R: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       24,
     )};line-height: 100%;font-weight: 400;`,
