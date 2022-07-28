@@ -1,8 +1,8 @@
 export interface ITicket {
-  id: 0;
+  id: number;
   uuid: string;
-  date: string;
-  status: string;
+  date: 'YB' | 'OB';
+  status: '입장완료' | '입금확인' | '확인대기' | '기한만료';
   createdAt: string;
   updatedAt: string;
 }

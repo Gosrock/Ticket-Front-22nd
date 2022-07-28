@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
+import GlobalModal from './components/modal/GlobalModal';
 import { GlobalStyle } from './styles/global-style';
 import { theme } from './styles/theme';
 import { CookiesProvider } from 'react-cookie';
@@ -26,6 +27,7 @@ root.render(
             <CookiesProvider>
               <ReactQueryDevtools initialIsOpen={false} />
               <App />
+              <GlobalModal />
             </CookiesProvider>
           </QueryClientProvider>
         </RecoilRoot>

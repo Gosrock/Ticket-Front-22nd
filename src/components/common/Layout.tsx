@@ -52,7 +52,6 @@ const Container = styled.div`
   /* 모바일 화면 */
   ${media.tablet} {
     width: 100%;
-    min-width: 320px;
     height: calc(var(--vh, 1vh) * 100);
     border: none;
     border-radius: 0px;

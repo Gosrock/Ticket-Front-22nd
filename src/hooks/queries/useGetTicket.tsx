@@ -1,12 +1,11 @@
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { IGetTicketReq, IGetTicketRes } from '../../apis/type/ticket';
 import { AxiosError } from 'axios';
 import TicketApi from '../../apis/TicketApi';
 
-const useGetTicket = (params: IGetTicketReq) => {
+const useGetTicket = (uuid: string) => {
   const { status, data } = useQuery(
-    ['ticket', `${params.uuid}`],
-    TicketApi.getTickets,
+    ['ticket', `${uuid}`],
+    () => TicketApi.getTicket(uuid),
     {
       refetchOnWindowFocus: false,
       retry: false,
