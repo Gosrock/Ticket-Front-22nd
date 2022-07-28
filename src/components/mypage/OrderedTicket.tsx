@@ -71,7 +71,7 @@ const Item = styled.div`
   padding: 3px 0px;
 
   & p {
-    font: ${({ theme }) => theme.typo.text_14_M};
+    ${({ theme }) => theme.typo.text_14_M};
     color: ${({ theme }) => theme.palette.mono.font_sub};
     margin-bottom: 16px;
   }
@@ -95,7 +95,7 @@ const Content = styled.div`
   padding: 3px 0px;
 
   & p {
-    font: ${({ theme }) => theme.typo.text_14_M};
+    ${({ theme }) => theme.typo.text_14_M};
     color: ${({ theme }) => theme.palette.mono.white};
     margin-bottom: 16px;
   }

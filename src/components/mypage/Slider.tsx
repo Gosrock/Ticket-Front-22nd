@@ -89,7 +89,7 @@ const Contents = styled.div`
     display: none;
   }
   & p {
-    font: ${({ theme }) => theme.typo.text_14_M};
+    ${({ theme }) => theme.typo.text_14_M};
   }
   & span {
     color: ${({ theme }) => theme.palette.point.red};
@@ -107,7 +107,7 @@ const Title = styled.div<{ onClick: () => void }>`
   align-items: center;
   & p {
     height: 14px;
-    font: ${({ theme }) => theme.typo.text_14_M};
+    ${({ theme }) => theme.typo.text_14_M};
     text-align: center;
     letter-spacing: -0.408px;
     color: ${({ theme }) => theme.palette.point.lavenderDark};

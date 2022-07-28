@@ -52,7 +52,7 @@ const Wrapper = styled.div<{
   align-items: center;
   justify-content: center;
   & p {
-    font: ${({ theme }) => theme.typo.tag_8_b};
+    ${({ theme }) => theme.typo.tag_8_b};
 
     /* line-height 12px로 하면 글씨가 위로 치우침 */
     margin-top: 1px;

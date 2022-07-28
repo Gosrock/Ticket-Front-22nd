@@ -57,7 +57,7 @@ const Info = styled.div`
   height: 24px;
   margin: 10px 0px 0px 7px;
 
-  font: ${({ theme }) => theme.typo.tag_8_b};
+  ${({ theme }) => theme.typo.tag_8_b};
   font-size: 0.625em;
   color: ${({ theme }) => theme.palette.mono.black_12};
   & p:first-child {
@@ -91,7 +91,7 @@ const ShowQR = styled.div`
     height: 12px;
     text-align: center;
 
-    font: ${({ theme }) => theme.typo.text_12_B_lessSpacing};
+    ${({ theme }) => theme.typo.text_12_B_lessSpacing};
     /* margin-top없으면 글씨가 위로 치우침 */
     margin: 1px 8px 0px 0px;
 

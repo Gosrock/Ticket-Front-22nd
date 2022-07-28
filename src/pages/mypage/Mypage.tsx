@@ -220,7 +220,7 @@ const Wrapper = styled.div`
     padding: 0 5%;
     margin-bottom: 56px;
     color: ${({ theme }) => theme.palette.mono.white_fa};
-    font: ${({ theme }) => theme.typo.title_28_B};
+    ${({ theme }) => theme.typo.title_28_B};
   }
   & > h1:first-child {
     margin-top: 76px;
@@ -233,14 +233,14 @@ const Wrapper = styled.div`
     width: 100%;
     padding: 0 5%;
     color: ${({ theme }) => theme.palette.mono.font_main};
-    font: ${({ theme }) => theme.typo.title_24_B};
+    ${({ theme }) => theme.typo.title_24_B};
   }
 
   & > h3 {
     width: 100%;
     padding: 0 5%;
     color: ${({ theme }) => theme.palette.mono.font_sub};
-    font: ${({ theme }) => theme.typo.text_18_M_lessSpacing};
+    ${({ theme }) => theme.typo.text_18_M_lessSpacing};
   }
   & > h3:first-child {
     color: ${({ theme }) => theme.palette.mono.white};

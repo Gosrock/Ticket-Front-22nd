@@ -47,7 +47,7 @@ const ToTicketing = styled.div`
     height: 12px;
     text-align: center;
 
-    font: ${({ theme }) => theme.typo.text_12_B};
+    ${({ theme }) => theme.typo.text_12_B};
 
     /* margin-top없으면 글씨가 위로 치우침 */
     margin: 2px 8px 0px 0px;
