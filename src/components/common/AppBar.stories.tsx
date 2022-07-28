@@ -3,7 +3,7 @@ import AppBar from './AppBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export default {
-  title: '레이아웃/AppBar',
+  title: 'common/AppBar',
   component: AppBar,
   argTypes: {},
   decorators: [
@@ -21,5 +21,5 @@ const Template: ComponentStory<typeof AppBar> = (args) => <AppBar {...args} />;
 
 export const 뒤로_가기 = Template.bind({});
 뒤로_가기.args = {
-  label: '내정보 수정',
+  label: '뒤로 가기',
 };

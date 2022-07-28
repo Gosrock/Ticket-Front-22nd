@@ -1,6 +1,11 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import AppBar from '../layout/AppBar';
-import SetMargin from '../layout/SetMargin';
+import { IBindState } from '../../hooks/useInput';
+import AppBar from '../common/AppBar';
+import ButtonSet from '../common/ButtonSet';
+import SetMargin from '../common/SetMargin';
+import InputForm from './InputForm';
 
 const renderText = {
   send: {
@@ -15,7 +20,7 @@ const renderText = {
     descriptionTop: '문자에 답장을 하게 되면',
     descriptionBottom: '번호가 노출 되니 주의해 주세요',
   },
-  register: {
+  init: {
     titleTop: '입금자명으로 사용될 이름을',
     titleBotton: '입력해주세요',
     descriptionTop: '이름은 4자 이내로 입력해주세요',
@@ -23,7 +28,26 @@ const renderText = {
   },
 };
 
-const AuthTemplate = ({ page }: { page: 'send' | 'validate' | 'register' }) => {
+type TAuthTemplateProps = {
+  page: 'send' | 'validate' | 'init';
+  bind: IBindState<string>;
+  handleClick: () => void;
+};
+
+const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (page === 'send' && bind.value.length === 11) {
+      setButtonDisabled(false);
+    } else if (page === 'validate' && bind.value.length === 4) {
+      setButtonDisabled(false);
+    } else if (page === 'init' && bind.value.length > 0) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [bind]);
   return (
     <>
       <AppBar label={'뒤로 가기'} />
@@ -36,7 +60,9 @@ const AuthTemplate = ({ page }: { page: 'send' | 'validate' | 'register' }) => {
           <p>{renderText[page].descriptionTop}</p>
           <p>{renderText[page].descriptionBottom}</p>
         </Description>
+        <InputForm page={page} bind={bind} />
       </SetMargin>
+      <ButtonSet onClick={handleClick} buttonDisabled={buttonDisabled} />
     </>
   );
 };
@@ -57,4 +83,5 @@ const Description = styled.div`
     margin-bottom: 6px;
   }
   margin-top: 32px;
+  margin-bottom: 100px;
 `;
