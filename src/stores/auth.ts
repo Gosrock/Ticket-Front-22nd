@@ -23,7 +23,7 @@ const getLocalStorage = (): IAuthType => {
   if (accessToken) {
     // 어세스토큰이 있으면 axios 인스턴스에 커먼 헤더로 집어넣음
     axiosPrivate.defaults.headers.common[
-      'accessToken'
+      'Authorization'
     ] = `Bearer ${accessToken}`;
 
     //새로고침할때마다 토큰으로 유저정보(입금자명, 전화번호) 가져오는 과정 필요
