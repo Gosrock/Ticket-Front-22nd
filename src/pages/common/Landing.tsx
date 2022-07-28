@@ -3,18 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import AuthApi from '../../apis/AuthApi';
+import TicketApi from '../../apis/TicketApi';
+import useGetTicket from '../../hooks/useGetTicket';
+import useGetTickets from '../../hooks/useGetTickets';
 import { authState } from '../../stores/auth';
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { registerToken } = useRecoilValue(authState);
+  // const tickets = useGetTickets();
+  // console.log(tickets);
+  // const ticket = useGetTicket({ uuid: '0' });
+  // console.log(ticket);
 
   return (
     <>
-      <button onClick={() => navigate('/ticketing/select')}>
-        티켓 예매하기
-      </button>
-      <button onClick={() => navigate('/mypage')}>예매 내역 보기</button>
+      <button onClick={() => navigate('/ticketing/select')}>티켓 예매</button>
+      <button onClick={() => navigate('/mypage')}>예매 내역</button>
     </>
   );
 };
