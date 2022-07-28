@@ -11,37 +11,10 @@ const Landing = () => {
 
   return (
     <>
-      <button onClick={() => navigate('/ticketing/select')}>티켓 예매</button>
-      <button onClick={() => navigate('/mypage')}>예매 내역</button>
-      <button
-        onClick={() => {
-          AuthApi.messageSend({ phoneNumber: '01055364937' });
-        }}
-      >
-        인증번호 요청
+      <button onClick={() => navigate('/ticketing/select')}>
+        티켓 예매하기
       </button>
-      <button
-        onClick={() => {
-          AuthApi.messageValidate({
-            phoneNumber: '01055364937',
-            validationNumber: '3173',
-          });
-        }}
-      >
-        회원가입
-      </button>
-      <StyledButton
-        onClick={() => {
-          AuthApi.register(
-            {
-              name: '한규진',
-            },
-            registerToken,
-          );
-        }}
-      >
-        회원가입
-      </StyledButton>
+      <button onClick={() => navigate('/mypage')}>예매 내역 보기</button>
     </>
   );
 };
