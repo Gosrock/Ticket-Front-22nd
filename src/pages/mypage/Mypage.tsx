@@ -9,12 +9,11 @@ import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useNavigate } from 'react-router-dom';
-import useGetUserInfo from '../../hooks/apis/useGetUserInfo';
+import useGetUserInfo from '../../hooks/useGetUserInfo';
 
 const Mypage = () => {
   const navigate = useNavigate();
   const UserInfo = useGetUserInfo();
-  console.log(UserInfo);
   const pagination = {
     clickable: true,
     dynamicBullets: true,
@@ -261,7 +260,7 @@ const Tickets = styled.div`
   flex-wrap: nowrap;
   overflow-x: auto;
   & div {
-    flex: 0 0 150px; /* basis 를 90%로 조절함*/
+    flex: 0 0 150px;
   }
   &::-webkit-scrollbar {
     display: none;
