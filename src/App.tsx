@@ -4,7 +4,7 @@ import NotFound from './pages/common/NotFound';
 import AuthRouter from './pages/auth';
 import MypageRouter from './pages/mypage';
 import TicketingRouter from './pages/ticketing';
-import Layout from './components/layout/Layout';
+import Layout from './components/common/Layout';
 import TicketQR from './pages/common/TicketQR';
 import RequireAuth from './components/auth/RequireAuth';
 
