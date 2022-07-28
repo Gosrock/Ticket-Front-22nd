@@ -41,3 +41,16 @@ axiosPrivate.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+// accessToken 헤더에 추가해서 싫행
+axiosPrivate.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (config.headers && accessToken)
+      config.headers['accessToken'] = `Bearer ${accessToken}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);

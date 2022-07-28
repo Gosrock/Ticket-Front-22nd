@@ -4,12 +4,13 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import AuthApi from '../../apis/AuthApi';
 import TicketApi from '../../apis/TicketApi';
-import useGetTicket from '../../hooks/apis/useGetTicket';
+import useGetTicket from '../../hooks/useGetTicket';
 import { authState } from '../../stores/auth';
 
 const Landing = () => {
   const navigate = useNavigate();
   const { registerToken } = useRecoilValue(authState);
+  const accessToken = localStorage.getItem('accessToken');
 
   return (
     <>
