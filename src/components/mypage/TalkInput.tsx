@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { ReactComponent as ChevronDown } from '../../assets/icons/chevronDown.svg';
+import { ReactComponent as Send } from '../../assets/icons/send.svg';
 
 export interface ITalkInputProps {
   setInput: (newInput: string) => void;
@@ -28,10 +29,17 @@ const TalkInput = ({ setInput }: ITalkInputProps) => {
     <Wrapper>
       <Title isOpen={isOpen}>
         <p>펼쳐서 응원 톡을 남겨주세요</p>
-        <div>
-          <p>펼치기</p>
-          <ChevronDown onClick={() => setIsOpen((prev) => !prev)} />
-        </div>
+        {value.length === 0 ? (
+          <div onClick={() => setIsOpen((prev) => !prev)}>
+            <p>펼치기</p>
+            <ChevronDown />
+          </div>
+        ) : (
+          <div>
+            <p>전송</p>
+            <Send />
+          </div>
+        )}
       </Title>
       {isOpen && (
         <InputWindow>
@@ -72,10 +80,12 @@ const Title = styled.div<{ isOpen: boolean }>`
     ${({ theme }) => theme.typo.text_14_M};
   }
   & > div {
-    width: 61px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    & > p {
+      margin-right: 6px;
+    }
   }
 `;
 
