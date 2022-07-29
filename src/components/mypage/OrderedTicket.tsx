@@ -4,7 +4,9 @@ import DepositStatus, { IDepositStatusProps } from './DepositStatus';
 interface IOrderedTicketProps extends IDepositStatusProps {
   orderDate: string;
   ticketNum: number;
-  concertDate: 'BOTH' | 'YB' | 'OB';
+  // enum으로 값이 전달되긴하는데 string으로 안하면 오류뜸
+  // concertDate: 'BOTH' | 'YB' | 'OB';
+  concertDate: string;
   quantity: number;
 }
 
