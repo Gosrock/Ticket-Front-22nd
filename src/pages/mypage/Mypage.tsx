@@ -9,7 +9,7 @@ import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useNavigate } from 'react-router-dom';
-import useGetUserInfo from '../../hooks/useGetUserInfo';
+import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
 
 const Mypage = () => {
   const navigate = useNavigate();

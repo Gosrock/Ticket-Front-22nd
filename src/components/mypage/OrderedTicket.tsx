@@ -45,7 +45,7 @@ const OrderedTicket = ({
 export default OrderedTicket;
 
 const Wrapper = styled.div`
-  width: 339px;
+  width: 100%;
   height: 150px;
   display: flex;
   flex-direction: row;

@@ -1,8 +1,8 @@
 import { AxiosError } from 'axios';
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import UserInfoApi from '../apis/UserInfoApi';
+import UserInfoApi from '../../apis/UserInfoApi';
 
-import UserInfoMockApi from '../apis/mock/UserInfoMockApi';
+import UserInfoMockApi from '../../apis/mock/UserInfoMockApi';
 
 const useGetUserInfo = () => {
   // api가 완성X
