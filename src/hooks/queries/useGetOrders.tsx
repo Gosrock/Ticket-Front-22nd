@@ -14,7 +14,7 @@ const useGetOrders = () => {
     },
   });
   console.log(status, data);
-  return data;
+  return { status, data };
 };
 
 export default useGetOrders;

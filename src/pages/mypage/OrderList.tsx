@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import OrderedTicket from '../../components/mypage/OrderedTicket';
 import useGetOrders from '../../hooks/queries/useGetOrders';
 import { IGetOrderRes } from '../../apis/type/order';
+import OrderedTicketSkeleton from '../../components/skeleton/OrderedTicketSkeleton';
 
 const OrderList = () => {
-  const orders = useGetOrders();
+  const { status, data: orders } = useGetOrders();
   const convertDate = (date: string) => {
     const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
@@ -25,8 +26,8 @@ const OrderList = () => {
           <span>한규진</span> 님의 티켓 주문 목록
         </Title>
         <List>
-          {!!orders &&
-            orders.success === true &&
+          {status === 'success' ? (
+            !!orders &&
             orders.data.map((el: IGetOrderRes) => {
               const { Year, Month, Day, DayKR } = convertDate(el.createdAt);
               return (
@@ -39,7 +40,13 @@ const OrderList = () => {
                   quantity={el.ticketCount}
                 ></OrderedTicket>
               );
-            })}
+            })
+          ) : (
+            <>
+              <OrderedTicketSkeleton />
+              <OrderedTicketSkeleton />
+            </>
+          )}
         </List>
       </SetMargin>
     </>

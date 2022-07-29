@@ -59,7 +59,6 @@ const Wrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  width: 246px;
   height: 110px;
   margin: 2px 0;
 
@@ -92,7 +91,6 @@ const Line = styled.hr`
 `;
 
 const Content = styled.div`
-  width: 172px;
   height: 110px;
   padding: 3px 0px;
 

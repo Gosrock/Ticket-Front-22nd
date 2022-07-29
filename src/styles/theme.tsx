@@ -23,7 +23,7 @@ export const theme: DefaultTheme = {
       black_footer: '#24272B',
       font_main: '#fafafa',
       font_sub: '#b6b7b8',
-      font_placeholder: '#939393',
+      font_placeholder: '#e5e5e5',
     },
   },
   typo: {
@@ -69,8 +69,8 @@ export const theme: DefaultTheme = {
     appbar_18_R: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       18,
     )};line-height: 100%;font-weight: 400;`,
-    tag_8_b: `font-family: 'Noto Sans KR';font-size: ${calcRem(
-      8,
+    tag_10_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+      10,
     )};line-height: 100%;font-weight: 700;`,
   },
   boxShadow: {
