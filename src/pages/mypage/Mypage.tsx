@@ -9,11 +9,12 @@ import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useNavigate } from 'react-router-dom';
-import useGetUserInfo from '../../hooks/useGetUserInfo';
+import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
+import TicketInfoSkeleton from '../../components/skeleton/TicketInfoSkeleton';
 
 const Mypage = () => {
   const navigate = useNavigate();
-  const UserInfo = useGetUserInfo();
+  const { status, data: UserInfo } = useGetUserInfo();
   const pagination = {
     clickable: true,
     dynamicBullets: true,
@@ -104,68 +105,92 @@ const Mypage = () => {
         <h3>9월 1일 (목)</h3>
         <h3>DAY 1 : YB</h3>
         <Tickets>
-          {!!UserInfo &&
-            UserInfo.order
-              .filter((el) => el.date === 'YB')
-              .map((el) => {
-                const {
-                  convertedMonth,
-                  convertedDay,
-                  convertedHour,
-                  convertedMinute,
-                } = convertDate(el.createdAt);
-                return (
-                  <TicketInfo
-                    key={el.uuid}
-                    status={el.status}
-                    createat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
-                    ticketNum={el.id}
-                    onClick={() => navigate(`/tickets/${el.id}`)}
-                  />
-                );
-              })}
-          <PurchaseTicket
-            isFirst={
-              !!UserInfo &&
-              !(UserInfo.order.filter((el) => el.date === 'YB').length > 0)
-            }
-            onClick={() => {
-              navigate('/auth/login/1');
-            }}
-          />
+          {status === 'success' ? (
+            !!UserInfo && (
+              <>
+                {UserInfo.order
+                  .filter((el) => el.date === 'YB')
+                  .map((el) => {
+                    const {
+                      convertedMonth,
+                      convertedDay,
+                      convertedHour,
+                      convertedMinute,
+                    } = convertDate(el.createdAt);
+                    return (
+                      <TicketInfo
+                        key={el.uuid}
+                        status={el.status}
+                        createdat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
+                        id={el.id}
+                        onClick={() => navigate(`/tickets/${el.id}`)}
+                      />
+                    );
+                  })}
+                <PurchaseTicket
+                  isFirst={
+                    !!UserInfo &&
+                    !(
+                      UserInfo.order.filter((el) => el.date === 'YB').length > 0
+                    )
+                  }
+                  onClick={() => {
+                    navigate('/auth/login/1');
+                  }}
+                />
+              </>
+            )
+          ) : (
+            <>
+              <TicketInfoSkeleton />
+              <TicketInfoSkeleton />
+            </>
+          )}
         </Tickets>
         <h3>9월 2일 (금)</h3>
         <h3>DAY 2 : OB</h3>
         <Tickets>
-          {!!UserInfo &&
-            UserInfo.order
-              .filter((el) => el.date === 'OB')
-              .map((el) => {
-                const {
-                  convertedMonth,
-                  convertedDay,
-                  convertedHour,
-                  convertedMinute,
-                } = convertDate(el.createdAt);
-                return (
-                  <TicketInfo
-                    key={el.uuid}
-                    status={el.status}
-                    createat={`${convertedMonth}월 ${convertedDay}일 ${convertedHour}:${convertedMinute}`}
-                    ticketNum={el.id}
-                    onClick={() => navigate(`/tickets/${el.id}`)}
-                  />
-                );
-              })}
-          <PurchaseTicket
-            isFirst={
-              !!UserInfo &&
-              !(UserInfo.order.filter((el) => el.date === 'OB').length > 0)
-            }
-            onClick={() => {
-              navigate('/auth/login/1');
-            }}
-          />
+          {status === 'success' ? (
+            !!UserInfo && (
+              <>
+                {UserInfo.order
+                  .filter((el) => el.date === 'OB')
+                  .map((el) => {
+                    const {
+                      convertedMonth,
+                      convertedDay,
+                      convertedHour,
+                      convertedMinute,
+                    } = convertDate(el.createdAt);
+                    return (
+                      <TicketInfo
+                        key={el.uuid}
+                        status={el.status}
+                        createdat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
+                        id={el.id}
+                        onClick={() => navigate(`/tickets/${el.id}`)}
+                      />
+                    );
+                  })}
+                <PurchaseTicket
+                  isFirst={
+                    !!UserInfo &&
+                    !(
+                      UserInfo.order.filter((el) => el.date === 'OB').length > 0
+                    )
+                  }
+                  onClick={() => {
+                    navigate('/auth/login/1');
+                  }}
+                />
+              </>
+            )
+          ) : (
+            <>
+              <TicketInfoSkeleton />
+              <TicketInfoSkeleton />
+            </>
+          )}
         </Tickets>
         <div
           style={{
@@ -258,7 +283,7 @@ const Tickets = styled.div`
   flex-wrap: nowrap;
   overflow-x: auto;
   & div {
-    flex: 0 0 150px;
+    flex: 0 0 auto;
   }
   &::-webkit-scrollbar {
     display: none;

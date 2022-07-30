@@ -15,6 +15,6 @@ const Template: ComponentStory<typeof TicketInfo> = (args) => (
 export const 티켓정보 = Template.bind({});
 티켓정보.args = {
   status: '입금확인',
-  createat: '08/30 17:25',
-  ticketNum: 17,
+  createdat: '08/30 17:25',
+  id: 17,
 };
