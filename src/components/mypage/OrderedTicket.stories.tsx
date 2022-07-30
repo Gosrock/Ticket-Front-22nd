@@ -14,8 +14,8 @@ const Template: ComponentStory<typeof OrderedTicket> = (args) => (
 export const 주문목록티켓 = Template.bind({});
 주문목록티켓.args = {
   status: '입금확인',
-  orderDate: '22.08.30 (화)',
-  ticketNum: 10001,
-  concertDate: 'BOTH',
-  quantity: 1,
+  createdat: '22.08.30 (화)',
+  id: 10001,
+  selection: 'BOTH',
+  ticketCount: 1,
 };
