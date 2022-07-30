@@ -121,8 +121,8 @@ const Mypage = () => {
                       <TicketInfo
                         key={el.uuid}
                         status={el.status}
-                        createat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
-                        ticketNum={el.id}
+                        createdat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
+                        id={el.id}
                         onClick={() => navigate(`/tickets/${el.id}`)}
                       />
                     );
@@ -166,8 +166,8 @@ const Mypage = () => {
                       <TicketInfo
                         key={el.uuid}
                         status={el.status}
-                        createat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
-                        ticketNum={el.id}
+                        createdat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
+                        id={el.id}
                         onClick={() => navigate(`/tickets/${el.id}`)}
                       />
                     );

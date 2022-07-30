@@ -22,7 +22,7 @@ declare module 'styled-components' {
         black_footer: '#24272B';
         font_main: '#fafafa';
         font_sub: '#b6b7b8';
-        font_placeholder: '#e5e5e5';
+        font_placeholder: '#939393';
       };
     };
     typo: {

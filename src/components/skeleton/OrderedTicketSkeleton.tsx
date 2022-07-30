@@ -9,10 +9,10 @@ const OrderedTicketSkeleton = () => {
         <Item></Item>
         <Line />
         <Content>
-          <El />
-          <El />
-          <El />
-          <El />
+          <InfoSkeleton />
+          <InfoSkeleton />
+          <InfoSkeleton />
+          <InfoSkeleton />
         </Content>
       </Contents>
       <DepositStatusSkeleton setBackground={true} />
@@ -68,7 +68,7 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const El = styled(SkeletonItem)`
+const InfoSkeleton = styled(SkeletonItem)`
   width: 100%;
   height: 18px;
   background: ${({ theme }) => theme.palette.mono.black_36};
