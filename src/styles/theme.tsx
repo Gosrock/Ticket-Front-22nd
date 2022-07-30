@@ -53,6 +53,9 @@ export const theme: DefaultTheme = {
     text_14_R: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       14,
     )};line-height: 100%;font-weight: 400;`,
+    text_12_M: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+      12,
+    )};line-height: 100%;font-weight: 500;`,
     text_12_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       12,
     )};line-height: 100%;font-weight: 700;`,
@@ -66,8 +69,8 @@ export const theme: DefaultTheme = {
     appbar_18_R: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       18,
     )};line-height: 100%;font-weight: 400;`,
-    tag_8_b: `font-family: 'Noto Sans KR';font-size: ${calcRem(
-      8,
+    tag_10_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+      10,
     )};line-height: 100%;font-weight: 700;`,
   },
   boxShadow: {

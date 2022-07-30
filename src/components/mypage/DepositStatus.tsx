@@ -21,8 +21,8 @@ const Wrapper = styled.div<{
   // status: '입장완료' | '입금확인' | '확인대기' | '기한만료';
 }>`
   padding: 3px 8px;
-  width: 46px;
-  height: 18px;
+  width: 53px;
+  height: 20px;
   border-radius: 12px;
   text-align: center;
   box-sizing: border-box;
@@ -52,11 +52,9 @@ const Wrapper = styled.div<{
   align-items: center;
   justify-content: center;
   & p {
-    ${({ theme }) => theme.typo.tag_8_b};
+    ${({ theme }) => theme.typo.tag_10_B};
 
     /* line-height 12px로 하면 글씨가 위로 치우침 */
-    margin-top: 1px;
-    line-height: 11px;
     color: ${({ theme }) => theme.palette.mono.white};
   }
 `;
