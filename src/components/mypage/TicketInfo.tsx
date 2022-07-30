@@ -7,16 +7,9 @@ interface ITicketInfoProps extends IDepositStatusProps {
   createdat: string;
   id: number;
   onClick?: () => void;
-  children?: JSX.Element;
 }
 
-const TicketInfo = ({
-  status,
-  createdat,
-  id,
-  onClick,
-  children,
-}: ITicketInfoProps) => {
+const TicketInfo = ({ status, createdat, id, onClick }: ITicketInfoProps) => {
   return (
     <Wrapper>
       <Top>
@@ -40,7 +33,6 @@ const TicketInfo = ({
           </ShowQR>
         </Bottom>
       )}
-      {children}
     </Wrapper>
   );
 };
@@ -56,7 +48,6 @@ const Wrapper = styled.div`
   border-radius: 16px;
   box-sizing: border-box;
   padding-top: 8px;
-  margin-right: 16px;
 `;
 
 const Top = styled.div`

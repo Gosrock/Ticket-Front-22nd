@@ -54,7 +54,7 @@ const Wrapper = styled.div`
 
 const SecondRow = styled.div`
   width: 30%;
-  max-width: 150px;
+  max-width: 125px;
   margin: 16px 0px 18px 0;
   display: flex;
   justify-content: space-between;

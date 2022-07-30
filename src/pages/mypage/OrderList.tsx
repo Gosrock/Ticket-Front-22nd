@@ -34,10 +34,10 @@ const OrderList = () => {
                 <OrderedTicket
                   key={el.id}
                   status={el.status}
-                  orderDate={`${Year}.${Month}.${Day} (${DayKR})`}
-                  ticketNum={el.id}
-                  concertDate={el.selection}
-                  quantity={el.ticketCount}
+                  createdat={`${Year}.${Month}.${Day} (${DayKR})`}
+                  id={el.id}
+                  selection={el.selection}
+                  ticketCount={el.ticketCount}
                 ></OrderedTicket>
               );
             })
