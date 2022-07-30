@@ -33,25 +33,18 @@ const Mypage = () => {
     },
   };
   const convertDate = (date: string) => {
-    const createDate = new Date(date);
-    const month = createDate.getMonth();
-    const day = createDate.getDate();
-    const hour = createDate.getHours();
-    const minute = createDate.getMinutes();
-    const convertedMonth =
-      month >= 10 ? month.toString() : '0' + month.toString();
-    const convertedDay = day >= 10 ? day.toString() : '0' + day.toString();
-    const convertedHour = hour >= 10 ? hour.toString() : '0' + hour.toString();
-    const convertedMinute =
-      minute >= 10 ? minute.toString() : '0' + minute.toString();
-    return { convertedMonth, convertedDay, convertedHour, convertedMinute };
+    const Month = date.substring(5, 7);
+    const Day = date.substring(8, 10);
+    const Hour = date.substring(14, 16);
+    const Minute = date.substring(17, 19);
+    return { Month, Day, Hour, Minute };
   };
   const sliderData: Array<ISliderProps> = [
     {
-      title: '응원 톡',
-      titleHighlight: '남기기',
+      titleHighlight: '응원 톡',
+      titleDark: '남기기',
       content:
-        '“긴 입력 예시야. 아좌좌좌!!  긴 입력 예...”아아아아아 아아아아 아아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아 아아아아아아 ',
+        '긴 입력 예시야. 아좌좌좌!!  긴 입력 예아아아아아 아아아아 아아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아아아아 아아아아 아아아아아아아아 아아아아아아아 아아아아아아 ',
       contentWriter: '서도철',
       team: null,
       onClick: () => {
@@ -59,32 +52,40 @@ const Mypage = () => {
       },
     },
     {
-      title: '오시는 길',
-      titleHighlight: '바로가기',
+      titleHighlight: '오시는 길',
+      titleDark: '바로가기',
       content: '돌다리도 두들겨보고 건너라\n공연장의 위치는?',
+      contentWriter: null,
       team: 'YB',
-      onClick: () => {},
+      onClick: () => {
+        window.location.href = 'https://naver.me/FQ58AeHC';
+      },
     },
     {
-      title: '입금계좌',
-      titleHighlight: '확인하기',
+      titleHighlight: '입금계좌',
+      titleDark: '확인하기',
       content: '혹시 깜빡하고 입금을 못하셨나요??',
+      contentWriter: null,
       team: null,
       onClick: () => {},
     },
     {
-      title: '개발자들',
-      titleHighlight: '칭찬해주기',
+      titleHighlight: '개발자들',
+      titleDark: '칭찬해주기',
       content: '이 프로젝트에 참여한 사람들이에요',
+      contentWriter: null,
       team: null,
       onClick: () => {},
     },
     {
-      title: '카카오 채널',
-      titleHighlight: '바로가기',
+      titleHighlight: '카카오 채널',
+      titleDark: '바로가기',
       content: '고스락의 소식을 제일 빨리 받아보고 싶다면',
+      contentWriter: null,
       team: null,
-      onClick: () => {},
+      onClick: () => {
+        window.location.href = 'https://pf.kakao.com/_QxeZBT';
+      },
     },
   ];
   return (
@@ -103,7 +104,9 @@ const Mypage = () => {
         </Swiper>
         <h2>내 예매 티켓</h2>
         <h3>9월 1일 (목)</h3>
-        <h3>DAY 1 : YB</h3>
+        <h3>
+          <span>DAY 1 : YB</span>
+        </h3>
         <Tickets>
           {status === 'success' ? (
             !!UserInfo && (
@@ -111,17 +114,14 @@ const Mypage = () => {
                 {UserInfo.order
                   .filter((el) => el.date === 'YB')
                   .map((el) => {
-                    const {
-                      convertedMonth,
-                      convertedDay,
-                      convertedHour,
-                      convertedMinute,
-                    } = convertDate(el.createdAt);
+                    const { Month, Day, Hour, Minute } = convertDate(
+                      el.createdAt,
+                    );
                     return (
                       <TicketInfo
                         key={el.uuid}
                         status={el.status}
-                        createdat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
+                        createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                         id={el.id}
                         onClick={() => navigate(`/tickets/${el.id}`)}
                       />
@@ -129,7 +129,6 @@ const Mypage = () => {
                   })}
                 <PurchaseTicket
                   isFirst={
-                    !!UserInfo &&
                     !(
                       UserInfo.order.filter((el) => el.date === 'YB').length > 0
                     )
@@ -148,7 +147,9 @@ const Mypage = () => {
           )}
         </Tickets>
         <h3>9월 2일 (금)</h3>
-        <h3>DAY 2 : OB</h3>
+        <h3>
+          <span>DAY 2 : OB</span>
+        </h3>
         <Tickets>
           {status === 'success' ? (
             !!UserInfo && (
@@ -156,17 +157,14 @@ const Mypage = () => {
                 {UserInfo.order
                   .filter((el) => el.date === 'OB')
                   .map((el) => {
-                    const {
-                      convertedMonth,
-                      convertedDay,
-                      convertedHour,
-                      convertedMinute,
-                    } = convertDate(el.createdAt);
+                    const { Month, Day, Hour, Minute } = convertDate(
+                      el.createdAt,
+                    );
                     return (
                       <TicketInfo
                         key={el.uuid}
                         status={el.status}
-                        createdat={`${convertedMonth}/${convertedDay} ${convertedHour}:${convertedMinute}`}
+                        createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                         id={el.id}
                         onClick={() => navigate(`/tickets/${el.id}`)}
                       />
@@ -174,7 +172,6 @@ const Mypage = () => {
                   })}
                 <PurchaseTicket
                   isFirst={
-                    !!UserInfo &&
                     !(
                       UserInfo.order.filter((el) => el.date === 'OB').length > 0
                     )
@@ -242,7 +239,7 @@ const Wrapper = styled.div`
 
   & > h1 {
     width: 100%;
-    padding: 0 5%;
+    padding: 0px 18px;
     margin-bottom: 56px;
     color: ${({ theme }) => theme.palette.mono.white_fa};
     ${({ theme }) => theme.typo.title_28_B};
@@ -256,33 +253,39 @@ const Wrapper = styled.div`
     margin-top: 80px;
     margin-bottom: 40px;
     width: 100%;
-    padding: 0 5%;
+    padding: 0px 18px;
     color: ${({ theme }) => theme.palette.mono.font_main};
     ${({ theme }) => theme.typo.title_24_B};
   }
 
   & > h3 {
     width: 100%;
-    padding: 0 5%;
+    padding: 0px 18px;
     color: ${({ theme }) => theme.palette.mono.font_sub};
     ${({ theme }) => theme.typo.text_18_M_lessSpacing};
   }
-  & > h3:first-child {
+
+  & > h3 span {
     color: ${({ theme }) => theme.palette.mono.white};
   }
 `;
 
 const Tickets = styled.div`
-  margin-top: 12px;
-  margin-bottom: 40px;
   width: 100%;
-  padding: 0 5%;
+  margin: 12px 0 40px 0;
+  padding: 0 18px;
 
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
-  & div {
+  & > * {
+    margin-left: 16px;
+  }
+  & > :first-child {
+    margin: 0;
+  }
+  & > div {
     flex: 0 0 auto;
   }
   &::-webkit-scrollbar {
