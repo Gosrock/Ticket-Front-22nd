@@ -5,7 +5,6 @@ export default {
   title: 'Component/OrderedTicket',
   component: OrderedTicket,
   argTypes: {},
-  decorators: [(Story) => <Story />],
 } as ComponentMeta<typeof OrderedTicket>;
 
 const Template: ComponentStory<typeof OrderedTicket> = (args) => (

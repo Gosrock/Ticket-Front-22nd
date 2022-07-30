@@ -1,8 +1,8 @@
 import { AxiosError } from 'axios';
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import UserInfoApi from '../apis/UserInfoApi';
+import UserInfoApi from '../../apis/UserInfoApi';
 
-import UserInfoMockApi from '../apis/mock/UserInfoMockApi';
+import UserInfoMockApi from '../../apis/mock/UserInfoMockApi';
 
 const useGetUserInfo = () => {
   // api가 완성X
@@ -19,18 +19,22 @@ const useGetUserInfo = () => {
   //   },
   // });
 
-  const { data } = useQuery(['userInfo'], UserInfoMockApi.getUserInfoMock, {
-    refetchOnWindowFocus: false,
-    retry: false,
-    // refetchOnMount: false,
-    refetchIntervalInBackground: false,
-    onError: (error: AxiosError) => {
-      alert(error);
-      window.location.href = '/';
+  const { status, data } = useQuery(
+    ['userInfo'],
+    UserInfoMockApi.getUserInfoMock,
+    {
+      refetchOnWindowFocus: false,
+      retry: false,
+      // refetchOnMount: false,
+      refetchIntervalInBackground: false,
+      onError: (error: AxiosError) => {
+        alert(error);
+        window.location.href = '/';
+      },
     },
-  });
-  console.log(data);
-  return data;
+  );
+  console.log(status, data);
+  return { status, data };
 };
 
 export default useGetUserInfo;
