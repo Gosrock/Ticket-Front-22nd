@@ -4,10 +4,10 @@ import { ReactComponent as ChevronDown } from '../../assets/icons/chevronDown.sv
 import { ReactComponent as Send } from '../../assets/icons/send.svg';
 
 export interface ITalkInputProps {
-  setInput: (newInput: string) => void;
+  sendMessage: (InputMessage: string) => void;
 }
 
-const TalkInput = ({ setInput }: ITalkInputProps) => {
+const TalkInput = ({ sendMessage }: ITalkInputProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const [value, setValue] = useState<string>('');
@@ -15,7 +15,6 @@ const TalkInput = ({ setInput }: ITalkInputProps) => {
 
   const textAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(event.target.value);
-    setInput(value);
   };
 
   useEffect(() => {
@@ -35,7 +34,7 @@ const TalkInput = ({ setInput }: ITalkInputProps) => {
             <ChevronDown />
           </div>
         ) : (
-          <div>
+          <div onClick={() => sendMessage(value)}>
             <p>전송</p>
             <Send />
           </div>
@@ -47,6 +46,7 @@ const TalkInput = ({ setInput }: ITalkInputProps) => {
             placeholder="익명으로 응원을 남기고 싶다면, 맨 앞에 ‘#별명’을 붙여주세요.&#10;예시 : #우장산불주먹 고스락 화이팅!"
             ref={textareaRef}
             onChange={textAreaChange}
+            autoFocus
           />
         </InputWindow>
       )}
@@ -106,5 +106,6 @@ const InputWindow = styled.div`
     ${({ theme }) => theme.typo.text_12_M};
     line-height: 1.5rem;
     color: ${({ theme }) => theme.palette.mono.font_sub};
+    outline-style: none;
   }
 `;

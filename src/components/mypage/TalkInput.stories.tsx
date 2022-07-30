@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof TalkInput> = (args) => (
 
 export const 입력창 = Template.bind({});
 입력창.args = {
-  setInput: (newInput) => {},
+  sendMessage: (InputMessage) => {},
 };

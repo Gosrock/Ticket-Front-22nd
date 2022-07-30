@@ -2,20 +2,20 @@ import styled from 'styled-components';
 import DepositStatus, { IDepositStatusProps } from './DepositStatus';
 
 interface IOrderedTicketProps extends IDepositStatusProps {
-  orderDate: string;
-  ticketNum: number;
+  createdat: string;
+  id: number;
   // enum으로 값이 전달되긴하는데 string으로 안하면 오류뜸
-  // concertDate: 'BOTH' | 'YB' | 'OB';
-  concertDate: string;
-  quantity: number;
+  // selection: 'BOTH' | 'YB' | 'OB';
+  selection: string;
+  ticketCount: number;
 }
 
 const OrderedTicket = ({
   status,
-  orderDate,
-  ticketNum,
-  concertDate,
-  quantity,
+  createdat,
+  id,
+  selection,
+  ticketCount,
 }: IOrderedTicketProps) => {
   return (
     <Wrapper>
@@ -28,16 +28,16 @@ const OrderedTicket = ({
         </Item>
         <Line />
         <Content>
-          <p>{orderDate}</p>
-          <p>{ticketNum}</p>
-          {concertDate === 'BOTH' ? (
+          <p>{createdat}</p>
+          <p>{id}</p>
+          {selection === 'BOTH' ? (
             <p>
-              {concertDate} <span>(할인 적용)</span>
+              {selection} <span>(할인 적용)</span>
             </p>
           ) : (
-            <p>{concertDate}</p>
+            <p>{selection}</p>
           )}
-          <p>{quantity}매</p>
+          <p>{ticketCount}매</p>
         </Content>
       </Contents>
       <DepositStatus status={status} />

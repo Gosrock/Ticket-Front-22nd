@@ -4,12 +4,11 @@ export interface IDepositStatusProps {
   status: string;
   // 이거 묵데이터로 테스트했을 때, 오류뜸
   // status: '입장완료' | '입금확인' | '확인대기' | '기한만료';
-  style?: React.CSSProperties;
 }
 
-const DepositStatus = ({ status, style }: IDepositStatusProps) => {
+const DepositStatus = ({ status }: IDepositStatusProps) => {
   return (
-    <Wrapper status={status} style={style}>
+    <Wrapper status={status}>
       <p>{status}</p>
     </Wrapper>
   );
@@ -53,8 +52,7 @@ const Wrapper = styled.div<{
   justify-content: center;
   & p {
     ${({ theme }) => theme.typo.tag_10_B};
-
-    /* line-height 12px로 하면 글씨가 위로 치우침 */
+    margin-top: 1px;
     color: ${({ theme }) => theme.palette.mono.white};
   }
 `;
