@@ -7,13 +7,14 @@ export const GlobalStyle = createGlobalStyle`
     body {
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       box-sizing: border-box; /* 엘리먼트의 box-sizing 값을 border-box로 설정 */
       min-height: 100%;
+
+      background-color: #e5e5e5;
+      color: white;
     }
     #root {
       min-height: 100%;
@@ -40,6 +41,7 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0; 
       overflow: visible; 
       cursor: pointer;
+      color: white;
     }
     button:focus {
       outline: none;

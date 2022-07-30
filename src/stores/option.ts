@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 export interface IOptionType {
-  date: '1' | '2' | 'both' | null;
+  date: 'yb' | 'ob' | 'both' | null;
   count: 1 | 2 | 3;
 }
 
