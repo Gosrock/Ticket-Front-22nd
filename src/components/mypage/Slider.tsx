@@ -3,16 +3,16 @@ import map1 from '../../assets/maps/map1.png';
 import map2 from '../../assets/maps/map2.png';
 
 export interface ISliderProps {
-  title: string;
+  titleDark: string;
   titleHighlight: string;
   content: string;
-  contentWriter?: string;
+  contentWriter: string | null;
   team: 'YB' | 'OB' | null;
   onClick: () => void;
 }
 
 const Slider = ({
-  title,
+  titleDark,
   titleHighlight,
   content,
   contentWriter,
@@ -21,31 +21,39 @@ const Slider = ({
 }: ISliderProps) => {
   return (
     <Wrapper team={team}>
-      <Background team={team}>
+      <BackgroundCover team={team}>
         <Contents>
-          {/* 4줄 이상 넘어가면 스크롤 생김, 바는 안생김 */}
-          <p>{content}</p>
-          {contentWriter && (
-            <p>
-              <span>from. {contentWriter}</span>
-            </p>
+          {contentWriter !== null ? (
+            <>
+              {content.length > 30 ? (
+                <p>"{content.substring(0, 25)}..."</p>
+              ) : (
+                <p>"{content}"</p>
+              )}
+              <p>
+                <span>from. {contentWriter}</span>
+              </p>
+            </>
+          ) : (
+            <p>{content}</p>
           )}
         </Contents>
         <Title onClick={onClick}>
           <p className="title">
-            <span>{title}</span> {titleHighlight}
+            <span>{titleHighlight}</span> {titleDark}
           </p>
         </Title>
-      </Background>
+      </BackgroundCover>
     </Wrapper>
   );
 };
 export default Slider;
 
 const Wrapper = styled.div<{ team: 'YB' | 'OB' | null }>`
-  width: 90%;
-  margin: 0 5%;
+  width: calc(100% - 36px);
+  margin: 0px 18px;
   height: 180px;
+  border-radius: 16px;
   ${({ team }) =>
     team
       ? team === 'YB'
@@ -59,12 +67,12 @@ const Wrapper = styled.div<{ team: 'YB' | 'OB' | null }>`
           background: rgba(0, 0, 0, 0.49);
         `};
   /* 지도 세팅 해야함 */
-  border-radius: 16px;
 `;
 
-const Background = styled.div<{ team: 'YB' | 'OB' | null }>`
-  padding-top: 22px;
+const BackgroundCover = styled.div<{ team: 'YB' | 'OB' | null }>`
+  padding: 23px 0px 46px 0px;
   display: flex;
+  justify-content: space-between;
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
@@ -79,17 +87,12 @@ const Background = styled.div<{ team: 'YB' | 'OB' | null }>`
 `;
 
 const Contents = styled.div`
-  margin: 0 6% 26px 6%;
-  width: 88%;
+  width: calc(100% - 48px);
   height: 66px;
-  overflow: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  white-space: pre-wrap;
   & p {
     ${({ theme }) => theme.typo.text_14_M};
+    line-height: 16px;
   }
   & span {
     color: ${({ theme }) => theme.palette.point.red};

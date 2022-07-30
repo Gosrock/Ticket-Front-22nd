@@ -5,7 +5,6 @@ export default {
   title: 'Component/DepositStatus',
   component: DepositStatus,
   argTypes: {},
-  decorators: [(Story) => <Story />],
 } as ComponentMeta<typeof DepositStatus>;
 
 const Template: ComponentStory<typeof DepositStatus> = (args) => (

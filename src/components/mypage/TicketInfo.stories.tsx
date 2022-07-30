@@ -5,7 +5,6 @@ export default {
   title: 'Component/TicketInfo',
   component: TicketInfo,
   argTypes: {},
-  decorators: [(Story) => <Story />],
 } as ComponentMeta<typeof TicketInfo>;
 
 const Template: ComponentStory<typeof TicketInfo> = (args) => (
