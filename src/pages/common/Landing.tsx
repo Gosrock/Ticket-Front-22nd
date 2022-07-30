@@ -4,8 +4,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import AuthApi from '../../apis/AuthApi';
 import TicketApi from '../../apis/TicketApi';
-import useGetTicket from '../../hooks/useGetTicket';
-import useGetTickets from '../../hooks/useGetTickets';
+import useGetTicket from '../../hooks/queries/useGetTicket';
+import useGetTickets from '../../hooks/queries/useGetTickets';
 import { authState } from '../../stores/auth';
 
 const Landing = () => {

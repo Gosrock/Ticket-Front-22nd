@@ -4,7 +4,9 @@ import DepositStatus, { IDepositStatusProps } from './DepositStatus';
 interface IOrderedTicketProps extends IDepositStatusProps {
   orderDate: string;
   ticketNum: number;
-  concertDate: 'BOTH' | 'YB' | 'OB';
+  // enum으로 값이 전달되긴하는데 string으로 안하면 오류뜸
+  // concertDate: 'BOTH' | 'YB' | 'OB';
+  concertDate: string;
   quantity: number;
 }
 
@@ -45,7 +47,7 @@ const OrderedTicket = ({
 export default OrderedTicket;
 
 const Wrapper = styled.div`
-  width: 339px;
+  width: 100%;
   height: 150px;
   display: flex;
   flex-direction: row;
@@ -57,7 +59,6 @@ const Wrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  width: 246px;
   height: 110px;
   margin: 2px 0;
 
@@ -90,7 +91,6 @@ const Line = styled.hr`
 `;
 
 const Content = styled.div`
-  width: 172px;
   height: 110px;
   padding: 3px 0px;
 

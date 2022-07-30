@@ -1,40 +1,44 @@
 import styled, { css } from 'styled-components';
 import DepositStatus, { IDepositStatusProps } from './DepositStatus';
 import { ReactComponent as QRcode } from '../../assets/icons/qrcode.svg';
+import { ReactComponent as DashedLine } from '../../assets/icons/dashedLine.svg';
 
 interface ITicketInfoProps extends IDepositStatusProps {
-  createat: string;
-  ticketNum: number;
+  createdat: string;
+  id: number;
   onClick?: () => void;
   children?: JSX.Element;
 }
 
 const TicketInfo = ({
   status,
-  createat,
-  ticketNum,
+  createdat,
+  id,
   onClick,
   children,
 }: ITicketInfoProps) => {
   return (
     <Wrapper>
-      <DepositStatus status={status} style={{ marginLeft: '8px' }} />
-      <Info>
-        <p>
-          예매일시 : <span>{createat}</span>
-        </p>
-        <p>
-          티켓번호 : <span>#{ticketNum}</span>
-        </p>
-      </Info>
+      <Top>
+        <DepositStatus status={status} />
+        <Info>
+          <p>
+            예매일시 : <span>{createdat}</span>
+          </p>
+          <p>
+            티켓번호 : <span>#{id}</span>
+          </p>
+        </Info>
+      </Top>
       {(status === '입금확인' || status === '입장완료') && (
-        <>
-          <Line />
+        <Bottom>
+          <DashedLine />
+          {/* dashedLine 크기가 이상하게 표시되어 dashedLine과 showQR 사이 패딩을 10.5에서 7.5로 조정함 */}
           <ShowQR onClick={onClick}>
             <p>QR코드 보기</p>
             <QRcode />
           </ShowQR>
-        </>
+        </Bottom>
       )}
       {children}
     </Wrapper>
@@ -43,6 +47,9 @@ const TicketInfo = ({
 export default TicketInfo;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 150px;
   height: 120px;
   background: #fafafa;
@@ -52,13 +59,18 @@ const Wrapper = styled.div`
   margin-right: 16px;
 `;
 
+const Top = styled.div`
+  margin: 0 8px 0px 8px;
+  width: calc(100% - 16px);
+  height: 52px;
+`;
+
 const Info = styled.div`
   width: 100%;
   height: 24px;
-  margin: 10px 0px 0px 7px;
+  margin-top: 8px;
 
-  ${({ theme }) => theme.typo.tag_8_b};
-  font-size: 0.625em;
+  ${({ theme }) => theme.typo.tag_10_B};
   color: ${({ theme }) => theme.palette.mono.black_12};
   & p:first-child {
     margin-bottom: 4px;
@@ -69,16 +81,12 @@ const Info = styled.div`
   }
 `;
 
-const Line = styled.hr`
-  margin: 0;
-  margin-top: 19.5px;
-
-  border: none;
-  border-top: 1px dashed ${({ theme }) => theme.palette.mono.white_e6};
+const Bottom = styled.div`
+  width: 100%;
 `;
 
 const ShowQR = styled.div`
-  margin: 10.5px 12px 12px 49px;
+  margin: 7.5px 12px 12px 49px;
   width: 88px;
   height: 18px;
   display: flex;

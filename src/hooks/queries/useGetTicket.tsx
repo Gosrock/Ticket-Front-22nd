@@ -1,9 +1,9 @@
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { IGetTicketReq, IGetTicketRes } from '../apis/type/ticket';
+import { IGetTicketReq, IGetTicketRes } from '../../apis/type/ticket';
 import { AxiosError } from 'axios';
-import TicketApi from '../apis/TicketApi';
+import TicketApi from '../../apis/TicketApi';
 
-import TicketMockApi from '../apis/mock/TicketMockApi';
+import TicketMockApi from '../../apis/mock/TicketMockApi';
 
 const useGetTicket = (params: IGetTicketReq) => {
   const { data } = useQuery(

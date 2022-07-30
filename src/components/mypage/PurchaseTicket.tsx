@@ -9,7 +9,7 @@ interface IPurchaseTicketProps {
 
 const PurchaseTicket = ({ isFirst, onClick }: IPurchaseTicketProps) => {
   return (
-    <TicketInfo status="입금확인" createat={'08월 30일 17:25'} ticketNum={17}>
+    <TicketInfo status="입금확인" createdat={'08월 30일 17:25'} id={17}>
       <Wrapper>
         <ToTicketing onClick={onClick}>
           {isFirst ? <p>예매하러 가기</p> : <p>또 예매할래요</p>}
