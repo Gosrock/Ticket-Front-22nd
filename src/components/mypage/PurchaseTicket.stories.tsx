@@ -5,7 +5,6 @@ export default {
   title: 'Component/PurchaseTicket',
   component: PurchaseTicket,
   argTypes: {},
-  decorators: [(Story) => <Story />],
 } as ComponentMeta<typeof PurchaseTicket>;
 
 const Template: ComponentStory<typeof PurchaseTicket> = (args) => (

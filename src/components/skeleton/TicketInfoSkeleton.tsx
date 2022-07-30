@@ -31,7 +31,6 @@ const Wrapper = styled.div`
   border-radius: 16px;
   box-sizing: border-box;
   padding-top: 8px;
-  margin-right: 16px;
 `;
 
 const Top = styled.div`
