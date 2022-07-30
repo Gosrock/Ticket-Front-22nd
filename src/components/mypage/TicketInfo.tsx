@@ -4,16 +4,16 @@ import { ReactComponent as QRcode } from '../../assets/icons/qrcode.svg';
 import { ReactComponent as DashedLine } from '../../assets/icons/dashedLine.svg';
 
 interface ITicketInfoProps extends IDepositStatusProps {
-  createat: string;
-  ticketNum: number;
+  createdat: string;
+  id: number;
   onClick?: () => void;
   children?: JSX.Element;
 }
 
 const TicketInfo = ({
   status,
-  createat,
-  ticketNum,
+  createdat,
+  id,
   onClick,
   children,
 }: ITicketInfoProps) => {
@@ -23,10 +23,10 @@ const TicketInfo = ({
         <DepositStatus status={status} />
         <Info>
           <p>
-            예매일시 : <span>{createat}</span>
+            예매일시 : <span>{createdat}</span>
           </p>
           <p>
-            티켓번호 : <span>#{ticketNum}</span>
+            티켓번호 : <span>#{id}</span>
           </p>
         </Info>
       </Top>
