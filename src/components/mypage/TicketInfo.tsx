@@ -77,12 +77,11 @@ const Bottom = styled.div`
 `;
 
 const ShowQR = styled.div`
-  margin: 7.5px 12px 12px 49px;
-  width: 88px;
+  margin: 7.5px 12px 12px 12px;
   height: 18px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 
   & p {
@@ -91,8 +90,7 @@ const ShowQR = styled.div`
     text-align: center;
 
     ${({ theme }) => theme.typo.text_12_B_lessSpacing};
-    /* margin-top없으면 글씨가 위로 치우침 */
-    margin: 1px 8px 0px 0px;
+    margin: 0px 8px 0px 0px;
 
     color: ${({ theme }) => theme.palette.mono.black_00};
   }

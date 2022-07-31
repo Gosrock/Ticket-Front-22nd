@@ -3,7 +3,7 @@ import SetMargin from '../../components/common/SetMargin';
 import styled from 'styled-components';
 import OrderedTicket from '../../components/mypage/OrderedTicket';
 import useGetOrders from '../../hooks/queries/useGetOrders';
-import { IGetOrderRes } from '../../apis/type/order';
+import { IOrder } from '../../apis/type/order';
 import OrderedTicketSkeleton from '../../components/skeleton/OrderedTicketSkeleton';
 
 const OrderList = () => {
@@ -28,7 +28,7 @@ const OrderList = () => {
         <List>
           {status === 'success' ? (
             !!orders &&
-            orders.data.map((el: IGetOrderRes) => {
+            orders.data.map((el: IOrder) => {
               const { Year, Month, Day, DayKR } = convertDate(el.createdAt);
               return (
                 <OrderedTicket
