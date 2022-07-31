@@ -23,16 +23,15 @@ const TicketInfo = ({ status, createdat, id, onClick }: ITicketInfoProps) => {
           </p>
         </Info>
       </Top>
-      {(status === '입금확인' || status === '입장완료') && (
-        <Bottom>
-          <DashedLine />
-          {/* dashedLine 크기가 이상하게 표시되어 dashedLine과 showQR 사이 패딩을 10.5에서 7.5로 조정함 */}
-          <ShowQR onClick={onClick}>
-            <p>QR코드 보기</p>
-            <QRcode />
-          </ShowQR>
-        </Bottom>
-      )}
+
+      <Bottom>
+        <DashedLine />
+        {/* dashedLine 크기가 이상하게 표시되어 dashedLine과 showQR 사이 패딩을 10.5에서 7.5로 조정함 */}
+        <ShowQR onClick={onClick}>
+          <p>QR코드 보기</p>
+          <QRcode />
+        </ShowQR>
+      </Bottom>
     </Wrapper>
   );
 };
