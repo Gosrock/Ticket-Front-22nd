@@ -17,7 +17,7 @@ import { ITicket } from '../../apis/type/ticket';
 const Mypage = () => {
   const navigate = useNavigate();
   const { status: ticketsStatus, data: tickets } = useGetTickets();
-  const { status: infoStatus, data: userInfo } = useGetUserInfo();
+  const { status: userInfoStatus, data: userInfo } = useGetUserInfo();
   const pagination = {
     clickable: true,
     dynamicBullets: true,
@@ -57,11 +57,21 @@ const Mypage = () => {
     {
       titleHighlight: '오시는 길',
       titleDark: '바로가기',
-      content: '돌다리도 두들겨보고 건너라\n공연장의 위치는?',
+      content: '9/1\n돌다리도 두들겨보고 건너라\n공연장의 위치는?',
       contentWriter: null,
       team: 'YB',
       onClick: () => {
-        window.location.href = 'https://naver.me/FQ58AeHC';
+        window.location.href = 'https://naver.me/x229ewi0';
+      },
+    },
+    {
+      titleHighlight: '오시는 길',
+      titleDark: '바로가기',
+      content: '9/2\n돌다리도 두들겨보고 건너라\n공연장의 위치는?',
+      contentWriter: null,
+      team: 'OB',
+      onClick: () => {
+        window.location.href = 'https://naver.me/5axu8Onc';
       },
     },
     {
@@ -94,10 +104,10 @@ const Mypage = () => {
   return (
     <BackGround>
       <Wrapper>
-        {infoStatus === 'success' ? (
-          <h1>{!!userInfo && userInfo.name}님,</h1>
+        {userInfoStatus === 'success' ? (
+          <h1>{!!userInfo && userInfo.data.name}님,</h1>
         ) : (
-          <h1>안녕하세요!!!!</h1>
+          <h1>⦿⦿⦿님,</h1>
         )}
         <h1>만나서 반가워요!</h1>
         <Swiper {...swiperParams}>
