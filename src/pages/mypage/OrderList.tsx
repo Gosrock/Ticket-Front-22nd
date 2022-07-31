@@ -5,8 +5,10 @@ import OrderedTicket from '../../components/mypage/OrderedTicket';
 import useGetOrders from '../../hooks/queries/useGetOrders';
 import { IOrder } from '../../apis/type/order';
 import OrderedTicketSkeleton from '../../components/skeleton/OrderedTicketSkeleton';
+import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
 
 const OrderList = () => {
+  const { status: userInfoStatus, data: userInfo } = useGetUserInfo();
   const { status, data: orders } = useGetOrders();
   const convertDate = (date: string) => {
     const week = new Array('일', '월', '화', '수', '목', '금', '토');
@@ -21,10 +23,16 @@ const OrderList = () => {
     <>
       <AppBar label={'마이페이지'} />
       <SetMargin>
-        <Title>
-          {/* user info api 만들어지면 수정 */}
-          <span>한규진</span> 님의 티켓 주문 목록
-        </Title>
+        {userInfoStatus === 'success' && !!userInfo ? (
+          <Title>
+            <span>{userInfo.data.name}</span> 님의 티켓 주문 목록
+          </Title>
+        ) : (
+          <Title>
+            <span>⦿⦿⦿</span> 님의 티켓 주문 목록
+          </Title>
+        )}
+
         <List>
           {status === 'success' ? (
             !!orders &&
