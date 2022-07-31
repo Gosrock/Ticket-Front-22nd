@@ -11,10 +11,13 @@ import 'swiper/css/pagination';
 import { useNavigate } from 'react-router-dom';
 import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
 import TicketInfoSkeleton from '../../components/skeleton/TicketInfoSkeleton';
+import useGetTickets from '../../hooks/queries/useGetTickets';
+import { ITicket } from '../../apis/type/ticket';
 
 const Mypage = () => {
   const navigate = useNavigate();
-  const { status, data: UserInfo } = useGetUserInfo();
+  const { status: ticketsStatus, data: tickets } = useGetTickets();
+  const { status: infoStatus, data: userInfo } = useGetUserInfo();
   const pagination = {
     clickable: true,
     dynamicBullets: true,
@@ -91,7 +94,11 @@ const Mypage = () => {
   return (
     <BackGround>
       <Wrapper>
-        <h1>{UserInfo && UserInfo.name}님,</h1>
+        {infoStatus === 'success' ? (
+          <h1>{!!userInfo && userInfo.name}님,</h1>
+        ) : (
+          <h1>안녕하세요!!!!</h1>
+        )}
         <h1>만나서 반가워요!</h1>
         <Swiper {...swiperParams}>
           {sliderData.map((el: ISliderProps, idx: number) => {
@@ -108,18 +115,18 @@ const Mypage = () => {
           <span>DAY 1 : YB</span>
         </h3>
         <Tickets>
-          {status === 'success' ? (
-            !!UserInfo && (
+          {ticketsStatus === 'success' ? (
+            !!tickets && (
               <>
-                {UserInfo.order
-                  .filter((el) => el.date === 'YB')
-                  .map((el) => {
+                {tickets.data
+                  .filter((el: ITicket) => el.date === 'YB')
+                  .map((el: ITicket) => {
                     const { Month, Day, Hour, Minute } = convertDate(
                       el.createdAt,
                     );
                     return (
                       <TicketInfo
-                        key={el.uuid}
+                        key={el.id}
                         status={el.status}
                         createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                         id={el.id}
@@ -130,11 +137,12 @@ const Mypage = () => {
                 <PurchaseTicket
                   isFirst={
                     !(
-                      UserInfo.order.filter((el) => el.date === 'YB').length > 0
+                      tickets.data.filter((el: ITicket) => el.date === 'YB')
+                        .length > 0
                     )
                   }
                   onClick={() => {
-                    navigate('/auth/login/1');
+                    navigate('/ticketing/select');
                   }}
                 />
               </>
@@ -151,18 +159,18 @@ const Mypage = () => {
           <span>DAY 2 : OB</span>
         </h3>
         <Tickets>
-          {status === 'success' ? (
-            !!UserInfo && (
+          {ticketsStatus === 'success' ? (
+            !!tickets && (
               <>
-                {UserInfo.order
-                  .filter((el) => el.date === 'OB')
-                  .map((el) => {
+                {tickets.data
+                  .filter((el: ITicket) => el.date === 'OB')
+                  .map((el: ITicket) => {
                     const { Month, Day, Hour, Minute } = convertDate(
                       el.createdAt,
                     );
                     return (
                       <TicketInfo
-                        key={el.uuid}
+                        key={el.id}
                         status={el.status}
                         createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                         id={el.id}
@@ -173,11 +181,12 @@ const Mypage = () => {
                 <PurchaseTicket
                   isFirst={
                     !(
-                      UserInfo.order.filter((el) => el.date === 'OB').length > 0
+                      tickets.data.filter((el: ITicket) => el.date === 'OB')
+                        .length > 0
                     )
                   }
                   onClick={() => {
-                    navigate('/auth/login/1');
+                    navigate('/ticketing/select');
                   }}
                 />
               </>
@@ -286,7 +295,7 @@ const Tickets = styled.div`
     margin: 0;
   }
   & > div {
-    flex: 0 0 auto;
+    flex-shrink: 0;
   }
   &::-webkit-scrollbar {
     display: none;

@@ -14,7 +14,8 @@ export interface IMakeOrderRes extends IGetOrderRes {
 export interface IGetOrderReq {
   uuid: string;
 }
-export interface IGetOrderRes {
+
+export interface IOrder {
   id: 0;
   selection: string;
   ticketCount: number;
@@ -24,4 +25,6 @@ export interface IGetOrderRes {
   createdAt: string;
 }
 
-export interface IGetOrdersRes extends Array<IGetOrderRes> {}
+export interface IGetOrderRes extends Array<IOrder> {}
+
+export interface IGetOrdersRes extends IGetOrderRes {}
