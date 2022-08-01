@@ -1,9 +1,9 @@
 import { AxiosError } from 'axios';
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import UserInfoApi from '../../apis/UserInfoApi';
+import UsersApi from '../../apis/UsersApi';
 
 const useGetUserInfo = () => {
-  const { status, data } = useQuery(['userInfo'], UserInfoApi.getUserInfo, {
+  const { status, data } = useQuery(['users'], UsersApi.getUsers, {
     refetchOnWindowFocus: false,
     retry: false,
     // refetchOnMount: false,

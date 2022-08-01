@@ -1,13 +1,13 @@
 import { axiosPrivate } from './axios';
-import { IUserInfoRes } from './type/userInfo';
+import { IUsersRes } from './type/users';
 import { TResponseType } from './type/commonResponse';
 
-const UserInfoApi = {
+const UsersApi = {
   // 유저 정보 가져오기
-  getUserInfo: async (): Promise<TResponseType<IUserInfoRes>> => {
+  getUsers: async (): Promise<TResponseType<IUsersRes>> => {
     const { data } = await axiosPrivate.get('/users');
     return data;
   },
 };
 
-export default UserInfoApi;
+export default UsersApi;
