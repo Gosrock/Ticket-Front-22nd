@@ -5,7 +5,7 @@ import DaySelect from '../../components/ticketing/DaySelect';
 import TicketNum from '../../components/ticketing/TicketNum';
 import ButtonSet from '../../components/common/ButtonSet';
 
-const Mypage = () => {
+const Select = () => {
   return (
     <>
       <AppBar label={'뒤로가기'} />
@@ -25,7 +25,7 @@ const Mypage = () => {
   );
 };
 
-export default Mypage;
+export default Select;
 
 const Title = styled.p`
   ${({ theme }) => theme.typo.text_18_B};
