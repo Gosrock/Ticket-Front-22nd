@@ -1,24 +1,22 @@
-export interface IGetTicketReq {
-  uuid: string;
-}
-export interface IGetTicketRes {
+export interface ITicket {
   id: 0;
   uuid: string;
   date: string;
   status: string;
-  admin: {
-    id: number;
-    name: string;
-    phoneNumber: string;
-    role: string;
-  };
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IGetTicketReq {
+  uuid: string;
+}
+export interface IGetTicketRes extends ITicket {
   user: {
     id: number;
     name: string;
     phoneNumber: string;
     role: string;
   };
-  createdAt: string;
 }
 
-export interface IGetTicketsRes extends Array<IGetTicketRes> {}
+export interface IGetTicketsRes extends Array<ITicket> {}
