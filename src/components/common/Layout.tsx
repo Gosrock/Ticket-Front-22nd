@@ -41,7 +41,7 @@ function Layout() {
 
 export default Layout;
 const Wrapper = styled.div`
-  //height: calc(var(--vh, 1vh) * 100);
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   justify-content: center;
   align-items: center;
