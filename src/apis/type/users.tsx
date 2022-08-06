@@ -4,20 +4,18 @@ export interface IUsersRes {
   phoneNumber: string;
   role: string;
 }
-
+export interface ITalk {
+  id: number;
+  content: string;
+  nickName: string;
+  user: IUsersRes;
+  createdAt: string;
+  iComment: boolean;
+}
 export interface ITalkRes {
-  list: [
-    {
-      id: number;
-      content: string;
-      nickName: string;
-      user: IUsersRes;
-      createdAt: string;
-      iComment: '본인 댓글 확인 정보';
-    },
-  ];
+  list: ITalk[];
   meta: {
-    lastId: {};
-    lastPage: true;
+    lastId: number;
+    lastPage: boolean;
   };
 }
