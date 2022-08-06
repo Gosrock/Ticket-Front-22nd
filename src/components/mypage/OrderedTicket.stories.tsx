@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import OrderedTicket from './OrderedTicket';
 
 export default {
-  title: 'Component/OrderedTicket',
+  title: 'mypage/OrderedTicket',
   component: OrderedTicket,
   argTypes: {},
 } as ComponentMeta<typeof OrderedTicket>;

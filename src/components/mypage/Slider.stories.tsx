@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Slider from './Slider';
 
 export default {
-  title: 'Component/Slider',
+  title: 'mypage/Slider',
   component: Slider,
   argTypes: {},
 } as ComponentMeta<typeof Slider>;

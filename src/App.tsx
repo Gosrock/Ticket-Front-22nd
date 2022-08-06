@@ -11,8 +11,9 @@ import RequireAuth from './components/auth/RequireAuth';
 function App() {
   return (
     <Routes location={location}>
+      <Route path="/" element={<Landing />} />
+
       <Route element={<Layout />}>
-        <Route path="/" element={<Landing />} />
         <Route path="/auth/*" element={<AuthRouter />} />
 
         <Route element={<RequireAuth />}>

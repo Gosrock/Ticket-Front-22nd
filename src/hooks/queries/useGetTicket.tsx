@@ -13,7 +13,7 @@ const useGetTicket = (params: IGetTicketReq) => {
       // refetchOnMount: false,
       refetchIntervalInBackground: false,
       onError: (error: AxiosError) => {
-        alert(error);
+        console.error(error);
         //window.location.href = '/';
       },
     },

@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
       box-sizing: border-box; /* 엘리먼트의 box-sizing 값을 border-box로 설정 */
       min-height: 100%;
 
-      background-color: #e5e5e5;
+      background-color: #121212;
       color: white;
     }
     #root {
@@ -46,4 +46,16 @@ export const GlobalStyle = createGlobalStyle`
     button:focus {
       outline: none;
     }
+
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(211, 211, 211, 0.5);
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: none;
+  }
 `;
