@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import DepositStatus from './DepositStatus';
 
 export default {
-  title: 'Component/DepositStatus',
+  title: 'mypage/DepositStatus',
   component: DepositStatus,
   argTypes: {},
 } as ComponentMeta<typeof DepositStatus>;
