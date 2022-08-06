@@ -5,6 +5,7 @@ import { TResponseType } from './type/commonResponse';
 const UsersApi = {
   // 유저 정보 가져오기
   getUsers: async (): Promise<TResponseType<IUsersRes>> => {
+    console.log('get요청 실행');
     const { data } = await axiosPrivate.get('/users');
     return data;
   },

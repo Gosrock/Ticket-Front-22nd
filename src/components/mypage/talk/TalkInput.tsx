@@ -24,9 +24,12 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
 
   const onSendButtonClick = async (value: string) => {
     try {
-      const [splited] = value.trim().split(' ');
+      const [splited] = value.trim().split(/\r\n|\r|\n|\s/);
       if (splited[0] === '#') {
-        console.log(splited.slice(1));
+        //익명
+        const content = value.trim().replace(splited, '').trim();
+        const name = splited.replace('#', '').trim();
+        mutate({ nickName: name, content: content });
       } else {
         //실명
         mutate({ nickName: data!.data.name, content: value.trim() });
