@@ -9,8 +9,8 @@ const useGetOrders = () => {
     // refetchOnMount: false,
     refetchIntervalInBackground: false,
     onError: (error: AxiosError) => {
-      alert(error);
-      window.location.href = '/';
+      console.error(error);
+      //window.location.href = '/';
     },
   });
   console.log(status, data);

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import UtilityButton from './UtilityButton';
 
 export default {
-  title: 'Component/UtilityButton',
+  title: 'mypage/UtilityButton',
   component: UtilityButton,
   argTypes: {},
   decorators: [(Story) => <Story />],

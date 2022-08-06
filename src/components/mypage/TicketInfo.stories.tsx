@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import TicketInfo from './TicketInfo';
 
 export default {
-  title: 'Component/TicketInfo',
+  title: 'mypage/TicketInfo',
   component: TicketInfo,
   argTypes: {},
 } as ComponentMeta<typeof TicketInfo>;

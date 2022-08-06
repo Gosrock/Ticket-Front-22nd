@@ -14,6 +14,7 @@
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.4.0",
     "react-query": "^3.39.1",
     "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "^6.3.0",
