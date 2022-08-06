@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import styled, { css } from 'styled-components';
 import UsersApi from '../../../apis/UsersApi';
 import { ReactComponent as ChevronDown } from '../../../assets/icons/chevronDown.svg';
 import { ReactComponent as ChevronUp } from '../../../assets/icons/chevronUp.svg';
 import { ReactComponent as Send } from '../../../assets/icons/send.svg';
-import useSendTalk from '../../../hooks/queries/useSendTalk';
+import useGetUserInfo from '../../../hooks/queries/useGetUserInfo';
 import useInput from '../../../hooks/useInput';
 
 export interface ITalkInputProps {
@@ -15,6 +14,8 @@ export interface ITalkInputProps {
 
 const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
   const [value, bind, reset] = useInput<string>('');
+  const { status, data } = useGetUserInfo();
+
   const queryClient = useQueryClient();
   //const mutate = useSendTalk();
   const { mutate } = useMutation(UsersApi.sendTalk, {
@@ -23,8 +24,14 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
 
   const onSendButtonClick = async (value: string) => {
     try {
-      //console.log(value.match('/#[^s#]+/'));
-      mutate({ nickName: 'test', content: value });
+      const [splited] = value.trim().split(' ');
+      if (splited[0] === '#') {
+        console.log(splited.slice(1));
+      } else {
+        //실명
+        mutate({ nickName: data!.data.name, content: value.trim() });
+      }
+
       reset();
     } catch (err) {
       console.error(err);

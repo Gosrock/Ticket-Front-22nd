@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 import { axiosPrivate } from '../apis/axios';
 
 export interface IAuthType {

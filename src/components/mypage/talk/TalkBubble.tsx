@@ -58,11 +58,11 @@ const Bubble = styled.div<{ mine: boolean }>`
   ${({ mine }) =>
     mine
       ? css`
-          border-radius: 16px 4px 16px 16px;
+          border-radius: 16px 2px 16px 16px;
           margin-left: 32px;
         `
       : css`
-          border-radius: 4px 16px 16px 16px;
+          border-radius: 2px 16px 16px 16px;
           margin-right: 32px;
         `}
 `;
@@ -70,7 +70,7 @@ const Bubble = styled.div<{ mine: boolean }>`
 const Head = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
   margin-bottom: 10px;
   & > p:first-child {
     ${({ theme }) => theme.typo.text_12_B};
