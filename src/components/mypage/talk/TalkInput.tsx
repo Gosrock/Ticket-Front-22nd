@@ -1,28 +1,35 @@
 import { useState, useEffect, useRef } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 import styled, { css } from 'styled-components';
+import UsersApi from '../../../apis/UsersApi';
 import { ReactComponent as ChevronDown } from '../../../assets/icons/chevronDown.svg';
 import { ReactComponent as ChevronUp } from '../../../assets/icons/chevronUp.svg';
 import { ReactComponent as Send } from '../../../assets/icons/send.svg';
+import useSendTalk from '../../../hooks/queries/useSendTalk';
+import useInput from '../../../hooks/useInput';
 
 export interface ITalkInputProps {
-  onSendButtonClick: (InputMessage: string) => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TalkInput = ({
-  onSendButtonClick,
-  isOpen,
-  setIsOpen,
-}: ITalkInputProps) => {
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
+  const [value, bind, reset] = useInput<string>('');
+  const queryClient = useQueryClient();
+  //const mutate = useSendTalk();
+  const { mutate } = useMutation(UsersApi.sendTalk, {
+    onSuccess: () => queryClient.invalidateQueries('talks'),
+  });
 
-  const [value, setValue] = useState<string>('');
-
-  const textAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(event.target.value);
+  const onSendButtonClick = async (value: string) => {
+    try {
+      //console.log(value.match('/#[^s#]+/'));
+      mutate({ nickName: 'test', content: value });
+      reset();
+    } catch (err) {
+      console.error(err);
+    }
   };
-
   /*   useEffect(() => {
     if (textareaRef && textareaRef.current) {
       const scrollHeight = textareaRef.current.scrollHeight;
@@ -30,6 +37,7 @@ const TalkInput = ({
     }
   }, [value]);
  */
+
   return (
     <Wrapper>
       <Title isOpen={isOpen}>
@@ -49,9 +57,9 @@ const TalkInput = ({
       <InputWindow isOpen={isOpen}>
         {isOpen && (
           <textarea
-            placeholder="익명으로 응원을 남기고 싶다면, 맨 앞에 ‘#별명’을 붙여주세요.&#10;예시 : #우장산불주먹 고스락 화이팅!"
-            ref={textareaRef}
-            onChange={textAreaChange}
+            placeholder="익명으로 응원을 남기고 싶다면, ‘#별명’을 붙여주세요.&#10;예시 : #우장산불주먹 고스락 화이팅!"
+            value={value}
+            onChange={bind.onChange}
             autoFocus
           />
         )}

@@ -17,11 +17,7 @@ const Talk = () => {
           <span>고스락</span> 응원 톡{' '}
           {/*  <span>({status === 'success' ? '' : '...'})</span> */}
         </h1>
-        <TalkInput
-          onSendButtonClick={() => {}}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
+        <TalkInput isOpen={isOpen} setIsOpen={setIsOpen} />
         <TalkListWrapper isOpen={isOpen}>
           {data?.pages.map((talkList) => (
             <TalkList talkList={talkList.talkList} key={talkList.lastId} />
