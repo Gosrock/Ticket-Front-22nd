@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { useState } from 'react';
+import styled, { css } from 'styled-components';
 import AppBar from '../../components/common/AppBar';
 import SetMargin from '../../components/common/SetMargin';
 import TalkInput from '../../components/mypage/talk/TalkInput';
@@ -7,7 +8,7 @@ import useGetTalks from '../../hooks/queries/useGetTalks';
 
 const Talk = () => {
   const { data, status, isFetchingNextPage, Observation } = useGetTalks();
-
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <Wrapper>
       <AppBar label={'마이페이지'} />
@@ -16,8 +17,12 @@ const Talk = () => {
           <span>고스락</span> 응원 톡{' '}
           {/*  <span>({status === 'success' ? '' : '...'})</span> */}
         </h1>
-        <TalkInput onSendButtonClick={() => {}} />
-        <TalkListWrapper>
+        <TalkInput
+          onSendButtonClick={() => {}}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
+        <TalkListWrapper isOpen={isOpen}>
           {data?.pages.map((talkList) => (
             <TalkList talkList={talkList.talkList} key={talkList.lastId} />
           ))}
@@ -43,6 +48,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const TalkListWrapper = styled.div`
+const TalkListWrapper = styled.div<{ isOpen: boolean }>`
   margin-top: 24px;
+  transition: all 0.1s ease;
+  ${({ isOpen }) =>
+    isOpen
+      ? css`
+          height: calc(var(--vh, 1vh) * 100 - 291px);
+        `
+      : css`
+          height: calc(var(--vh, 1vh) * 100 - 186px);
+        `} //291, 186
+  overflow-y: auto;
 `;

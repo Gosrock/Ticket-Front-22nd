@@ -6,13 +6,18 @@ import { ReactComponent as Send } from '../../../assets/icons/send.svg';
 
 export interface ITalkInputProps {
   onSendButtonClick: (InputMessage: string) => void;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TalkInput = ({ onSendButtonClick }: ITalkInputProps) => {
+const TalkInput = ({
+  onSendButtonClick,
+  isOpen,
+  setIsOpen,
+}: ITalkInputProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const [value, setValue] = useState<string>('');
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const textAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(event.target.value);
