@@ -102,135 +102,118 @@ const Mypage = () => {
     },
   ];
   return (
-    <BackGround>
-      <Wrapper>
-        {userInfoStatus === 'success' ? (
-          <h1>{!!userInfo && userInfo.data.name}님,</h1>
+    <Wrapper>
+      {userInfoStatus === 'success' ? (
+        <h1>{!!userInfo && userInfo.data.name}님,</h1>
+      ) : (
+        <h1>⦿⦿⦿님,</h1>
+      )}
+      <h1>만나서 반가워요!</h1>
+      <Swiper {...swiperParams}>
+        {sliderData.map((el: ISliderProps, idx: number) => {
+          return (
+            <SwiperSlide key={idx}>
+              <Slider {...el} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+      <h2>내 예매 티켓</h2>
+      <h3>9월 1일 (목)</h3>
+      <h3>
+        <span>DAY 1 : YB</span>
+      </h3>
+      <Tickets>
+        {ticketsStatus === 'success' ? (
+          !!tickets && (
+            <>
+              {tickets.data
+                .filter((el: ITicket) => el.date === 'YB')
+                .map((el: ITicket) => {
+                  const { Month, Day, Hour, Minute } = convertDate(
+                    el.createdAt,
+                  );
+                  return (
+                    <TicketInfo
+                      key={el.id}
+                      status={el.status}
+                      createdat={`${Month}/${Day} ${Hour}:${Minute}`}
+                      id={el.id}
+                      onClick={() => navigate(`/tickets/${el.id}`)}
+                    />
+                  );
+                })}
+              <PurchaseTicket
+                isFirst={
+                  !(
+                    tickets.data.filter((el: ITicket) => el.date === 'YB')
+                      .length > 0
+                  )
+                }
+                onClick={() => {
+                  navigate('/ticketing/select');
+                }}
+              />
+            </>
+          )
         ) : (
-          <h1>⦿⦿⦿님,</h1>
+          <>
+            <TicketInfoSkeleton />
+            <TicketInfoSkeleton />
+          </>
         )}
-        <h1>만나서 반가워요!</h1>
-        <Swiper {...swiperParams}>
-          {sliderData.map((el: ISliderProps, idx: number) => {
-            return (
-              <SwiperSlide key={idx}>
-                <Slider {...el} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-        <h2>내 예매 티켓</h2>
-        <h3>9월 1일 (목)</h3>
-        <h3>
-          <span>DAY 1 : YB</span>
-        </h3>
-        <Tickets>
-          {ticketsStatus === 'success' ? (
-            !!tickets && (
-              <>
-                {tickets.data
-                  .filter((el: ITicket) => el.date === 'YB')
-                  .map((el: ITicket) => {
-                    const { Month, Day, Hour, Minute } = convertDate(
-                      el.createdAt,
-                    );
-                    return (
-                      <TicketInfo
-                        key={el.id}
-                        status={el.status}
-                        createdat={`${Month}/${Day} ${Hour}:${Minute}`}
-                        id={el.id}
-                        onClick={() => navigate(`/tickets/${el.id}`)}
-                      />
-                    );
-                  })}
-                <PurchaseTicket
-                  isFirst={
-                    !(
-                      tickets.data.filter((el: ITicket) => el.date === 'YB')
-                        .length > 0
-                    )
-                  }
-                  onClick={() => {
-                    navigate('/ticketing/select');
-                  }}
-                />
-              </>
-            )
-          ) : (
+      </Tickets>
+      <h3>9월 2일 (금)</h3>
+      <h3>
+        <span>DAY 2 : OB</span>
+      </h3>
+      <Tickets>
+        {ticketsStatus === 'success' ? (
+          !!tickets && (
             <>
-              <TicketInfoSkeleton />
-              <TicketInfoSkeleton />
+              {tickets.data
+                .filter((el: ITicket) => el.date === 'OB')
+                .map((el: ITicket) => {
+                  const { Month, Day, Hour, Minute } = convertDate(
+                    el.createdAt,
+                  );
+                  return (
+                    <TicketInfo
+                      key={el.id}
+                      status={el.status}
+                      createdat={`${Month}/${Day} ${Hour}:${Minute}`}
+                      id={el.id}
+                      onClick={() => navigate(`/tickets/${el.id}`)}
+                    />
+                  );
+                })}
+              <PurchaseTicket
+                isFirst={
+                  !(
+                    tickets.data.filter((el: ITicket) => el.date === 'OB')
+                      .length > 0
+                  )
+                }
+                onClick={() => {
+                  navigate('/ticketing/select');
+                }}
+              />
             </>
-          )}
-        </Tickets>
-        <h3>9월 2일 (금)</h3>
-        <h3>
-          <span>DAY 2 : OB</span>
-        </h3>
-        <Tickets>
-          {ticketsStatus === 'success' ? (
-            !!tickets && (
-              <>
-                {tickets.data
-                  .filter((el: ITicket) => el.date === 'OB')
-                  .map((el: ITicket) => {
-                    const { Month, Day, Hour, Minute } = convertDate(
-                      el.createdAt,
-                    );
-                    return (
-                      <TicketInfo
-                        key={el.id}
-                        status={el.status}
-                        createdat={`${Month}/${Day} ${Hour}:${Minute}`}
-                        id={el.id}
-                        onClick={() => navigate(`/tickets/${el.id}`)}
-                      />
-                    );
-                  })}
-                <PurchaseTicket
-                  isFirst={
-                    !(
-                      tickets.data.filter((el: ITicket) => el.date === 'OB')
-                        .length > 0
-                    )
-                  }
-                  onClick={() => {
-                    navigate('/ticketing/select');
-                  }}
-                />
-              </>
-            )
-          ) : (
-            <>
-              <TicketInfoSkeleton />
-              <TicketInfoSkeleton />
-            </>
-          )}
-        </Tickets>
-        <div
-          style={{
-            height: '60px',
-            margin: '45px 0px',
-            color: '#000',
-            background: '#FFf',
-          }}
-        >
-          뭔지 모를 빈칸
-        </div>
-        <Footer />
-      </Wrapper>
-    </BackGround>
+          )
+        ) : (
+          <>
+            <TicketInfoSkeleton />
+            <TicketInfoSkeleton />
+          </>
+        )}
+      </Tickets>
+
+      <Footer />
+    </Wrapper>
   );
 };
 
 export default Mypage;
-
-const BackGround = styled.div`
-  background-color: ${({ theme }) => theme.palette.mono.black_12};
-  width: 100%;
-  height: 1200px;
-`;
 
 const Wrapper = styled.div`
   position: absolute;

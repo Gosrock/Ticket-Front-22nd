@@ -10,7 +10,6 @@ const useGetUserInfo = () => {
     refetchIntervalInBackground: false,
     onError: (error: AxiosError) => {
       console.log(error);
-      alert(error);
       // window.location.href = '/';
     },
   });

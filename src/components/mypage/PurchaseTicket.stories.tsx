@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import PurchaseTicket from './PurchaseTicket';
 
 export default {
-  title: 'Component/PurchaseTicket',
+  title: 'mypage/PurchaseTicket',
   component: PurchaseTicket,
   argTypes: {},
 } as ComponentMeta<typeof PurchaseTicket>;

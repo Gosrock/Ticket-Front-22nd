@@ -2,10 +2,23 @@ import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import { media } from '../../styles/theme';
+import { useEffect } from 'react';
 
 function Layout() {
   const { pathname } = useLocation();
 
+  useEffect(() => {
+    const setScreenSize = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setScreenSize();
+    window.addEventListener('resize', setScreenSize);
+    return () => {
+      // cleanup
+      window.removeEventListener('resize', setScreenSize);
+    };
+  }, []);
   const isPC = useMediaQuery({ minWidth: 768 });
 
   return (
