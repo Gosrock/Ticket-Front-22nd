@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import AuthApi from '../../apis/AuthApi';
+import { axiosPrivate } from '../../apis/axios';
 import AuthTemplate from '../../components/auth/AuthTemplate';
 import useInput from '../../hooks/useInput';
 import { authState } from '../../stores/auth';
@@ -33,6 +34,7 @@ const Login = () => {
     if (res.data.accessToken) {
       // 회원가입 되어있는 경우
       localStorage.setItem('accessToken', res.data.accessToken);
+      axiosPrivate.defaults.headers.common.Authorization = `Bearer ${res.data.accessToken}`;
       setAuth({
         ...auth,
         isAuthenticated: true,
