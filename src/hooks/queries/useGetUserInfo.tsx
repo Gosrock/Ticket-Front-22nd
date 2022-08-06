@@ -6,14 +6,14 @@ const useGetUserInfo = () => {
   const { status, data } = useQuery(['users'], UsersApi.getUsers, {
     refetchOnWindowFocus: false,
     retry: false,
-    // refetchOnMount: false,
+    refetchOnMount: false,
     refetchIntervalInBackground: false,
     onError: (error: AxiosError) => {
       console.log(error);
       // window.location.href = '/';
     },
   });
-  console.log(status, data);
+  console.log('useQuery 실행');
   return { status, data };
 };
 
