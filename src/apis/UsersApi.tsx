@@ -1,7 +1,6 @@
 import { axiosPrivate } from './axios';
-import { ITalk, ITalkRes, IUsersRes } from './type/users';
+import { ITalk, IGetTalksRes, IUsersRes, TSendTalkReq } from './type/users';
 import { TResponseType } from './type/commonResponse';
-import { fsyncSync } from 'fs';
 
 const UsersApi = {
   // 유저 정보 가져오기
@@ -9,6 +8,15 @@ const UsersApi = {
     const { data } = await axiosPrivate.get('/users');
     return data;
   },
+
+  // 응원톡 전송하기
+  sendTalk: async (payload: TSendTalkReq): Promise<TResponseType<ITalk>> => {
+    const { data } = await axiosPrivate.post('/users/comment', payload);
+    console.log(data);
+    return data;
+  },
+
+  // 응원톡 가져오기
   getTalks: async ({ pageParam = null }) => {
     console.log(pageParam);
     const { data } = await axiosPrivate.get(

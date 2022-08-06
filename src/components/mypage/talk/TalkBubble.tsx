@@ -15,7 +15,7 @@ const TalkBubble = ({
   iComment,
 }: TalkBubbleProps) => {
   return (
-    <Wrapper>
+    <Wrapper mine={iComment}>
       <Bubble mine={iComment}>
         <Head>
           <p>from. {nickName}</p>
@@ -29,8 +29,17 @@ const TalkBubble = ({
 
 export default TalkBubble;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ mine: boolean }>`
   width: 100%;
+  display: flex;
+  ${({ mine }) =>
+    mine
+      ? css`
+          justify-content: flex-end;
+        `
+      : css`
+          justify-content: flex-start;
+        `}
 `;
 
 const Bubble = styled.div<{ mine: boolean }>`

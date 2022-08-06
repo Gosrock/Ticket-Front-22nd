@@ -1,3 +1,5 @@
+import { StringMappingType } from 'typescript';
+
 export interface IUsersRes {
   id: number;
   name: string;
@@ -12,10 +14,15 @@ export interface ITalk {
   createdAt: string;
   iComment: boolean;
 }
-export interface ITalkRes {
+export interface IGetTalksRes {
   list: ITalk[];
   meta: {
     lastId: number;
     lastPage: boolean;
   };
+}
+
+export interface TSendTalkReq {
+  nickName: string;
+  content: String;
 }
