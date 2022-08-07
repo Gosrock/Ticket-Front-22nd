@@ -13,6 +13,7 @@ import io, { Socket } from 'socket.io-client';
 import {
   ClientToServerEvents,
   ServerToClientEvents,
+  SocketData,
 } from '../../apis/type/socket';
 import { useQueryClient } from 'react-query';
 const TicketQR = ({}) => {
@@ -44,11 +45,13 @@ const TicketQR = ({}) => {
           }),
         );
       } else {
-        const ticketIdforSocket = ticketId as keyof ServerToClientEvents;
-        socket.on(ticketIdforSocket, (data: any) => {
+        const ticketIdForSocket = ticketId as keyof ServerToClientEvents;
+        socket.on(ticketIdForSocket, (data: SocketData) => {
           if (data.success) {
             console.log(data);
             queryClient.invalidateQueries(['ticket', `${ticketId}`]);
+          } else {
+            console.log(data);
           }
         });
       }

@@ -5,7 +5,6 @@ import { TResponseType } from './type/commonResponse';
 const UsersApi = {
   // 유저 정보 가져오기
   getUsers: async (): Promise<TResponseType<IUsersRes>> => {
-    console.log('get요청 실행');
     const { data } = await axiosPrivate.get('/users');
     return data;
   },
@@ -19,7 +18,6 @@ const UsersApi = {
 
   // 응원톡 가져오기
   getTalks: async ({ pageParam = null }) => {
-    console.log(pageParam);
     const { data } = await axiosPrivate.get(
       `users/comment?lastId=${pageParam}`,
     );
@@ -29,6 +27,11 @@ const UsersApi = {
       lastId: data.data.meta.lastId,
       isLast: data.data.meta.lastPage,
     };
+  },
+  // 응원 개수 가져오기
+  getTalksCount: async (): Promise<TResponseType<{ commentNum: number }>> => {
+    const { data } = await axiosPrivate.get('/users/comment/count');
+    return data;
   },
 };
 
