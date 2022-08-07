@@ -67,7 +67,7 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
       <InputWindow isOpen={isOpen}>
         {isOpen && (
           <textarea
-            placeholder="익명으로 응원을 남기고 싶다면, ‘#별명’을 붙여주세요.&#10;예시 : #우장산불주먹 고스락 화이팅!"
+            placeholder="맨 앞에 ‘#별명’을 붙이면 익명으로 응원을 남길 수 있어요.&#10;예시 : #우장산불주먹 고스락 화이팅!"
             value={value}
             onChange={bind.onChange}
             autoFocus
