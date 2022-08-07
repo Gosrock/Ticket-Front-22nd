@@ -24,7 +24,7 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
 
   const onSendButtonClick = async (value: string) => {
     try {
-      const [splited] = value.trim().split(/\r\n|\r|\n|\s/);
+      /* const [splited] = value.trim().split(/\r\n|\r|\n|\s/);
       if (splited[0] === '#') {
         //익명
         const content = value.trim().replace(splited, '').trim();
@@ -33,20 +33,28 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
       } else {
         //실명
         mutate({ nickName: data!.data.name, content: value.trim() });
+      } */
+      const { nickName, content } = setRequestData(value);
+      if (content.length > 0) {
+        mutate({ nickName, content });
+      } else {
+        //TODO: 에러처리 토스트 or 모달
       }
-
       reset();
     } catch (err) {
       console.error(err);
     }
   };
-  /*   useEffect(() => {
-    if (textareaRef && textareaRef.current) {
-      const scrollHeight = textareaRef.current.scrollHeight;
-      textareaRef.current.style.height = scrollHeight + 'px';
+  const setRequestData = (value: string) => {
+    const [splited] = value.trim().split(/\r\n|\r|\n|\s/);
+    if (splited[0] === '#') {
+      const content = value.trim().replace(splited, '').trim();
+      const name = splited.replace('#', '').trim();
+      return { nickName: name, content: content };
+    } else {
+      return { nickName: data!.data.name, content: value.trim() };
     }
-  }, [value]);
- */
+  };
 
   return (
     <Wrapper>
