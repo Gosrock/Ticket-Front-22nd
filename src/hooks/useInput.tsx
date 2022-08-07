@@ -15,7 +15,9 @@ const useInput = <T,>(initialValue: T) => {
   const bind: IBindState<T> = {
     value,
     onChange: (e) => {
-      setValue(e.target.value);
+      if (e.target.value.length < 150) {
+        setValue(e.target.value);
+      }
     },
   };
 

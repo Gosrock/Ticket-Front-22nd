@@ -12,6 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      # 도커 이미지에 env 파일 포함
+      - name: Create .env file
+        run: |
+          touch .env
+          echo REACT_APP_KAKAO_APP_KEY=${{ secrets.REACT_APP_KAKAO_APP_KEY }}\ >> .env
       # 도커 메타데이터 가져오기
       - name: Docker meta
         id: docker_meta

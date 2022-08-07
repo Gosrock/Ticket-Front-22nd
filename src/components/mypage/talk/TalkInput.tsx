@@ -6,6 +6,7 @@ import { ReactComponent as ChevronUp } from '../../../assets/icons/chevronUp.svg
 import { ReactComponent as Send } from '../../../assets/icons/send.svg';
 import useGetUserInfo from '../../../hooks/queries/useGetUserInfo';
 import useInput from '../../../hooks/useInput';
+import useModal from '../../../hooks/useModal';
 
 export interface ITalkInputProps {
   isOpen: boolean;
@@ -15,38 +16,48 @@ export interface ITalkInputProps {
 const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
   const [value, bind, reset] = useInput<string>('');
   const { status, data } = useGetUserInfo();
-
+  const { openModal, closeModal } = useModal();
   const queryClient = useQueryClient();
   //const mutate = useSendTalk();
   const { mutate } = useMutation(UsersApi.sendTalk, {
     onSuccess: () => queryClient.invalidateQueries('talks'),
   });
 
+  const setRequestData = (value: string) => {
+    const [splited] = value.trim().split(/\r\n|\r|\n|\s/);
+    if (splited[0] === '#') {
+      const content = value.trim().replace(splited, '').trim();
+      const name = splited.replace('#', '').trim();
+      return { nickName: name.substring(0, 10), content: content };
+    } else {
+      return { nickName: data!.data.name, content: value.trim() };
+    }
+  };
   const onSendButtonClick = async (value: string) => {
     try {
-      const [splited] = value.trim().split(/\r\n|\r|\n|\s/);
-      if (splited[0] === '#') {
-        //익명
-        const content = value.trim().replace(splited, '').trim();
-        const name = splited.replace('#', '').trim();
-        mutate({ nickName: name, content: content });
+      const { nickName, content } = setRequestData(value);
+      if (content.length > 0) {
+        openModal({
+          modalType: 'CheckBeforeSend',
+          modalProps: {
+            onClick: () => {
+              mutate({ nickName, content });
+              closeModal();
+              console.log('asdf');
+            },
+            closeModal,
+            content,
+            nickName,
+          },
+        });
       } else {
-        //실명
-        mutate({ nickName: data!.data.name, content: value.trim() });
+        //TODO: 에러처리 토스트 or 모달
       }
-
       reset();
     } catch (err) {
       console.error(err);
     }
   };
-  /*   useEffect(() => {
-    if (textareaRef && textareaRef.current) {
-      const scrollHeight = textareaRef.current.scrollHeight;
-      textareaRef.current.style.height = scrollHeight + 'px';
-    }
-  }, [value]);
- */
 
   return (
     <Wrapper>
@@ -67,7 +78,7 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
       <InputWindow isOpen={isOpen}>
         {isOpen && (
           <textarea
-            placeholder="익명으로 응원을 남기고 싶다면, ‘#별명’을 붙여주세요.&#10;예시 : #우장산불주먹 고스락 화이팅!"
+            placeholder="맨 앞에 ‘#별명’을 붙이면 익명으로 응원을 남길 수 있어요.&#10;별명은 최대 10자, 내용은 최대 150자까지 가능해요."
             value={value}
             onChange={bind.onChange}
             autoFocus

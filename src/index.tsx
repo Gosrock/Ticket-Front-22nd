@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
+import GlobalModal from './components/modal/GlobalModal';
 import { GlobalStyle } from './styles/global-style';
 import { theme } from './styles/theme';
 
@@ -24,6 +25,7 @@ root.render(
           <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={false} />
             <App />
+            <GlobalModal />
           </QueryClientProvider>
         </RecoilRoot>
       </ThemeProvider>

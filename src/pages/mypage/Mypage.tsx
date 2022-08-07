@@ -31,7 +31,7 @@ const Mypage = () => {
     modules: [Pagination, Autoplay],
     pagination: pagination,
     autoplay: {
-      delay: 2000,
+      delay: 4000,
       disableOnInteraction: false,
     },
   };
@@ -139,7 +139,7 @@ const Mypage = () => {
                       status={el.status}
                       createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                       id={el.id}
-                      onClick={() => navigate(`/tickets/${el.id}`)}
+                      onClick={() => navigate(`/tickets/${el.uuid}`)}
                     />
                   );
                 })}
@@ -183,7 +183,7 @@ const Mypage = () => {
                       status={el.status}
                       createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                       id={el.id}
-                      onClick={() => navigate(`/tickets/${el.id}`)}
+                      onClick={() => navigate(`/tickets/${el.uuid}`)}
                     />
                   );
                 })}

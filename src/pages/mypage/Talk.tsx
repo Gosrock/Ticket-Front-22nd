@@ -5,9 +5,11 @@ import SetMargin from '../../components/common/SetMargin';
 import TalkInput from '../../components/mypage/talk/TalkInput';
 import TalkList from '../../components/mypage/talk/TalkList';
 import useGetTalks from '../../hooks/queries/useGetTalks';
+import useGetTalksCount from '../../hooks/queries/useGetTalksCount';
 
 const Talk = () => {
   const { data, status, isFetchingNextPage, Observation } = useGetTalks();
+  const { status: countStatus, count } = useGetTalksCount();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <Wrapper>
@@ -15,7 +17,7 @@ const Talk = () => {
       <SetMargin>
         <h1>
           <span>고스락</span> 응원 톡{' '}
-          {/*  <span>({status === 'success' ? '' : '...'})</span> */}
+          <span>({countStatus === 'success' ? count : '...'})</span>
         </h1>
         <TalkInput isOpen={isOpen} setIsOpen={setIsOpen} />
         <TalkListWrapper isOpen={isOpen}>
@@ -37,9 +39,9 @@ const Wrapper = styled.div`
     & > span:first-of-type {
       color: ${({ theme }) => theme.palette.point.lavender};
     }
-    /* & > span:last-of-type {
+    & > span:last-of-type {
       color: ${({ theme }) => theme.palette.mono.font_sub};
-    } */
+    }
     margin-bottom: 24px;
   }
 `;
