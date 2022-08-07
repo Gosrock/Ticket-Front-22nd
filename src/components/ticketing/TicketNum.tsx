@@ -9,8 +9,14 @@ const DaySelect = () => {
         </Ticket>
         <p>1매</p>
       </CountButton>
-      <CountButton></CountButton>
-      <CountButton></CountButton>
+      <CountButton><Ticket>
+          <img src={ticketPNG} />
+        </Ticket>
+        <p>2매</p></CountButton>
+      <CountButton><Ticket>
+          <img src={ticketPNG} />
+        </Ticket>
+        <p>3매</p></CountButton>
     </Wrapper>
   );
 };

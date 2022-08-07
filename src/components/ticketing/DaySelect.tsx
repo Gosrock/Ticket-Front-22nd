@@ -2,18 +2,19 @@ import styled from 'styled-components';
 import { ReactComponent as CheckFilled } from '../../assets/icons/checkOk.svg';
 import { ReactComponent as CheckOutlined } from '../../assets/icons/check.svg';
 
+
 const DaySelect = () => {
   return (
     <Wrapper>
       <DateButton>
-        <CheckOutlined />
+        <CheckOutlined/>
         <Item>
           <p>DAY1 : YB</p>
           <p>9월 1일 목요일</p>
         </Item>
       </DateButton>
       <DateButton>
-        <input type="checkbox" />
+        <CheckOutlined />
         <Item>
           <p>DAY2 : OB</p>
           <p>9월 2일 금요일</p>
@@ -30,6 +31,8 @@ const Wrapper = styled.div`
   }
 `;
 
+
+
 const DateButton = styled.div`
   height: 70px;
   display: flex;
@@ -39,9 +42,14 @@ const DateButton = styled.div`
   gap: 16px;
   background: ${({ theme }) => theme.palette.mono.black_26};
   border-radius: 18px;
-  padding: 18px 18px 18px 16px;
+  padding: 13px 18px 13px 16px;
 `;
 
 const Item = styled.div`
   ${({ theme }) => theme.typo.text_18_M};
+  color: ${({ theme }) => theme.palette.mono.font_placeholder};
+
+  & p > div:first-child {
+    color: ${({ theme }) => theme.palette.point.lavender};
+  }
 `;

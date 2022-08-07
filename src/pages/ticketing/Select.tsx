@@ -5,7 +5,7 @@ import DaySelect from '../../components/ticketing/DaySelect';
 import TicketNum from '../../components/ticketing/TicketNum';
 import ButtonSet from '../../components/common/ButtonSet';
 
-const Select = () => {
+const Mypage = () => {
   return (
     <>
       <AppBar label={'뒤로가기'} />
@@ -25,17 +25,18 @@ const Select = () => {
   );
 };
 
-export default Select;
+export default Mypage;
 
 const Title = styled.p`
   ${({ theme }) => theme.typo.text_18_B};
   color: ${({ theme }) => theme.palette.mono.white_fa};
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 `;
 
 const Content = styled.div`
   height: 110px;
   padding: 3px 0px;
+  margin-top: 10px;
   margin-bottom: -40px;
 
   & p {
