@@ -3,7 +3,7 @@ import DepositStatusSkeleton from './DepositStatusSkeleton';
 import SkeletonItem from './SkeletonItem';
 import { ReactComponent as DashedLine } from '../../assets/icons/dashedLine.svg';
 
-const TicketInfo = () => {
+const TicketInfoSkeleton = () => {
   return (
     <Wrapper>
       <Top>
@@ -18,7 +18,7 @@ const TicketInfo = () => {
     </Wrapper>
   );
 };
-export default TicketInfo;
+export default TicketInfoSkeleton;
 
 const Wrapper = styled.div`
   display: flex;

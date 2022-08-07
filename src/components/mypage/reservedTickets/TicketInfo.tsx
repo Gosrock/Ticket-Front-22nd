@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import DepositStatus, { IDepositStatusProps } from './DepositStatus';
-import { ReactComponent as QRcode } from '../../assets/icons/qrcode.svg';
-import { ReactComponent as DashedLine } from '../../assets/icons/dashedLine.svg';
+import DepositStatus, { IDepositStatusProps } from '../DepositStatus';
+import { ReactComponent as QRcode } from '../../../assets/icons/qrcode.svg';
+import { ReactComponent as DashedLine } from '../../../assets/icons/dashedLine.svg';
 
 interface ITicketInfoProps extends IDepositStatusProps {
   createdat: string;
