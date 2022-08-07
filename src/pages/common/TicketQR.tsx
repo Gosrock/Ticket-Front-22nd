@@ -8,15 +8,21 @@ import QRCodeBox from '../../components/mypage/QRCodeBox';
 import useGetTicket from '../../hooks/queries/useGetTicket';
 import { authState } from '../../stores/auth';
 import { ReactComponent as Locate } from '../../assets/icons/locate.svg';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import io, { Socket } from 'socket.io-client';
+import {
+  ClientToServerEvents,
+  ServerToClientEvents,
+} from '../../apis/type/socket';
+import { useQueryClient } from 'react-query';
 const TicketQR = ({}) => {
   const auth = useRecoilValue(authState);
   const { ticketId } = useParams();
+  const [socket, setSocket] = useState<Socket<ServerToClientEvents>>();
   const { data, status } = ticketId
     ? useGetTicket(ticketId)
     : { data: null, status: 'idle' };
-
+  const queryClient = useQueryClient();
   useEffect(() => {
     const KAKAO_APP_KEY = `${process.env.REACT_APP_KAKAO_APP_KEY}`;
     if (!window.Kakao.isInitialized()) {
@@ -26,6 +32,29 @@ const TicketQR = ({}) => {
       console.log(window.Kakao.isInitialized());
     }
   }, []);
+
+  useEffect(() => {
+    if (ticketId) {
+      if (!socket) {
+        setSocket(
+          io('https://api.gosrock.band/socket/user', {
+            auth: {
+              ticketUuid: ticketId,
+            },
+          }),
+        );
+      } else {
+        const ticketIdforSocket = ticketId as keyof ServerToClientEvents;
+        socket.on(ticketIdforSocket, (data: any) => {
+          if (data.success) {
+            console.log(data);
+            queryClient.invalidateQueries(['ticket', `${ticketId}`]);
+          }
+        });
+      }
+    }
+    console.log(socket);
+  }, [socket]);
 
   const onShareButtonClick = () => {
     window.Kakao.Share.sendDefault({
