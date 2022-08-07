@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
 import { axiosPrivate } from '../apis/axios';
+import { Cookies } from 'react-cookie';
 
 export interface IAuthType {
   isAuthenticated: boolean;
@@ -18,7 +19,8 @@ const initialState = {
 };
 
 const getLocalStorage = (): IAuthType => {
-  const accessToken = localStorage.getItem('accessToken');
+  const cookies = new Cookies();
+  const accessToken = cookies.get('accessToken');
   const registerToken = localStorage.getItem('registerToken');
   if (accessToken) {
     // 어세스토큰이 있으면 axios 인스턴스에 커먼 헤더로 집어넣음

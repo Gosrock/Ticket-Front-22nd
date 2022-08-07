@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import App from './App';
 import { GlobalStyle } from './styles/global-style';
 import { theme } from './styles/theme';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -22,8 +23,10 @@ root.render(
         <GlobalStyle />
         <RecoilRoot>
           <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <App />
+            <CookiesProvider>
+              <ReactQueryDevtools initialIsOpen={false} />
+              <App />
+            </CookiesProvider>
           </QueryClientProvider>
         </RecoilRoot>
       </ThemeProvider>

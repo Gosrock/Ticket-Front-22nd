@@ -4,10 +4,12 @@ import AuthApi from '../../apis/AuthApi';
 import AuthTemplate from '../../components/auth/AuthTemplate';
 import useInput from '../../hooks/useInput';
 import { authState } from '../../stores/auth';
+import { useCookies } from 'react-cookie';
 
 const Init = () => {
   const [value, bind] = useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
+  const setCookie = useCookies(['accessToken'])[1];
   const navigate = useNavigate();
   const handleClickRegister = async () => {
     const res = await AuthApi.register(
@@ -16,8 +18,15 @@ const Init = () => {
       },
       auth.registerToken,
     );
+
+    let date = new Date();
+    setCookie('accessToken', res.data.accessToken, {
+      expires: new Date(date.setDate(date.getDate() + 3)),
+      path: '/', //accessible on all pages
+      secure: true, // only accessible through HTTPS
+    });
+
     console.log(res);
-    localStorage.setItem('accessToken', res.data.accessToken);
     localStorage.removeItem('registerToken');
     setAuth({ ...auth, userName: value, accessToken: res.data.accessToken });
     navigate('/ticketing/select', { replace: true });
