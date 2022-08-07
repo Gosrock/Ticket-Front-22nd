@@ -10,20 +10,19 @@ import { authState } from '../../stores/auth';
 import { ReactComponent as Locate } from '../../assets/icons/locate.svg';
 import { useEffect, useState } from 'react';
 import io, { Socket } from 'socket.io-client';
-import {
-  ClientToServerEvents,
-  ServerToClientEvents,
-  SocketData,
-} from '../../apis/type/socket';
+import { ServerToClientEvents, SocketData } from '../../apis/type/socket';
 import { useQueryClient } from 'react-query';
+import useModal from '../../hooks/useModal';
 const TicketQR = ({}) => {
   const auth = useRecoilValue(authState);
   const { ticketId } = useParams();
   const [socket, setSocket] = useState<Socket<ServerToClientEvents>>();
+  const { openModal, closeModal } = useModal();
   const { data, status } = ticketId
     ? useGetTicket(ticketId)
     : { data: null, status: 'idle' };
   const queryClient = useQueryClient();
+
   useEffect(() => {
     const KAKAO_APP_KEY = `${process.env.REACT_APP_KAKAO_APP_KEY}`;
     if (!window.Kakao.isInitialized()) {
@@ -52,6 +51,29 @@ const TicketQR = ({}) => {
             queryClient.invalidateQueries(['ticket', `${ticketId}`]);
           } else {
             console.log(data);
+            if (data.message === '[입장실패]이미 입장 완료된 티켓입니다') {
+              openModal({
+                modalType: 'Notice',
+                modalProps: {
+                  onClick: () => {
+                    closeModal();
+                  },
+                  type: '입장완료',
+                },
+              });
+            } else if (
+              data.message === '[입장실패]공연 날짜가 일치하지 않습니다'
+            ) {
+              openModal({
+                modalType: 'Notice',
+                modalProps: {
+                  onClick: () => {
+                    closeModal();
+                  },
+                  type: '공연날짜',
+                },
+              });
+            }
           }
         });
       }
