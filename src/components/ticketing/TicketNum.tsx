@@ -9,14 +9,18 @@ const DaySelect = () => {
         </Ticket>
         <p>1매</p>
       </CountButton>
-      <CountButton><Ticket>
+      <CountButton>
+        <Ticket>
           <img src={ticketPNG} />
         </Ticket>
-        <p>2매</p></CountButton>
-      <CountButton><Ticket>
+        <p>2매</p>
+      </CountButton>
+      <CountButton>
+        <Ticket>
           <img src={ticketPNG} />
         </Ticket>
-        <p>3매</p></CountButton>
+        <p>3매</p>
+      </CountButton>
     </Wrapper>
   );
 };
@@ -40,6 +44,7 @@ const CountButton = styled.div`
   align-items: center;
   & > p {
     text-align: center;
+    ${({ theme }) => theme.typo.title_24_B};
   }
 `;
 
