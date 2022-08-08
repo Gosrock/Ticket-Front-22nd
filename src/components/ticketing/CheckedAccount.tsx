@@ -14,17 +14,19 @@ const CheckedTicket = () => {
           <p>입금액</p>
         </Item>
         <Line />
-        <Content>
-          <p>토스 1000-2646-5446 </p>
-          <p>박도연</p>
-          <p><span>5,000원</span></p>
+          <Content>
+            <p>토스 1000-2646-5446</p>
+            <p>박도연</p>
+            <p><span>5,000원</span></p>
         </Content>
       </Contents>
         <UnderLine/>
         <AccountButton>
+          <span>
             <CheckOutlined/>
             <p>입금했어요</p>
-            <p>카카오페이로 송금하기</p>
+          </span>
+          <span><p>카카오페이로 송금하기</p></span>
         </AccountButton>
     </Wrapper>
   );
@@ -92,14 +94,20 @@ const AccountButton = styled.div`
   flex-direction: row;
   gap: 16px;
   margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0px 16px 0px 16px;
   justify-content: space-between;
-  padding: 0px 18px 0px 16px;
 
   & p {
-    padding: 3px 0px;
+    padding: 3px 0px 0px 12px;
     ${({ theme }) => theme.typo.text_14_R};
     color: ${({ theme }) => theme.palette.mono.font_sub};
     margin-bottom: 16px;
+  }
+  
+  & span {
+    display: flex;
+    flex-direction: row;
   }
   
 `;
@@ -113,6 +121,7 @@ const Content = styled.div`
     color: ${({ theme }) => theme.palette.mono.white};
     margin-bottom: 16px;
   }
+
   
   & span {
     color: ${({ theme }) => theme.palette.point.red};
