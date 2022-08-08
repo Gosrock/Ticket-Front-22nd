@@ -5,13 +5,13 @@ import { Cookies } from 'react-cookie';
 export interface IAuthType {
   isAuthenticated: boolean;
   registerToken: string | null;
-  phoneNumber: string;
+  phoneNumber: string | null;
 }
 
 const initialState = {
   isAuthenticated: false,
   registerToken: null,
-  phoneNumber: '',
+  phoneNumber: null,
 };
 
 const getLocalStorage = (): IAuthType => {
