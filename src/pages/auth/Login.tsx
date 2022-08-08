@@ -9,6 +9,8 @@ import { redirectState } from '../../stores/redirect';
 import NotFound from '../common/NotFound';
 import { useCookies } from 'react-cookie';
 import { useMutation } from 'react-query';
+import useModal from '../../hooks/useModal';
+import { useEffect } from 'react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,19 +20,27 @@ const Login = () => {
   const [auth, setAuth] = useRecoilState(authState);
   const redirectUri = useRecoilValue(redirectState);
   const setCookie = useCookies(['accessToken'])[1];
-
+  const { openModal, closeModal } = useModal();
   const { mutate: mutateSend } = useMutation(AuthApi.messageSend);
   const { mutate: mutateValidate } = useMutation(AuthApi.messageValidate);
 
+  useEffect(() => {
+    if (step === '2' && auth.phoneNumber === null) {
+      console.log('redirect');
+      //navigate('/');
+    }
+  }, [step]);
+
   const handleClickMessageSend = async () => {
+    navigate('/auth/login/2');
     mutateSend(
       { phoneNumber: valueSend },
       {
         onSuccess: (data) => {
-          navigate('/auth/login/2');
           setAuth({ ...auth, phoneNumber: data.data.phoneNumber });
           resetSend();
         },
+        onError: () => navigate('/auth/login/1'),
       },
     );
   };
@@ -38,7 +48,7 @@ const Login = () => {
   const handleClickMessageValidate = async () => {
     mutateValidate(
       {
-        phoneNumber: auth.phoneNumber,
+        phoneNumber: auth.phoneNumber!,
         validationNumber: valueValidate,
       },
       {
@@ -85,6 +95,18 @@ const Login = () => {
         page="validate"
         bind={bindValidate}
         handleClick={handleClickMessageValidate}
+        onResendButtonClick={() => {
+          mutateSend({ phoneNumber: auth.phoneNumber! });
+          openModal({
+            modalType: 'Notice',
+            modalProps: {
+              onClick: () => {
+                closeModal();
+              },
+              type: '재전송',
+            },
+          });
+        }}
       />
     );
   } else {

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { ReactComponent as AlreadyEntered } from '../../assets/icons/undraw_compose_music_re_wpiw.svg';
-import { ReactComponent as WrongDate } from '../../assets/icons/undraw_access_denied_re_awnf.svg';
+import { ReactComponent as AlreadyEntered } from '../../assets/illusts/undraw_compose_music_re_wpiw.svg';
+import { ReactComponent as WrongDate } from '../../assets/illusts/undraw_access_denied_re_awnf.svg';
+import { ReactComponent as NewMessage } from '../../assets/illusts/undraw_new_message_re_fp03.svg';
+import { ReactComponent as Notify } from '../../assets/illusts/undraw_notify_re_65on.svg';
 import ModalButton from '../common/ModalButton';
 export type NoticeProps = {
   onClick: () => void;
@@ -17,8 +19,12 @@ const noticeContent = {
     illust: <WrongDate />,
     text: <p>공연 날짜가 일치하지 않습니다</p>,
   },
+  재전송: {
+    illust: <NewMessage />,
+    text: <p>인증번호가 재전송되었습니다</p>,
+  },
   에러처리: {
-    illust: <WrongDate />,
+    illust: <Notify />,
     text: '',
   },
 };
@@ -47,12 +53,18 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 const Head = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & > div:first-child {
     height: 153px;
   }
   & > p {
     margin-top: 28px;
     ${({ theme }) => theme.typo.text_18_B}
+    font-size: 16px;
     color: ${({ theme }) => theme.palette.mono.black_00};
   }
 `;

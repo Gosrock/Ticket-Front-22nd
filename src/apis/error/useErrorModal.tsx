@@ -19,7 +19,6 @@ const errorMessage = {
 };
 
 const useErrorModal = () => {
-  console.log('왜 또 안떠');
   const { openModal, closeModal } = useModal();
 
   const openErrorModal = (error: TCustomError) => {
