@@ -7,6 +7,7 @@ const useModal = () => {
   const [modal, setModal] = useRecoilState(modalState);
 
   const openModal = ({ modalType, modalProps }: ModalType) => {
+    console.log('모달함수까지오나');
     setModal({ modalType, modalProps });
   };
 

@@ -8,6 +8,7 @@ import { authState } from '../../stores/auth';
 import { redirectState } from '../../stores/redirect';
 import NotFound from '../common/NotFound';
 import { useCookies } from 'react-cookie';
+import { useMutation } from 'react-query';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,44 +19,56 @@ const Login = () => {
   const redirectUri = useRecoilValue(redirectState);
   const setCookie = useCookies(['accessToken'])[1];
 
+  const { mutate: mutateSend } = useMutation(AuthApi.messageSend);
+  const { mutate: mutateValidate } = useMutation(AuthApi.messageValidate);
+
   const handleClickMessageSend = async () => {
-    navigate('/auth/login/2');
-    const res = await AuthApi.messageSend({ phoneNumber: valueSend });
-    setAuth({ ...auth });
-    resetSend();
+    mutateSend(
+      { phoneNumber: valueSend },
+      {
+        onSuccess: (data) => {
+          navigate('/auth/login/2');
+          setAuth({ ...auth, phoneNumber: data.data.phoneNumber });
+          resetSend();
+        },
+      },
+    );
   };
 
   const handleClickMessageValidate = async () => {
-    const res = await AuthApi.messageValidate({
-      phoneNumber: auth.phoneNumber,
-      validationNumber: valueValidate,
-    });
-    console.log(res);
-    console.log(redirectUri);
+    mutateValidate(
+      {
+        phoneNumber: auth.phoneNumber,
+        validationNumber: valueValidate,
+      },
+      {
+        onSuccess: (data) => {
+          if (data.data.accessToken) {
+            // 회원가입 되어있는 경우
+            let date = new Date();
+            setCookie('accessToken', data.data.accessToken, {
+              expires: new Date(date.setDate(date.getDate() + 3)),
+              path: '/', //accessible on all pages
+              secure: true, // only accessible through HTTPS
+            });
 
-    if (res.data.accessToken) {
-      // 회원가입 되어있는 경우
-      let date = new Date();
-      setCookie('accessToken', res.data.accessToken, {
-        expires: new Date(date.setDate(date.getDate() + 3)),
-        path: '/', //accessible on all pages
-        secure: true, // only accessible through HTTPS
-      });
-
-      axiosPrivate.defaults.headers.common.Authorization = `Bearer ${res.data.accessToken}`;
-      setAuth({
-        ...auth,
-        isAuthenticated: true,
-      });
-    } else {
-      // 회원가입 안되어있는 경우
-      localStorage.setItem('registerToken', res.data.registerToken);
-      setAuth({
-        ...auth,
-        registerToken: res.data.registerToken,
-      });
-    }
-    navigate(redirectUri || '/mypage');
+            axiosPrivate.defaults.headers.common.Authorization = `Bearer ${data.data.accessToken}`;
+            setAuth({
+              ...auth,
+              isAuthenticated: true,
+            });
+          } else {
+            // 회원가입 안되어있는 경우
+            localStorage.setItem('registerToken', data.data.registerToken);
+            setAuth({
+              ...auth,
+              registerToken: data.data.registerToken,
+            });
+          }
+          navigate(redirectUri || '/mypage');
+        },
+      },
+    );
   };
 
   if (step === '1') {

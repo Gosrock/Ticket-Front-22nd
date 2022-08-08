@@ -4,7 +4,8 @@ import { ReactComponent as WrongDate } from '../../assets/icons/undraw_access_de
 import ModalButton from '../common/ModalButton';
 export type NoticeProps = {
   onClick: () => void;
-  type: '입장완료' | '공연날짜';
+  type: '입장완료' | '공연날짜' | '에러처리';
+  errorMessage?: string;
 };
 
 const noticeContent = {
@@ -16,14 +17,19 @@ const noticeContent = {
     illust: <WrongDate />,
     text: <p>공연 날짜가 일치하지 않습니다</p>,
   },
+  에러처리: {
+    illust: <WrongDate />,
+    text: '',
+  },
 };
 
-const Notice = ({ onClick, type }: NoticeProps) => {
+const Notice = ({ onClick, type, errorMessage }: NoticeProps) => {
+  console.log(errorMessage);
   return (
     <Wrapper>
       <Head>
         <div>{noticeContent[type].illust}</div>
-        {noticeContent[type].text}
+        {errorMessage ? <p>{errorMessage}</p> : noticeContent[type].text}
       </Head>
       <ModalButton label="확인했어요" onClick={onClick} />
     </Wrapper>
