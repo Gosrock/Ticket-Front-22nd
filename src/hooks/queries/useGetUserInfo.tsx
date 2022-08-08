@@ -7,13 +7,11 @@ const useGetUserInfo = () => {
     refetchOnWindowFocus: false,
     retry: false,
     refetchOnMount: false,
-    refetchIntervalInBackground: false,
     onError: (error: AxiosError) => {
       console.log(error);
       // window.location.href = '/';
     },
   });
-  console.log('useQuery 실행');
   return { status, data };
 };
 

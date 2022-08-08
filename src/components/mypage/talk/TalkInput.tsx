@@ -18,9 +18,12 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
   const { status, data } = useGetUserInfo();
   const { openModal, closeModal } = useModal();
   const queryClient = useQueryClient();
-  //const mutate = useSendTalk();
+  //const data = queryClient.getQueryData('users') as TResponseType<IUsersRes>;
+
   const { mutate } = useMutation(UsersApi.sendTalk, {
-    onSuccess: () => queryClient.invalidateQueries('talks'),
+    onSuccess: () => {
+      queryClient.invalidateQueries('talks');
+    },
   });
 
   const setRequestData = (value: string) => {

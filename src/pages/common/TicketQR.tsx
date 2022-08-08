@@ -62,7 +62,7 @@ const TicketQR = ({}) => {
                 },
               });
             } else if (
-              data.message === '[입장실패]공연 날짜가 일치하지 않습니다'
+              data.message === '[입장실패] 공연 날짜가 일치하지 않습니다'
             ) {
               openModal({
                 modalType: 'Notice',

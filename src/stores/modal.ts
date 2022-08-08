@@ -5,12 +5,12 @@ import { NoticeProps } from '../components/modal/Notice';
 
 export type TNoticeModal = {
   modalType: typeof ModalTypes.Notice;
-  modalProps: NoticeProps | any;
+  modalProps: any;
 };
 
 export type TCheckBeforeSendModal = {
   modalType: typeof ModalTypes.CheckBeforeSend;
-  modalProps: CheckBeforeSendProps | any;
+  modalProps: any;
 };
 
 export type ModalType = TNoticeModal | TCheckBeforeSendModal;
