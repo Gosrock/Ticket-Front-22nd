@@ -28,7 +28,7 @@ const Init = () => {
 
     console.log(res);
     localStorage.removeItem('registerToken');
-    setAuth({ ...auth, userName: value, accessToken: res.data.accessToken });
+    setAuth({ ...auth });
     navigate('/ticketing/select', { replace: true });
   };
 

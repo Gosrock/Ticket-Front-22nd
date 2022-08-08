@@ -4,18 +4,14 @@ import { Cookies } from 'react-cookie';
 
 export interface IAuthType {
   isAuthenticated: boolean;
-  accessToken: string | null;
   registerToken: string | null;
   phoneNumber: string;
-  userName: string | null;
 }
 
 const initialState = {
   isAuthenticated: false,
-  accessToken: null,
   registerToken: null,
   phoneNumber: '',
-  userName: null,
 };
 
 const getLocalStorage = (): IAuthType => {
@@ -32,7 +28,6 @@ const getLocalStorage = (): IAuthType => {
     return {
       ...initialState,
       isAuthenticated: true,
-      accessToken,
       registerToken,
     };
   } else return { ...initialState, registerToken };

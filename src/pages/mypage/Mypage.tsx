@@ -5,10 +5,21 @@ import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
 import useGetTickets from '../../hooks/queries/useGetTickets';
 import MyReservedTicket from '../../components/mypage/reservedTickets/MyReservedTicket';
 import Slides from '../../components/mypage/slides/Slides';
+import { ITicket } from '../../apis/type/ticket';
 
 const Mypage = () => {
   const { status: userInfoStatus, data: userInfo } = useGetUserInfo();
   const { status: ticketsStatus, data: tickets } = useGetTickets();
+
+  const YBTickets =
+    ticketsStatus === 'success'
+      ? tickets?.data.filter((el: ITicket) => el.date === 'YB')
+      : undefined;
+  const OBTickets =
+    ticketsStatus === 'success'
+      ? tickets?.data.filter((el: ITicket) => el.date === 'OB')
+      : undefined;
+
   return (
     <Wrapper>
       {userInfoStatus === 'success' ? (
@@ -19,8 +30,8 @@ const Mypage = () => {
       <h1>만나서 반가워요!</h1>
       <Slides />
       <h2>내 예매 티켓</h2>
-      <MyReservedTicket date="YB" tickets={tickets} status={ticketsStatus} />
-      <MyReservedTicket date="OB" tickets={tickets} status={ticketsStatus} />
+      <MyReservedTicket date="YB" tickets={YBTickets} status={ticketsStatus} />
+      <MyReservedTicket date="OB" tickets={OBTickets} status={ticketsStatus} />
       <Footer />
     </Wrapper>
   );

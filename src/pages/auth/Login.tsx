@@ -21,7 +21,7 @@ const Login = () => {
   const handleClickMessageSend = async () => {
     navigate('/auth/login/2');
     const res = await AuthApi.messageSend({ phoneNumber: valueSend });
-    setAuth({ ...auth, phoneNumber: res.data.phoneNumber });
+    setAuth({ ...auth });
     resetSend();
   };
 
@@ -46,7 +46,6 @@ const Login = () => {
       setAuth({
         ...auth,
         isAuthenticated: true,
-        accessToken: res.data.accessToken,
       });
     } else {
       // 회원가입 안되어있는 경우

@@ -5,12 +5,11 @@ import styled from 'styled-components';
 import { convertDate } from '../../../utils/convertDate';
 
 import { useNavigate } from 'react-router-dom';
-import { TResponseType } from '../../../apis/type/commonResponse';
 import { ITicket } from '../../../apis/type/ticket';
 
 interface IMyReservedTicket {
   date: 'YB' | 'OB';
-  tickets: TResponseType<ITicket[]> | undefined;
+  tickets: ITicket[] | undefined;
   status: string;
 }
 
@@ -38,29 +37,20 @@ const MyReservedTicket = ({ date, tickets, status }: IMyReservedTicket) => {
         {status === 'success' ? (
           !!tickets && (
             <>
-              {tickets.data
-                .filter((el: ITicket) => el.date === date)
-                .map((el: ITicket) => {
-                  const { Month, Day, Hour, Minute } = convertDate(
-                    el.createdAt,
-                  );
-                  return (
-                    <TicketInfo
-                      key={el.id}
-                      status={el.status}
-                      createdat={`${Month}/${Day} ${Hour}:${Minute}`}
-                      id={el.id}
-                      onClick={() => navigate(`/tickets/${el.id}`)}
-                    />
-                  );
-                })}
+              {tickets.map((el: ITicket) => {
+                const { Month, Day, Hour, Minute } = convertDate(el.createdAt);
+                return (
+                  <TicketInfo
+                    key={el.id}
+                    status={el.status}
+                    createdat={`${Month}/${Day} ${Hour}:${Minute}`}
+                    id={el.id}
+                    onClick={() => navigate(`/tickets/${el.uuid}`)}
+                  />
+                );
+              })}
               <PurchaseTicket
-                isFirst={
-                  !(
-                    tickets.data.filter((el: ITicket) => el.date === date)
-                      .length > 0
-                  )
-                }
+                isFirst={!(tickets.length > 0)}
                 onClick={() => {
                   navigate('/ticketing/select');
                 }}
