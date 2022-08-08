@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ReactComponent as Ticket } from '../../assets/icons/ticket.svg';
-import BackGround from '../../assets/PurchaseTicketBackground.png';
+import { ReactComponent as Ticket } from '../../../assets/icons/ticket.svg';
+import BackGround from '../../../assets/PurchaseTicketBackground.png';
 
 interface IPurchaseTicketProps {
   isFirst: boolean;

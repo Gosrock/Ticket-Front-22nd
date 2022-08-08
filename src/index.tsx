@@ -9,6 +9,7 @@ import App from './App';
 import GlobalModal from './components/modal/GlobalModal';
 import { GlobalStyle } from './styles/global-style';
 import { theme } from './styles/theme';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -23,9 +24,11 @@ root.render(
         <GlobalStyle />
         <RecoilRoot>
           <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <App />
-            <GlobalModal />
+            <CookiesProvider>
+              <ReactQueryDevtools initialIsOpen={false} />
+              <App />
+              <GlobalModal />
+            </CookiesProvider>
           </QueryClientProvider>
         </RecoilRoot>
       </ThemeProvider>
