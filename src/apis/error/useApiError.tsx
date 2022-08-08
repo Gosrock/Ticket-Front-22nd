@@ -20,7 +20,7 @@ export type TCustomErrorResponse = {
 
 const useApiError = () => {
   const { openErrorModal } = useErrorModal();
-  const handleError = (axiosError: AxiosError) => {
+  const handleError = useCallback((axiosError: AxiosError) => {
     const errorResponse = axiosError.response?.data as TCustomErrorResponse;
     const error = errorResponse.error;
     const status = error.statusCode;
@@ -43,7 +43,7 @@ const useApiError = () => {
         //Handler.default(axiosError);
         break;
     }
-  };
+  }, []);
   return { handleError } as const;
 };
 
