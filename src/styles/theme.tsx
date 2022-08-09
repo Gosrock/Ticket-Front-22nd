@@ -10,6 +10,7 @@ export const theme: DefaultTheme = {
       red: '#ff7785',
       mint: '#9fe8d6',
       yellow_kakao: '#ffeb00',
+      green_starbucks: '#036635',
     },
 
     mono: {

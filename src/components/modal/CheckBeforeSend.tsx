@@ -65,7 +65,7 @@ const Head = styled.div`
 const Content = styled.div`
   margin-top: 20px;
   width: 100%;
-  max-height: 144px;
+  height: 144px;
   overflow-y: auto;
 
   &::-webkit-scrollbar {

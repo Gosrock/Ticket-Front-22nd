@@ -2,14 +2,26 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Slider, { ISliderProps } from './Slider';
+import Banner from './Banner';
 
-import { sliderData } from './SliderData';
+import { bannerData, IBannerDataProps } from './BannerData';
+import { useNavigate } from 'react-router-dom';
 
-const Slides = () => {
+const Banners = () => {
+  const navigate = useNavigate();
+
+  const onClickArray = [
+    () => navigate('/mypage/talk'),
+    () => navigate('/mypage/talk'),
+    () => navigate('/mypage/talk'),
+    () =>
+      window.Kakao.Channel.chat({
+        channelPublicId: '_QxeZBT',
+      }),
+  ];
+
   const pagination = {
     clickable: true,
-    dynamicBullets: true,
     renderBullet: (_index: number, className: string) => {
       return '<span class="' + className + '"></span>';
     },
@@ -20,17 +32,17 @@ const Slides = () => {
     modules: [Pagination, Autoplay],
     pagination: pagination,
     autoplay: {
-      delay: 2000,
+      delay: 5000,
       disableOnInteraction: false,
     },
   };
 
   return (
     <Swiper {...swiperParams}>
-      {sliderData.map((el: ISliderProps, idx: number) => {
+      {bannerData.map((el: IBannerDataProps, idx: number) => {
         return (
           <SwiperSlide key={idx}>
-            <Slider {...el} />
+            <Banner {...el} onClick={onClickArray[idx]} />
           </SwiperSlide>
         );
       })}
@@ -38,4 +50,4 @@ const Slides = () => {
   );
 };
 
-export default Slides;
+export default Banners;

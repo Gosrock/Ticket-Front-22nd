@@ -6,12 +6,8 @@ const useGetOrders = () => {
   const { status, data } = useQuery(['ticket'], OrderApi.getOrders, {
     refetchOnWindowFocus: false,
     retry: false,
-    // refetchOnMount: false,
+    staleTime: 5 * 1000 * 60,
     refetchIntervalInBackground: false,
-    onError: (error: AxiosError) => {
-      console.error(error);
-      //window.location.href = '/';
-    },
   });
   console.log(status, data);
   return { status, data };

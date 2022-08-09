@@ -66,6 +66,7 @@ const Title = styled.p`
 `;
 
 const List = styled.div`
+  padding-bottom: 16px;
   & > * {
     margin-top: 16px;
   }
