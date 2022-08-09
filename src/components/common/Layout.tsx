@@ -2,10 +2,23 @@ import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import { media } from '../../styles/theme';
+import { useEffect } from 'react';
 
 function Layout() {
   const { pathname } = useLocation();
 
+  useEffect(() => {
+    const setScreenSize = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setScreenSize();
+    window.addEventListener('resize', setScreenSize);
+    return () => {
+      // cleanup
+      window.removeEventListener('resize', setScreenSize);
+    };
+  }, []);
   const isPC = useMediaQuery({ minWidth: 768 });
 
   return (
@@ -39,7 +52,6 @@ const Container = styled.div`
   /* 모바일 화면 */
   ${media.tablet} {
     width: 100%;
-    min-width: 320px;
     height: calc(var(--vh, 1vh) * 100);
     border: none;
     border-radius: 0px;

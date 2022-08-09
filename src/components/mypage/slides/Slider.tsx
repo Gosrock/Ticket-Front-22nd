@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import map1 from '../../assets/maps/map1.png';
-import map2 from '../../assets/maps/map2.png';
+import aliveHall from '../../../assets/maps/aliveHall.png';
+import dreamHall from '../../../assets/maps/dreamHall.png';
 
 export interface ISliderProps {
   titleDark: string;
@@ -58,15 +58,18 @@ const Wrapper = styled.div<{ team: 'YB' | 'OB' | null }>`
     team
       ? team === 'YB'
         ? css`
-            background: url(${map1});
+            background: url(${dreamHall});
+            background-size: auto 280px;
+            background-position: center;
           `
         : css`
-            background: url(${map2});
+            background: url(${aliveHall});
+            background-size: auto 280px;
+            background-position: center;
           `
       : css`
           background: rgba(0, 0, 0, 0.49);
         `};
-  /* 지도 세팅 해야함 */
 `;
 
 const BackgroundCover = styled.div<{ team: 'YB' | 'OB' | null }>`

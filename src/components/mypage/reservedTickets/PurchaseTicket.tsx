@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ReactComponent as Ticket } from '../../assets/icons/ticket.svg';
-import BackGround from '../../assets/PurchaseTicketBackground.png';
+import { ReactComponent as Ticket } from '../../../assets/icons/ticket.svg';
+import BackGround from '../../../assets/PurchaseTicketBackground.png';
 
 interface IPurchaseTicketProps {
   isFirst: boolean;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   background-size: cover;
   width: 150px;
   height: 120px;
-  padding: 84px 12px 6px 33px;
+  padding: 84px 12px 6px 12px;
 `;
 
 const ToTicketing = styled.div`
@@ -36,9 +36,7 @@ const ToTicketing = styled.div`
 
   & p {
     ${({ theme }) => theme.typo.text_12_B};
-    /* margin-top없으면 글씨가 위로 치우침 */
-    /* 이거 진짜임 확인해보면 line-height 12px이긴한데 밑 부분이 약간 비어있음 */
-    margin: 2px 8px 0px 0px;
+    margin: 0px 8px 0px 0px;
     color: ${({ theme }) => theme.palette.mono.white};
   }
 `;

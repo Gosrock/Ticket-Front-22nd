@@ -6,18 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
+import GlobalModal from './components/modal/GlobalModal';
 import { GlobalStyle } from './styles/global-style';
 import { theme } from './styles/theme';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
-
-const setScreenSize = () => {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-};
-setScreenSize();
 
 const queryClient = new QueryClient();
 
@@ -28,8 +24,11 @@ root.render(
         <GlobalStyle />
         <RecoilRoot>
           <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <App />
+            <CookiesProvider>
+              <ReactQueryDevtools initialIsOpen={false} />
+              <App />
+              <GlobalModal />
+            </CookiesProvider>
           </QueryClientProvider>
         </RecoilRoot>
       </ThemeProvider>

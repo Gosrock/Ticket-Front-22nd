@@ -3,7 +3,7 @@ import SetMargin from '../common/SetMargin';
 import InputForm from './InputForm';
 
 export default {
-  title: 'InputForm',
+  title: 'common/InputForm',
   component: InputForm,
   argTypes: {},
   decorators: [
