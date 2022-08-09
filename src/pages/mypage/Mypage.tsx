@@ -4,12 +4,26 @@ import Footer from '../../components/common/Footer';
 import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
 import useGetTickets from '../../hooks/queries/useGetTickets';
 import MyReservedTicket from '../../components/mypage/reservedTickets/MyReservedTicket';
-import Slides from '../../components/mypage/slides/Slides';
+import Banners from '../../components/mypage/banner/Banners';
 import { ITicket } from '../../apis/type/ticket';
+import ShortCut from '../../components/mypage/ShortCut';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Mypage = () => {
   const { status: userInfoStatus, data: userInfo } = useGetUserInfo();
   const { status: ticketsStatus, data: tickets } = useGetTickets();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const KAKAO_APP_KEY = `${process.env.REACT_APP_KAKAO_APP_KEY}`;
+    if (!window.Kakao.isInitialized()) {
+      // JavaScript key를 인자로 주고 SDK 초기화
+      window.Kakao.init(KAKAO_APP_KEY);
+      // SDK 초기화 여부를 확인하자.
+      console.log(window.Kakao.isInitialized());
+    }
+  }, []);
 
   const YBTickets =
     ticketsStatus === 'success'
@@ -28,11 +42,13 @@ const Mypage = () => {
         <h1>🎸🥁🎸님,</h1>
       )}
       <h1>만나서 반가워요!</h1>
-      <Slides />
+      <Banners />
       <h2>내 예매 티켓</h2>
       <MyReservedTicket date="YB" tickets={YBTickets} status={ticketsStatus} />
       <MyReservedTicket date="OB" tickets={OBTickets} status={ticketsStatus} />
       <h2>바로가기</h2>
+      <ShortCut type="mainPage" onClick={() => navigate('/')} />
+      <ShortCut type="talk" onClick={() => navigate('/mypage/talk')} />
       <Footer />
     </Wrapper>
   );
@@ -49,11 +65,12 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   background: linear-gradient(
     180deg,
-    #ff7785 0%,
-    rgba(215, 137, 192, 0.499355) 42.19%,
-    rgba(191, 148, 228, 0.2) 80.73%,
+    rgba(191, 148, 228, 0.7) 0%,
+    rgba(191, 148, 228, 0.35) 36.46%,
+    rgba(191, 148, 228, 0.14) 80.73%,
     rgba(191, 148, 228, 0) 100%
   );
+
   .swiper-pagination-bullet {
     width: 7px;
     height: 7px;

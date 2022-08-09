@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   width: 150px;
   height: 120px;
-  background: #fafafa;
+  background: ${({ theme }) => theme.palette.mono.white_fa};
   border-radius: 16px;
   box-sizing: border-box;
   padding-top: 8px;
