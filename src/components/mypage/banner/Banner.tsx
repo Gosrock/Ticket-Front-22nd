@@ -33,7 +33,8 @@ const Wrapper = styled.div<{
   type: 'talk' | 'location' | 'developers' | 'kakao';
 }>`
   width: calc(100% - 36px);
-  height: 180px;
+  height: calc((100vw - 36px) / 1.9);
+  max-height: 180px;
   margin: 0px 18px;
   padding: 28px 18px 37px 28px;
   background: ${({ theme }) => theme.palette.mono.white};
