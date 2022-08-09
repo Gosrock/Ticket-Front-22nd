@@ -56,7 +56,7 @@ const Wrapper = styled.div<{
     }
 
     & :first-child {
-      margin-bottom: 8px;
+      margin: 0 1px 8px 0;
     }
 
     & span {

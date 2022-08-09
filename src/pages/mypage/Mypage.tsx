@@ -101,4 +101,8 @@ const Wrapper = styled.div`
     color: ${({ theme }) => theme.palette.mono.white};
     ${({ theme }) => theme.typo.title_24_B};
   }
+
+  & > :last-child {
+    margin-top: 72px;
+  }
 `;

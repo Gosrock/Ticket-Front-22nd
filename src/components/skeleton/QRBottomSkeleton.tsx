@@ -43,7 +43,7 @@ const Button = styled(SkeletonItem)`
   height: 50px;
   position: relative;
   border-radius: 16px;
-  background: ${({ theme }) => theme.palette.mono.white_fa};
+  background: ${({ theme }) => theme.palette.mono.font_main};
 `;
 
 const Notice = styled.div`
@@ -72,18 +72,18 @@ const Date = styled(SkeletonItem)`
   width: 112px;
   height: 20px;
   border-radius: 16px;
-  background: ${({ theme }) => theme.palette.mono.white_fa};
+  background: ${({ theme }) => theme.palette.mono.font_main};
 `;
 const Location = styled(SkeletonItem)`
   width: 87px;
   height: 16px;
   border-radius: 16px;
-  background: ${({ theme }) => theme.palette.mono.white_fa};
+  background: ${({ theme }) => theme.palette.mono.font_main};
 `;
 
 const IdNName = styled(SkeletonItem)`
   width: 50px;
   height: 49px;
   border-radius: 16px;
-  background: ${({ theme }) => theme.palette.mono.white_fa};
+  background: ${({ theme }) => theme.palette.mono.font_main};
 `;
