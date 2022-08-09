@@ -32,6 +32,7 @@ const Mypage = () => {
       <h2>내 예매 티켓</h2>
       <MyReservedTicket date="YB" tickets={YBTickets} status={ticketsStatus} />
       <MyReservedTicket date="OB" tickets={OBTickets} status={ticketsStatus} />
+      <h2>바로가기</h2>
       <Footer />
     </Wrapper>
   );
@@ -42,7 +43,7 @@ export default Mypage;
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: 440px;
+  height: 392px;
   left: 0px;
   top: 0px;
   box-sizing: border-box;
@@ -67,20 +68,20 @@ const Wrapper = styled.div`
     width: 100%;
     padding: 0px 18px;
     margin-bottom: 56px;
-    color: ${({ theme }) => theme.palette.mono.white_fa};
+    color: ${({ theme }) => theme.palette.mono.white};
     ${({ theme }) => theme.typo.title_28_B};
   }
   & > h1:first-child {
-    margin-top: 76px;
+    margin-top: 72px;
     margin-bottom: 8px;
   }
 
   & > h2 {
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 72px;
+    margin-bottom: 48px;
     width: 100%;
     padding: 0px 18px;
-    color: ${({ theme }) => theme.palette.mono.font_main};
+    color: ${({ theme }) => theme.palette.mono.white};
     ${({ theme }) => theme.typo.title_24_B};
   }
 `;
