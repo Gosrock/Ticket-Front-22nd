@@ -18,20 +18,18 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient();
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <RecoilRoot>
-          <QueryClientProvider client={queryClient}>
-            <CookiesProvider>
-              <ReactQueryDevtools initialIsOpen={false} />
-              <App />
-              <GlobalModal />
-            </CookiesProvider>
-          </QueryClientProvider>
-        </RecoilRoot>
-      </ThemeProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+          <CookiesProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <App />
+            <GlobalModal />
+          </CookiesProvider>
+        </QueryClientProvider>
+      </RecoilRoot>
+    </ThemeProvider>
+  </BrowserRouter>,
 );
