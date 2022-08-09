@@ -1,11 +1,11 @@
-import { axiosPrivate } from './axios';
+import { axiosPrivate, axiosPublic } from './axios';
 import { IGetTicketReq, IGetTicketRes, IGetTicketsRes } from './type/ticket';
 import { TResponseType } from './type/commonResponse';
 
 const TicketApi = {
   // 해당 uuid에 해당하는 티켓 불러오기
   getTicket: async (uuid: string): Promise<TResponseType<IGetTicketRes>> => {
-    const { data } = await axiosPrivate.get(`/tickets/${uuid}`);
+    const { data } = await axiosPublic.get(`/tickets/${uuid}`);
     return data;
   },
 

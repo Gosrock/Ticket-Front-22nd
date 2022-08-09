@@ -194,6 +194,8 @@ const Wrapper = styled.div`
   }
 `;
 const TicketContainer = styled.div`
+  max-width: 375px;
+  margin: 0 auto;
   & > div:nth-child(2) {
     display: grid;
     grid-template-columns: 1fr 1fr;
