@@ -95,7 +95,7 @@ const Wrapper = styled.div`
 
   & > h2 {
     margin-top: 72px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     width: 100%;
     padding: 0px 18px;
     color: ${({ theme }) => theme.palette.mono.white};

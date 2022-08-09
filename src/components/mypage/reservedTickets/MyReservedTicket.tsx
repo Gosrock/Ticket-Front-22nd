@@ -85,7 +85,7 @@ const Wrapper = styled.div`
 
 const Tickets = styled.div`
   width: 100%;
-  margin: 12px 0 48px 0;
+  margin: 12px 0 36px 0;
   padding: 0 18px;
 
   display: flex;

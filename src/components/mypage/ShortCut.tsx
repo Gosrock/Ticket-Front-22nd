@@ -14,7 +14,9 @@ const ShortCut = ({ type, onClick }: IShortCut) => {
       <div>
         {type === 'talk' ? (
           <>
-            <ChatHeart />
+            <ChatHeart
+              style={{ padding: '1px', transform: 'translate3d(0,1px,0)' }}
+            />
             <p>고스락 응원톡</p>
           </>
         ) : (
@@ -51,6 +53,6 @@ const Wrapper = styled.div`
   & p {
     ${({ theme }) => theme.typo.text_14_M};
     color: ${({ theme }) => theme.palette.mono.white_fa};
-    margin-left: 8px;
+    margin-left: 12px;
   }
 `;
