@@ -49,6 +49,7 @@ const Mypage = () => {
       <h2>바로가기</h2>
       <ShortCut type="mainPage" onClick={() => navigate('/')} />
       <ShortCut type="talk" onClick={() => navigate('/mypage/talk')} />
+      <ShortCut type="orderList" onClick={() => navigate('/mypage/tickets')} />
       <Footer />
     </Wrapper>
   );
