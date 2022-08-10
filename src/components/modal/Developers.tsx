@@ -28,8 +28,8 @@ const Developers = ({ closeModal }: DevelopersProps) => {
       </Head>
       <Content>
         <StyledUl>
-          {list.map((v) => (
-            <li>
+          {list.map((v, i) => (
+            <li key={i}>
               <span>{v[0]}</span>
               {'  '}
               {v[1]}
