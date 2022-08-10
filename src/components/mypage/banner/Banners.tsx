@@ -6,8 +6,10 @@ import Banner from './Banner';
 
 import { bannerData, IBannerDataProps } from './BannerData';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Banners = () => {
+  const setWindowWidth = useState<number>(window.innerWidth)[1];
   const navigate = useNavigate();
 
   const onClickArray = [
@@ -20,6 +22,22 @@ const Banners = () => {
       }),
   ];
 
+  let slidesCount =
+    window.innerWidth > 576 || 396 >= window.innerWidth
+      ? 1
+      : window.innerWidth / 396;
+
+  const handleWidthResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWidthResize);
+    return () => {
+      window.addEventListener('resize', handleWidthResize);
+    };
+  }, []);
+
   const pagination = {
     clickable: true,
     renderBullet: (_index: number, className: string) => {
@@ -29,6 +47,7 @@ const Banners = () => {
   const swiperParams = {
     spaceBetween: 0,
     centeredSlides: true,
+    slidesPerView: slidesCount,
     modules: [Pagination, Autoplay],
     pagination: pagination,
     autoplay: {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import DepositStatus, { IDepositStatusProps } from './DepositStatus';
+import DepositStatus, { IDepositStatusProps } from '../DepositStatus';
 
 interface IOrderedTicketProps extends IDepositStatusProps {
   createdat: string;
