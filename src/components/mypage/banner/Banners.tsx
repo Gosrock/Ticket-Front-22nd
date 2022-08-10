@@ -30,9 +30,6 @@ const Banners = () => {
       openModal({
         modalType: 'Developers',
         modalProps: {
-          onClick: () => {
-            closeModal();
-          },
           closeModal,
         },
       }),

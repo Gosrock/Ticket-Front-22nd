@@ -2,17 +2,41 @@ import styled from 'styled-components';
 import { ReactComponent as Quit } from '../../assets/icons/modalQuit.svg';
 export type DevelopersProps = {
   closeModal: () => void;
-  content: string;
 };
 
-const Developers = ({ closeModal, content }: DevelopersProps) => {
+const list = [
+  ['・ 이찬진', '기획・백엔드 , 어드민 팀장'],
+  ['・ 한규진', '기획・UI/UX・어드민 팀장'],
+  ['・ 김민준', '백엔드'],
+  ['・ 김원진', '백엔드'],
+  ['・ 노경민', '백엔드'],
+  ['・ 채승희', '백엔드'],
+  ['・ 서예진', '프론트앤드'],
+  ['・ 정상훈', '프론트앤드'],
+  ['・ 김주안', '프론트앤드'],
+  ['・ 강나연', '어드민'],
+  ['・ 봉세환', '어드민'],
+  ['・ 이한비', '어드민'],
+];
+
+const Developers = ({ closeModal }: DevelopersProps) => {
   return (
     <Wrapper>
       <Quit onClick={closeModal} />
       <Head>
-        <p>이렇게 남길까요?</p>
-        <Content>{content}</Content>
+        <p>고스락 티켓 프로젝트</p>
       </Head>
+      <Content>
+        <StyledUl>
+          {list.map((v) => (
+            <li>
+              <span>{v[0]}</span>
+              {'  '}
+              {v[1]}
+            </li>
+          ))}
+        </StyledUl>
+      </Content>
     </Wrapper>
   );
 };
@@ -39,17 +63,21 @@ const Wrapper = styled.div`
 const Head = styled.div`
   ${({ theme }) => theme.typo.text_18_B}
   color: ${({ theme }) => theme.palette.mono.black_00};
-
-  padding-bottom: 12px;
-  border-bottom: 1px solid #000;
 `;
 
 const Content = styled.div`
-  margin-top: 20px;
+  padding: 12px;
+  margin-top: 36px;
   width: 100%;
-  height: 144px;
-  overflow-y: auto;
+  height: 246px;
+  background-color: #eaeaec;
+  border-radius: 12px;
+`;
 
+const StyledUl = styled.ul`
+  height: 222px;
+
+  overflow-y: auto;
   &::-webkit-scrollbar {
     width: 3px;
   }
@@ -63,6 +91,11 @@ const Content = styled.div`
 
   white-space: pre-wrap;
   ${({ theme }) => theme.typo.text_12_M};
-  line-height: 150%;
-  color: ${({ theme }) => theme.palette.mono.black_36};
+  line-height: 250%;
+  color: ${({ theme }) => theme.palette.mono.black_12};
+
+  span {
+    font-weight: 700;
+    color: ${({ theme }) => theme.palette.point.red};
+  }
 `;
