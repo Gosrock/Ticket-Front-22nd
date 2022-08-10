@@ -20,3 +20,8 @@ export const 메인페이지 = Template.bind({});
 메인페이지.args = {
   type: 'mainPage',
 };
+
+export const 주문목록 = Template.bind({});
+주문목록.args = {
+  type: 'orderList',
+};

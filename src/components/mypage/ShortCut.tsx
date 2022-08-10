@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { ReactComponent as Home } from '../../assets/icons/home.svg';
 import { ReactComponent as ChevronRight } from '../../assets/icons/chevronRight.svg';
 import { ReactComponent as ChatHeart } from '../../assets/icons/chatHeart.svg';
+import { ReactComponent as Cart } from '../../assets/icons/cart.svg';
 
 interface IShortCut {
-  type: 'talk' | 'mainPage';
+  type: 'talk' | 'mainPage' | 'orderList';
   onClick: () => void;
 }
 
@@ -19,10 +20,15 @@ const ShortCut = ({ type, onClick }: IShortCut) => {
             />
             <p>고스락 응원톡</p>
           </>
-        ) : (
+        ) : type === 'mainPage' ? (
           <>
             <Home />
             <p>메인페이지</p>
+          </>
+        ) : (
+          <>
+            <Cart />
+            <p>내 주문 목록</p>
           </>
         )}
       </div>

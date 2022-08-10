@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import OrderApi from '../../apis/OrderApi';
 
 const useGetOrders = () => {
-  const { status, data } = useQuery(['ticket'], OrderApi.getOrders, {
+  const { status, data } = useQuery(['orders'], OrderApi.getOrders, {
     refetchOnWindowFocus: false,
     retry: false,
     staleTime: 5 * 1000 * 60,
