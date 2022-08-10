@@ -14,7 +14,7 @@ const initialState = {
   phoneNumber: null,
 };
 
-const getLocalStorage = (): IAuthType => {
+const getTokenFromCookie = (): IAuthType => {
   const cookies = new Cookies();
   const accessToken = cookies.get('accessToken');
   const registerToken = cookies.get('registerToken');
@@ -35,5 +35,5 @@ const getLocalStorage = (): IAuthType => {
 
 export const authState = atom<IAuthType>({
   key: 'auth',
-  default: getLocalStorage(),
+  default: getTokenFromCookie(),
 });
