@@ -7,15 +7,35 @@ import Banner from './Banner';
 import { bannerData, IBannerDataProps } from './BannerData';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import useModal from '../../../hooks/useModal';
 
 const Banners = () => {
   const setWindowWidth = useState<number>(window.innerWidth)[1];
+  const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
 
   const onClickArray = [
+    // 응원톡 바로가기
     () => navigate('/mypage/talk'),
-    () => navigate('/mypage/talk'),
-    () => navigate('/mypage/talk'),
+    // 공연장 정보
+    () =>
+      openModal({
+        modalType: 'Location',
+        modalProps: {
+          closeModal,
+        },
+      }),
+    // 개발자 정보
+    () =>
+      openModal({
+        modalType: 'Developers',
+        modalProps: {
+          onClick: () => {
+            closeModal();
+          },
+          closeModal,
+        },
+      }),
     () =>
       window.Kakao.Channel.chat({
         channelPublicId: '_QxeZBT',

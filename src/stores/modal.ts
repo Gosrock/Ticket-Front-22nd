@@ -13,7 +13,21 @@ export type TCheckBeforeSendModal = {
   modalProps: any;
 };
 
-export type ModalType = TNoticeModal | TCheckBeforeSendModal;
+export type TLocationModal = {
+  modalType: typeof ModalTypes.Location;
+  modalProps: any;
+};
+
+export type TDevelopersModal = {
+  modalType: typeof ModalTypes.Developers;
+  modalProps: any;
+};
+
+export type ModalType =
+  | TNoticeModal
+  | TCheckBeforeSendModal
+  | TLocationModal
+  | TDevelopersModal;
 export const modalState = atom<ModalType | null>({
   key: 'modalState',
   default: null,

@@ -3,16 +3,22 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { modalState } from '../../stores/modal';
 import CheckBeforeSend from './CheckBeforeSend';
+import Developers from './Developers';
+import Location from './Location';
 import Notice from './Notice';
 
 export const ModalTypes = {
   Notice: 'Notice',
   CheckBeforeSend: 'CheckBeforeSend',
+  Location: 'Location',
+  Developers: 'Developers',
 } as const;
 
 const ModalComponents: any = {
   [ModalTypes.Notice]: Notice,
   [ModalTypes.CheckBeforeSend]: CheckBeforeSend,
+  [ModalTypes.Location]: Location,
+  [ModalTypes.Developers]: Developers,
 };
 
 const GlobalModal = () => {
