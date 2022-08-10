@@ -32,6 +32,7 @@ export default Banner;
 const Wrapper = styled.div<{
   type: 'talk' | 'location' | 'developers' | 'kakao';
 }>`
+  position: relative;
   width: calc(100% - 36px);
   max-width: 360px;
   height: calc((100vw - 36px) / 2);
@@ -45,7 +46,13 @@ const Wrapper = styled.div<{
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+
+  & > svg {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
 
   & > div {
     display: flex;
