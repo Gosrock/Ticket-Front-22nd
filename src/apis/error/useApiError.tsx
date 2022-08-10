@@ -1,6 +1,5 @@
 import { AxiosError } from 'axios';
 import { useCallback } from 'react';
-import defaultHandler from './defaultHandler';
 import useErrorModal from './useErrorModal';
 
 export type TCustomError = {

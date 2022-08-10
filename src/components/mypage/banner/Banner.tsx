@@ -32,10 +32,12 @@ export default Banner;
 const Wrapper = styled.div<{
   type: 'talk' | 'location' | 'developers' | 'kakao';
 }>`
+  position: relative;
   width: calc(100% - 36px);
   max-width: 360px;
   height: calc((100vw - 36px) / 2);
-  max-height: 180px;
+  max-height: 160px;
+  min-height: 150px;
   margin: 0px 18px;
   padding: 28px 18px 37px 28px;
   background: ${({ theme }) => theme.palette.mono.white};
@@ -44,7 +46,13 @@ const Wrapper = styled.div<{
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+
+  & > svg {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
 
   & > div {
     display: flex;

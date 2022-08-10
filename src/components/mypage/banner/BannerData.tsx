@@ -6,14 +6,14 @@ export interface IBannerDataProps {
 
 export const bannerData: Array<IBannerDataProps> = [
   {
-    type: 'talk',
-    subtitle: '응원톡 남기고',
-    title: '스타벅스 받자!',
-  },
-  {
     type: 'location',
     subtitle: '헤메지 마세요',
     title: '공연장 정보',
+  },
+  {
+    type: 'talk',
+    subtitle: '응원톡 남기고',
+    title: '스타벅스 받자!',
   },
   {
     type: 'developers',

@@ -1,19 +1,31 @@
 import { atom } from 'recoil';
-import { CheckBeforeSendProps } from '../components/modal/CheckBeforeSend';
-import { ModalTypes } from '../components/modal/GlobalModal';
-import { NoticeProps } from '../components/modal/Notice';
+import { MODAL_TYPES } from '../components/modal/GlobalModal';
 
 export type TNoticeModal = {
-  modalType: typeof ModalTypes.Notice;
+  modalType: typeof MODAL_TYPES.Notice;
   modalProps: any;
 };
 
 export type TCheckBeforeSendModal = {
-  modalType: typeof ModalTypes.CheckBeforeSend;
+  modalType: typeof MODAL_TYPES.CheckBeforeSend;
   modalProps: any;
 };
 
-export type ModalType = TNoticeModal | TCheckBeforeSendModal;
+export type TLocationModal = {
+  modalType: typeof MODAL_TYPES.Location;
+  modalProps: any;
+};
+
+export type TDevelopersModal = {
+  modalType: typeof MODAL_TYPES.Developers;
+  modalProps: any;
+};
+
+export type ModalType =
+  | TNoticeModal
+  | TCheckBeforeSendModal
+  | TLocationModal
+  | TDevelopersModal;
 export const modalState = atom<ModalType | null>({
   key: 'modalState',
   default: null,

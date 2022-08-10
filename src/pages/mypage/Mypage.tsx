@@ -47,9 +47,9 @@ const Mypage = () => {
       <MyReservedTicket date="YB" tickets={YBTickets} status={ticketsStatus} />
       <MyReservedTicket date="OB" tickets={OBTickets} status={ticketsStatus} />
       <h2>바로가기</h2>
-      <ShortCut type="mainPage" onClick={() => navigate('/')} />
       <ShortCut type="talk" onClick={() => navigate('/mypage/talk')} />
       <ShortCut type="orderList" onClick={() => navigate('/mypage/tickets')} />
+      <ShortCut type="mainPage" onClick={() => navigate('/')} />
       <Footer />
     </Wrapper>
   );
