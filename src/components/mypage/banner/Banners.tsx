@@ -63,7 +63,7 @@ const Banners = () => {
     },
   };
   const swiperParams = {
-    spaceBetween: -9,
+    spaceBetween: -18,
     centeredSlides: true,
     slidesPerView: slidesCount,
     modules: [Pagination, Autoplay],
