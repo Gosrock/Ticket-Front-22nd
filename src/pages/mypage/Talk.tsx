@@ -8,9 +8,10 @@ import useGetTalks from '../../hooks/queries/useGetTalks';
 import useGetTalksCount from '../../hooks/queries/useGetTalksCount';
 
 const Talk = () => {
-  const { data, status, isFetchingNextPage, Observation } = useGetTalks();
+  const { data, isFetchingNextPage, Observation } = useGetTalks();
   const { status: countStatus, count } = useGetTalksCount();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <Wrapper>
       <AppBar label={'마이페이지'} />
