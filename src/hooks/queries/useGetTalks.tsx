@@ -12,12 +12,13 @@ type InfiniteTalkType = {
 };
 
 const useGetTalks = () => {
-  const { data, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery<
+  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery<
     InfiniteTalkType,
     unknown
   >(['talks'], UsersApi.getTalks, {
     getNextPageParam: (lastPage) => lastPage.lastId,
     //refetchInterval: 5000,
+    suspense: true,
   });
 
   const Observation = (): ReactElement => {
@@ -34,7 +35,7 @@ const useGetTalks = () => {
     return <div className="asfd" ref={ref} style={{ height: '20px' }} />;
   };
 
-  return { data, status, fetchNextPage, isFetchingNextPage, Observation };
+  return { data, fetchNextPage, isFetchingNextPage, Observation };
 };
 
 export default useGetTalks;

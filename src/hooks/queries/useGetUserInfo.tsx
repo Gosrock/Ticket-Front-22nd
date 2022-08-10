@@ -1,5 +1,4 @@
-import { AxiosError } from 'axios';
-import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import UsersApi from '../../apis/UsersApi';
 
 const useGetUserInfo = () => {
