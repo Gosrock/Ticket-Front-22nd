@@ -36,7 +36,7 @@ const Wrapper = styled.div<{
   width: calc(100% - 36px);
   max-width: 360px;
   height: calc((100vw - 36px) / 2);
-  max-height: 180px;
+  max-height: 160px;
   min-height: 150px;
   margin: 0px 18px;
   padding: 28px 18px 37px 28px;

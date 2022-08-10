@@ -6,7 +6,7 @@ export type DevelopersProps = {
 
 const list = [
   ['・ 이찬진', '기획・백엔드 , 어드민 팀장'],
-  ['・ 한규진', '기획・UI/UX・어드민 팀장'],
+  ['・ 한규진', '기획・UI/UX・프론트 팀장'],
   ['・ 김민준', '백엔드'],
   ['・ 김원진', '백엔드'],
   ['・ 노경민', '백엔드'],
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   z-index: 110;
   height: 100%;
   box-sizing: border-box;
-  padding: 36px 36px 24px 36px;
+  padding: 36px 24px 24px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,12 +61,13 @@ const Wrapper = styled.div`
 `;
 
 const Head = styled.div`
+  margin-left: 12px;
   ${({ theme }) => theme.typo.text_18_B}
   color: ${({ theme }) => theme.palette.mono.black_00};
 `;
 
 const Content = styled.div`
-  padding: 12px;
+  padding: 12px 8px;
   margin-top: 36px;
   width: 100%;
   height: 246px;
