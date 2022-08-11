@@ -1,6 +1,6 @@
-import { AxiosError } from 'axios';
+import { ICustomError } from './useApiError';
 
-const defaultHandler = (axiosError: AxiosError) => {
-  console.error(axiosError);
+const defaultHandler = (error: ICustomError) => {
+  console.error(error);
 };
 export default defaultHandler;

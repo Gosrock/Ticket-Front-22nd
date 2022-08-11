@@ -11,7 +11,7 @@ interface ITicketInfoProps extends IDepositStatusProps {
 
 const TicketInfo = ({ status, createdat, id, onClick }: ITicketInfoProps) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <Top>
         <DepositStatus status={status} />
         <Info>
@@ -27,7 +27,7 @@ const TicketInfo = ({ status, createdat, id, onClick }: ITicketInfoProps) => {
       <Bottom>
         <DashedLine />
         {/* dashedLine 크기가 이상하게 표시되어 dashedLine과 showQR 사이 패딩을 10.5에서 7.5로 조정함 */}
-        <ShowQR onClick={onClick}>
+        <ShowQR>
           <p>QR코드 보기</p>
           <QRcode />
         </ShowQR>
@@ -47,6 +47,8 @@ const Wrapper = styled.div`
   border-radius: 16px;
   box-sizing: border-box;
   padding-top: 8px;
+
+  cursor: pointer;
 `;
 
 const Top = styled.div`
