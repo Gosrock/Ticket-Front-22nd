@@ -20,7 +20,6 @@ declare module 'styled-components' {
         black_12: '#121212';
         black_26: '#262626';
         black_36: '#363636';
-        black_footer: '#24272B';
         font_main: '#fafafa';
         font_sub: '#b6b7b8';
         font_placeholder: '#939393';

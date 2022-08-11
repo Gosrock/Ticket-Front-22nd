@@ -18,7 +18,6 @@ const useGetTalks = () => {
   >(['talks'], UsersApi.getTalks, {
     getNextPageParam: (lastPage) => lastPage.lastId,
     //refetchInterval: 5000,
-    suspense: true,
   });
 
   const Observation = (): ReactElement => {
