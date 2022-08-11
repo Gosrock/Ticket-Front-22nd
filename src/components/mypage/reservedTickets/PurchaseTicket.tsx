@@ -9,8 +9,8 @@ interface IPurchaseTicketProps {
 
 const PurchaseTicket = ({ isFirst, onClick }: IPurchaseTicketProps) => {
   return (
-    <Wrapper>
-      <ToTicketing onClick={onClick}>
+    <Wrapper onClick={onClick}>
+      <ToTicketing>
         {isFirst ? <p>예매하러 가기</p> : <p>또 예매할래요</p>}
         <Ticket style={{ width: '30px' }} />
       </ToTicketing>
@@ -26,6 +26,8 @@ const Wrapper = styled.div`
   width: 150px;
   height: 120px;
   padding: 84px 12px 6px 12px;
+
+  cursor: pointer;
 `;
 
 const ToTicketing = styled.div`
