@@ -40,6 +40,14 @@ declare module 'styled-components' {
       placeholder_24_R: string;
       appbar_18_R: string;
       tag_10_B: string;
+      landing: {
+        title_48_B: string;
+        text_36_B: string;
+        title_24_B: string;
+        text_18_B: string;
+        count_96_B: string;
+        text_22_B: string;
+      };
     };
     boxShadow: {
       normal: '0 3px 8px 0 rgb(0 0 0 / 10%)';
