@@ -44,6 +44,8 @@ const Wrapper = styled.div<{
   box-sizing: border-box;
   border-radius: 16px;
 
+  cursor: pointer;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

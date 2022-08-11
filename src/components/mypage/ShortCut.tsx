@@ -47,6 +47,8 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 0 16px;
 
+  cursor: pointer;
+
   background: ${({ theme }) => theme.palette.mono.black_26};
   border-radius: 12px;
 

@@ -39,6 +39,8 @@ const Wrapper = styled.div<{
         `}
   border-radius: 16px;
 
+  cursor: pointer;
+
   & > p {
     position: absolute;
     left: 10%;

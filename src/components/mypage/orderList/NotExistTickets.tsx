@@ -49,6 +49,8 @@ const Button = styled.div`
   align-items: center;
   text-align: center;
 
+  cursor: pointer;
+
   & > p {
     ${({ theme }) => theme.typo.text_14_M}
     color: ${({ theme }) => theme.palette.mono.black_12};
