@@ -1,45 +1,84 @@
 import styled from 'styled-components';
 import { ReactComponent as CheckFilled } from '../../assets/icons/checkOk.svg';
 import { ReactComponent as CheckOutlined } from '../../assets/icons/check.svg';
-import { useState } from 'react';
-const CheckedTicket = ({}) => {
-  const [Selected, SetSelected] = useState<boolean>(true);
+import { useToast } from '../../hooks/useToast';
+import { optionState } from '../../stores/option';
+import { useRecoilValue } from 'recoil';
 
-  const CheckButtonClick = () => {
-    SetSelected(!Selected);
+type CheckedTicketType = {
+  selected: boolean;
+  setSelected: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const CheckedTicket = ({ selected, setSelected }: CheckedTicketType) => {
+  const { fireToast } = useToast();
+  const option = useRecoilValue(optionState);
+  const copyNumber = () => {
+    navigator.clipboard.writeText('100026465446');
+    fireToast('계좌가 복사되었어요');
+  };
+
+  const price =
+    option.date === 'BOTH' ? 5000 * option.count : 3000 * option.count;
+
+  const kakaoClickButtonHandler = (price: number) => {
+    const toHexValue = (price: number) => {
+      return (price * 524288).toString(16);
+    };
+    const openInNewTab = (url: string) => {
+      const newWindow = window.open(url);
+
+      setTimeout(() => {
+        return newWindow!.close();
+      }, 3000);
+    };
+
+    const url = `https://qr.kakaopay.com/FTy7260dI${toHexValue(price)}`;
+    openInNewTab(url);
   };
 
   return (
     <Wrapper>
       <Contents>
-        <Item>
+        <div>
           <p>계좌명</p>
           <p>예금주</p>
           <p>입금액</p>
-        </Item>
+        </div>
         <Line />
-        <Content>
-          <p>토스 1000-2646-5446</p>
+        <div>
+          <p>
+            토스 1000-2646-5446{' '}
+            <span className="copy" onClick={copyNumber}>
+              계좌 복사
+            </span>
+          </p>
           <p>박도연</p>
           <p>
-            <span>5,000원</span>
+            <span>{price.toLocaleString('ko-KR')}원</span>
           </p>
-        </Content>
+        </div>
       </Contents>
-      <UnderLine />
-      <AccountButton>
-        <span onClick={CheckButtonClick}>
-          {Selected ? (
-            <CheckOutlined cursor={'pointer'} />
-          ) : (
-            <CheckFilled cursor={'pointer'} />
-          )}
-          <p>입금했어요</p>
-        </span>
-        <span>
-          <p>카카오페이로 송금하기</p>
-        </span>
-      </AccountButton>
+      <div>
+        <UnderLine />
+        <AccountButton selected={selected}>
+          <div
+            onClick={() => {
+              setSelected(!selected);
+            }}
+          >
+            {selected ? <CheckFilled /> : <CheckOutlined />}
+            <p>입금했어요</p>
+          </div>
+          <button
+            onClick={() => {
+              kakaoClickButtonHandler(price);
+            }}
+          >
+            카카오페이로 송금하기
+          </button>
+        </AccountButton>
+      </div>
     </Wrapper>
   );
 };
@@ -58,80 +97,85 @@ const Wrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  height: 72px;
-  margin: 2px 0;
   padding: 0px 18px 0px 16px;
   display: flex;
   flex-direction: row;
+
+  & > div:first-child {
+    & p {
+      ${({ theme }) => theme.typo.text_14_R};
+      color: ${({ theme }) => theme.palette.mono.font_sub};
+      margin-bottom: 16px;
+    }
+    & :last-child {
+      margin: 0;
+    }
+  }
+
+  & > div:last-child {
+    & p {
+      ${({ theme }) => theme.typo.text_14_R};
+      color: ${({ theme }) => theme.palette.mono.white};
+      margin-bottom: 16px;
+    }
+
+    & span {
+      color: ${({ theme }) => theme.palette.point.red};
+    }
+  }
+
+  .copy {
+    color: ${({ theme }) => theme.palette.mono.font_sub} !important;
+    ${({ theme }) => theme.typo.tag_10_B}
+    padding: 2px 8px;
+    padding-bottom: 3px;
+    background-color: ${({ theme }) => theme.palette.mono.black_36};
+    border-radius: 8px;
+    margin-left: 8px;
+    cursor: pointer;
+  }
 `;
 
-const Item = styled.div`
-  width: 55px;
-  height: 19px;
-  padding: 3px 0px;
-
-  & p {
-    ${({ theme }) => theme.typo.text_14_R};
-    color: ${({ theme }) => theme.palette.mono.font_sub};
-    margin-bottom: 16px;
-  }
-  & :last-child {
-    margin: 0;
-  }
-`;
-
-const Line = styled.hr`
-  width: 0px;
+const Line = styled.div`
+  width: 1px;
   height: 72px;
-  margin: 2px 12px 0px 7px;
-
-  border: none;
-  border-left: 1px solid ${({ theme }) => theme.palette.mono.black_36};
+  margin-right: 12px;
+  margin-left: 25px;
+  background-color: ${({ theme }) => theme.palette.mono.black_36};
 `;
 
-const UnderLine = styled.hr`
+const UnderLine = styled.div`
   width: 100%;
-  height: 0px;
-
-  border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.mono.black_36};
-  margin-top: 20px;
+  height: 1px;
+  background-color: ${({ theme }) => theme.palette.mono.black_36};
 `;
 
-const AccountButton = styled.div`
-  height: 22px;
+const AccountButton = styled.div<{ selected: boolean }>`
   display: flex;
   flex-direction: row;
   gap: 16px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  padding: 0px 16px 0px 16px;
+  margin: 12px 16px;
+  margin-top: 13px;
   justify-content: space-between;
+  align-items: center;
 
-  & p {
-    padding: 3px 0px 0px 12px;
+  ${({ theme }) => theme.typo.text_14_R};
+  color: ${({ theme, selected }) =>
+    selected ? theme.palette.point.lavender : theme.palette.mono.font_sub};
+
+  & > div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    & > p {
+      margin-left: 12px;
+    }
+  }
+  button {
     ${({ theme }) => theme.typo.text_14_R};
     color: ${({ theme }) => theme.palette.mono.font_sub};
-    margin-bottom: 16px;
-  }
-
-  & span {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-const Content = styled.div`
-  height: 110px;
-  padding: 3px 0px;
-
-  & p {
-    ${({ theme }) => theme.typo.text_14_R};
-    color: ${({ theme }) => theme.palette.mono.white};
-    margin-bottom: 16px;
-  }
-
-  & span {
-    color: ${({ theme }) => theme.palette.point.red};
+    text-decoration: underline;
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
   }
 `;

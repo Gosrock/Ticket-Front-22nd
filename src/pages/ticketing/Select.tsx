@@ -5,6 +5,9 @@ import DaySelect from '../../components/ticketing/DaySelect';
 import TicketCount from '../../components/ticketing/TicketCount';
 import ButtonSet from '../../components/common/ButtonSet';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { optionState } from '../../stores/option';
 
 export type TSelectedDateType = {
   day1: boolean;
@@ -12,12 +15,31 @@ export type TSelectedDateType = {
 };
 
 const Select = () => {
+  const navigate = useNavigate();
+  const [option, setOption] = useRecoilState(optionState);
   const [selectedDate, setSelectedDate] = useState<TSelectedDateType>({
     day1: false,
     day2: false,
   });
   const [selectedCount, setSelectedCount] = useState<1 | 2 | 3>(1);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
+
+  const handleClickNext = async () => {
+    let date = 'YB' as 'YB' | 'OB' | 'BOTH';
+    switch (true) {
+      case selectedDate.day1 && !selectedDate.day2:
+        date = 'YB';
+        break;
+      case !selectedDate.day1 && selectedDate.day2:
+        date = 'OB';
+        break;
+      case selectedDate.day1 && selectedDate.day2:
+        date = 'BOTH';
+        break;
+    }
+    navigate('/ticketing/check');
+    setOption({ date: date, count: selectedCount });
+  };
 
   useEffect(() => {
     if (selectedDate.day1 || selectedDate.day2) {
@@ -41,7 +63,10 @@ const Select = () => {
         <Title>티켓 매수를 선택해주세요</Title>
         <TicketCount selected={selectedCount} setSelected={setSelectedCount} />
       </SetMargin>
-      <ButtonSet buttonDisabled={buttonDisabled}></ButtonSet>
+      <ButtonSet
+        buttonDisabled={buttonDisabled}
+        onClick={handleClickNext}
+      ></ButtonSet>
     </>
   );
 };

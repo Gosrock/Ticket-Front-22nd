@@ -1,22 +1,42 @@
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
+import { authState } from '../../stores/auth';
+import { IOptionType } from '../../stores/option';
 
-const CheckedTicket = () => {
+const renderContent = {
+  YB: <p>9월 1일 목요일</p>,
+  OB: <p>9월 2일 금요일</p>,
+  BOTH: (
+    <p>
+      양일권 <span>(할인 적용)</span>
+    </p>
+  ),
+};
+
+const CheckedTicket = ({ option }: { option: IOptionType }) => {
+  const auth = useRecoilValue(authState);
+  const { status, data } = useGetUserInfo();
   return (
     <Wrapper>
       <Contents>
-        <Item>
+        <div>
           <p>입금자명</p>
           <p>관람날짜</p>
           <p>티켓매수</p>
-        </Item>
+        </div>
         <Line />
-        <Content>
-          <p>한규진</p>
-          <p>
-            양일권 <span>(할인 적용)</span>
-          </p>
-          <p>2매 (총 4매)</p>
-        </Content>
+        <div>
+          <p>{data?.data.name}</p>
+          {renderContent[option.date!]}
+          {option.date === 'BOTH' ? (
+            <p>
+              {option.count}매 (총 {option.count * 2}매)
+            </p>
+          ) : (
+            <p>{option.count}매</p>
+          )}
+        </div>
       </Contents>
     </Wrapper>
   );
@@ -32,53 +52,40 @@ const Wrapper = styled.div`
 
   background: ${({ theme }) => theme.palette.mono.black_26};
   border-radius: 8px;
-  padding: 20px 18px 20px 16px;
+  padding: 20px 16px;
 `;
 
 const Contents = styled.div`
-  height: 90px;
-
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  & > div:first-child {
+    & p {
+      ${({ theme }) => theme.typo.text_14_R};
+      color: ${({ theme }) => theme.palette.mono.font_sub};
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  & > div:last-child {
+    & p {
+      ${({ theme }) => theme.typo.text_14_R};
+      color: ${({ theme }) => theme.palette.mono.white};
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+
+    & span {
+      color: ${({ theme }) => theme.palette.point.red};
+    }
+  }
 `;
 
-const Item = styled.div`
-  width: 55px;
-  height: 19px;
-  padding: 7px 0px;
-
-  & p {
-    ${({ theme }) => theme.typo.text_14_R};
-    color: ${({ theme }) => theme.palette.mono.font_sub};
-    margin-bottom: 16px;
-  }
-  & :last-child {
-    margin: 0;
-  }
-`;
-
-const Line = styled.hr`
-  width: 0px;
+const Line = styled.div`
+  width: 1px;
   height: 90px;
-  margin: 0px 12px 0px 7px;
-
-  border: none;
-  border-left: 1px solid ${({ theme }) => theme.palette.mono.black_36};
-`;
-
-const Content = styled.div`
-  height: 110px;
-  padding: 7px 0px;
-
-  & p {
-    ${({ theme }) => theme.typo.text_14_R};
-    color: ${({ theme }) => theme.palette.mono.white};
-    margin-bottom: 16px;
-  }
-  & :last-child {
-    margin: 0;
-  }
-  & span {
-    color: ${({ theme }) => theme.palette.point.red};
-  }
+  margin: 0 12px;
+  background-color: ${({ theme }) => theme.palette.mono.black_36};
 `;
