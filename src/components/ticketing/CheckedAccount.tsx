@@ -2,12 +2,18 @@ import styled from 'styled-components';
 import { ReactComponent as CheckFilled } from '../../assets/icons/checkOk.svg';
 import { ReactComponent as CheckOutlined } from '../../assets/icons/check.svg';
 import { useState } from 'react';
+import { SelectedAccountType } from '../../pages/ticketing/Check';
 
-const CheckedTicket = () => {
-  const [Selected, setSelected] = useState<boolean>(true);
+type AccountCheckProps = {
+  selected: SelectedAccountType;
+  setSelected: React.Dispatch<React.SetStateAction<SelectedAccountType>>;
+};
+
+const CheckedTicket = ({ selected, setSelected }: AccountCheckProps) => {
+  const [Selected, SetSelected] = useState<boolean>(true);
 
   const CheckButtonClick = () => {
-    setSelected(!Selected);
+    SetSelected(!Selected);
   };
 
   return (
@@ -35,7 +41,6 @@ const CheckedTicket = () => {
           ) : (
             <CheckFilled cursor={'pointer'} />
           )}
-
           <p>입금했어요</p>
         </span>
         <span>
@@ -110,6 +115,7 @@ const AccountButton = styled.div`
   padding: 0px 16px 0px 16px;
   justify-content: space-between;
 
+  
   & p {
     padding: 3px 0px 0px 12px;
     ${({ theme }) => theme.typo.text_14_R};

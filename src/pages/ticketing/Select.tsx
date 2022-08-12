@@ -12,15 +12,37 @@ export type TSelectedDateType = {
 };
 
 export type TSelectedCountType = {
-  selected: 1 | 2 | 3;
+  // selected: 1 | 2 | 3;
+  n1: boolean;
+  n2: boolean;
+  n3: boolean;
 };
 
 const Select = () => {
   const [selectedDate, setSelectedDate] = useState<TSelectedDateType>({
     day1: false,
-    day2: false,
+    day2: false
   });
+
+  const [selectedNum, setSelectedNum] = useState<TSelectedCountType>({
+    n1: true,
+    n2: false,
+    n3: false
+  });
+
+  // const [NextBtnAble, setNetxtBtnAble] = useState(false);
+
+  // useEffect(() => {
+  //   if (selectedDate.day1===true||selectedDate.day2===true) {
+  //     setNetxtBtnAble(true);
+  //   } else {
+  //     setNetxtBtnAble(false);
+  //   }
+  // };
+
   return (
+
+  
     <>
       <AppBar label={'뒤로가기'} />
       <SetMargin>
@@ -32,9 +54,9 @@ const Select = () => {
           </p>
         </Content>
         <Title>티켓 매수를 선택해주세요</Title>
-        <TicketNum></TicketNum>
+        <TicketNum selected={selectedNum} setSelected={setSelectedNum}/>
       </SetMargin>
-      <ButtonSet></ButtonSet>
+      <ButtonSet buttonDisabled={selectedDate.day1 === true || selectedDate.day2 === true ? false : true}></ButtonSet>
     </>
   );
 };

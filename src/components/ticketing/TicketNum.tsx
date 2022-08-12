@@ -1,54 +1,48 @@
-import styled from 'styled-components';
-import ticketPNG from '../../assets/icons/ticket-select.png';
-import { useState } from 'react';
-import { bool } from 'prop-types';
+import styled, { css } from 'styled-components';
+import ticket1_PNG from '../../assets/icons/ticket_1.png';
+import ticket2_PNG from '../../assets/icons/ticket_2.png';
+import ticket3_PNG from '../../assets/icons/ticket_3.png';
+import { useEffect, useState } from 'react';
+import { TSelectedCountType } from '../../pages/ticketing/Select';
 
-const TicketNum = () => {
-  const [isTicketNumSelected, setisTicketNumSelected] =
-    useState<boolean>(false);
-  // const [isTicketNumSelected, setisTicketNumSelected] = useState([
-  //   {
-  //     id: 1
-  //   },
-  //   {
-  //     id: 2
-  //   },
-  //   {
-  //     id: 3
-  //   }
-  // ]);
-  // const Daylist =['1매', '2매', '3매'];
+type TicketNumSelectProps = {
+  selected: TSelectedCountType;
+  setSelected: React.Dispatch<React.SetStateAction<TSelectedCountType>>;
+};
 
-  // const handleClick = (idx : String) => {
-  // const newArr = Array(Daylist.length).fill(false);
-  //   newArr[idx] = true;
-  //   setisTicketNumSelected(newArr);
-  // };
+const TicketNum = ({ selected, setSelected }: TicketNumSelectProps) => {
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
 
-  const TicketNumButtonClick = () => {
-    setisTicketNumSelected(!isTicketNumSelected);
+  const onTicketNumButtonClick = (num:'n1'|'n2'|'n3') => {
+    setSelected({ ...selected, [num]: !selected[num] });
   };
 
   return (
     <Wrapper>
-      <CountButton
-        onClick={TicketNumButtonClick}
-        className={isTicketNumSelected ? 'Selected' : 'NotSelected'}
+      <CountButton onClick={() => { onTicketNumButtonClick('n1'); }}
+        // selected={selected === 1 ? }
+        selected={selected.n1}
       >
         <Ticket>
-          <img src={ticketPNG} />
+          <img src={ticket1_PNG} />
         </Ticket>
         <p>1매</p>
       </CountButton>
-      <CountButton>
+      <CountButton onClick={() => { onTicketNumButtonClick('n2'); }}
+        selected={selected.n2}
+      >
         <Ticket>
-          <img src={ticketPNG} />
+          <img src={ticket2_PNG} />
         </Ticket>
         <p>2매</p>
       </CountButton>
-      <CountButton>
+      <CountButton onClick={() => { onTicketNumButtonClick('n3'); }}
+        selected={selected.n3}
+      >
         <Ticket>
-          <img src={ticketPNG} />
+          <img src={ticket3_PNG} />
         </Ticket>
         <p>3매</p>
       </CountButton>
@@ -58,17 +52,17 @@ const TicketNum = () => {
 export default TicketNum;
 
 const Wrapper = styled.div`
+  width: 101.4px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 `;
 
-const CountButton = styled.div`
+const CountButton = styled.div<{selected: boolean}>`
   height: 120px;
   padding: 20px;
   border-radius: 16px;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.palette.mono.black_26};
 
   display: flex;
   flex-direction: column;
@@ -78,14 +72,17 @@ const CountButton = styled.div`
     text-align: center;
     ${({ theme }) => theme.typo.title_24_B};
   }
-
-  & > .Selected {
-    background-color: ${({ theme }) => theme.palette.point.lavenderDark};
-    border-color: ${({ theme }) => theme.palette.point.lavender};
-  }
-
-  & > .NotSelected {
-  }
+  
+  ${({ selected }) =>
+    selected
+      ? css`
+          background-color: ${({ theme }) => theme.palette.point.lavenderDark};
+          border: 1px solid ${({ theme }) => theme.palette.point.lavender};
+        `
+      : css`
+          background-color: ${({ theme }) => theme.palette.mono.black_26};
+        `}
+  
 `;
 
 const Ticket = styled.div`
@@ -94,7 +91,8 @@ const Ticket = styled.div`
   justify-content: center;
   align-items: center;
   & > img {
-    width: 25px;
-    margin: 0px 2px;
+    width: 60px;
+    height: 60px;
+    margin: 12px 0px;
   }
 `;
