@@ -13,7 +13,7 @@ export const bannerData: Array<IBannerDataProps> = [
   {
     type: 'talk',
     subtitle: '응원톡 남기고',
-    title: '스타벅스 받자!',
+    title: '기프티콘 받자!',
   },
   {
     type: 'developers',
