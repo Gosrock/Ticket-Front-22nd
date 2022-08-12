@@ -1,45 +1,48 @@
+import { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import ticket1_PNG from '../../assets/icons/ticket_1.png';
 import ticket2_PNG from '../../assets/icons/ticket_2.png';
 import ticket3_PNG from '../../assets/icons/ticket_3.png';
-import { useEffect, useState } from 'react';
-import { TSelectedCountType } from '../../pages/ticketing/Select';
 
 type TicketNumSelectProps = {
-  selected: TSelectedCountType;
-  setSelected: React.Dispatch<React.SetStateAction<TSelectedCountType>>;
+  selected: 1 | 2 | 3;
+  setSelected: React.Dispatch<React.SetStateAction<1 | 2 | 3>>;
 };
 
-const TicketNum = ({ selected, setSelected }: TicketNumSelectProps) => {
+const TickeCount = ({ selected, setSelected }: TicketNumSelectProps) => {
   useEffect(() => {
     console.log(selected);
   }, [selected]);
 
-  const onTicketNumButtonClick = (num:'n1'|'n2'|'n3') => {
-    setSelected({ ...selected, [num]: !selected[num] });
-  };
-
   return (
     <Wrapper>
-      <CountButton onClick={() => { onTicketNumButtonClick('n1'); }}
-        // selected={selected === 1 ? }
-        selected={selected.n1}
+      <CountButton
+        onClick={() => {
+          setSelected(1);
+        }}
+        selected={selected === 1}
       >
         <Ticket>
           <img src={ticket1_PNG} />
         </Ticket>
         <p>1매</p>
       </CountButton>
-      <CountButton onClick={() => { onTicketNumButtonClick('n2'); }}
-        selected={selected.n2}
+      <CountButton
+        onClick={() => {
+          setSelected(2);
+        }}
+        selected={selected === 2}
       >
         <Ticket>
           <img src={ticket2_PNG} />
         </Ticket>
         <p>2매</p>
       </CountButton>
-      <CountButton onClick={() => { onTicketNumButtonClick('n3'); }}
-        selected={selected.n3}
+      <CountButton
+        onClick={() => {
+          setSelected(3);
+        }}
+        selected={selected === 3}
       >
         <Ticket>
           <img src={ticket3_PNG} />
@@ -49,18 +52,18 @@ const TicketNum = ({ selected, setSelected }: TicketNumSelectProps) => {
     </Wrapper>
   );
 };
-export default TicketNum;
+export default TickeCount;
 
 const Wrapper = styled.div`
-  width: 101.4px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 `;
 
-const CountButton = styled.div<{selected: boolean}>`
+const CountButton = styled.button<{ selected: boolean }>`
   height: 120px;
-  padding: 20px;
+  padding: 12px 12px 20px 12px;
   border-radius: 16px;
   cursor: pointer;
 
@@ -72,7 +75,7 @@ const CountButton = styled.div<{selected: boolean}>`
     text-align: center;
     ${({ theme }) => theme.typo.title_24_B};
   }
-  
+
   ${({ selected }) =>
     selected
       ? css`
@@ -81,18 +84,15 @@ const CountButton = styled.div<{selected: boolean}>`
         `
       : css`
           background-color: ${({ theme }) => theme.palette.mono.black_26};
+          border: 1px solid ${({ theme }) => theme.palette.mono.black_26};
         `}
-  
 `;
 
 const Ticket = styled.div`
-  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   & > img {
-    width: 60px;
     height: 60px;
-    margin: 12px 0px;
   }
 `;

@@ -2,47 +2,32 @@ import AppBar from '../../components/common/AppBar';
 import SetMargin from '../../components/common/SetMargin';
 import styled from 'styled-components';
 import DaySelect from '../../components/ticketing/DaySelect';
-import TicketNum from '../../components/ticketing/TicketNum';
+import TicketCount from '../../components/ticketing/TicketCount';
 import ButtonSet from '../../components/common/ButtonSet';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export type TSelectedDateType = {
   day1: boolean;
   day2: boolean;
 };
 
-export type TSelectedCountType = {
-  // selected: 1 | 2 | 3;
-  n1: boolean;
-  n2: boolean;
-  n3: boolean;
-};
-
 const Select = () => {
   const [selectedDate, setSelectedDate] = useState<TSelectedDateType>({
     day1: false,
-    day2: false
+    day2: false,
   });
+  const [selectedCount, setSelectedCount] = useState<1 | 2 | 3>(1);
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
-  const [selectedNum, setSelectedNum] = useState<TSelectedCountType>({
-    n1: true,
-    n2: false,
-    n3: false
-  });
-
-  // const [NextBtnAble, setNetxtBtnAble] = useState(false);
-
-  // useEffect(() => {
-  //   if (selectedDate.day1===true||selectedDate.day2===true) {
-  //     setNetxtBtnAble(true);
-  //   } else {
-  //     setNetxtBtnAble(false);
-  //   }
-  // };
+  useEffect(() => {
+    if (selectedDate.day1 || selectedDate.day2) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [selectedCount, selectedDate]);
 
   return (
-
-  
     <>
       <AppBar label={'뒤로가기'} />
       <SetMargin>
@@ -54,9 +39,9 @@ const Select = () => {
           </p>
         </Content>
         <Title>티켓 매수를 선택해주세요</Title>
-        <TicketNum selected={selectedNum} setSelected={setSelectedNum}/>
+        <TicketCount selected={selectedCount} setSelected={setSelectedCount} />
       </SetMargin>
-      <ButtonSet buttonDisabled={selectedDate.day1 === true || selectedDate.day2 === true ? false : true}></ButtonSet>
+      <ButtonSet buttonDisabled={buttonDisabled}></ButtonSet>
     </>
   );
 };
@@ -70,15 +55,13 @@ const Title = styled.p`
 `;
 
 const Content = styled.div`
-  height: 110px;
   padding: 3px 0px;
   margin-top: 10px;
-  margin-bottom: -40px;
+  margin-bottom: 40px;
 
   & p {
     ${({ theme }) => theme.typo.text_14_R};
     color: ${({ theme }) => theme.palette.mono.font_sub};
-    margin-bottom: 22px;
   }
   & :last-child {
     margin: 0;

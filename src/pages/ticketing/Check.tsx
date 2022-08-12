@@ -16,7 +16,6 @@ const Check = () => {
         <Title>
           <p>아래 계좌로 입금하고</p>예매를 완료해주세요
         </Title>
-        <CheckedAccount></CheckedAccount>
       </SetMargin>
       <ButtonSet></ButtonSet>
     </>

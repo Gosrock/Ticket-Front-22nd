@@ -2,14 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as CheckFilled } from '../../assets/icons/checkOk.svg';
 import { ReactComponent as CheckOutlined } from '../../assets/icons/check.svg';
 import { useState } from 'react';
-import { SelectedAccountType } from '../../pages/ticketing/Check';
-
-type AccountCheckProps = {
-  selected: SelectedAccountType;
-  setSelected: React.Dispatch<React.SetStateAction<SelectedAccountType>>;
-};
-
-const CheckedTicket = ({ selected, setSelected }: AccountCheckProps) => {
+const CheckedTicket = ({}) => {
   const [Selected, SetSelected] = useState<boolean>(true);
 
   const CheckButtonClick = () => {
@@ -115,7 +108,6 @@ const AccountButton = styled.div`
   padding: 0px 16px 0px 16px;
   justify-content: space-between;
 
-  
   & p {
     padding: 3px 0px 0px 12px;
     ${({ theme }) => theme.typo.text_14_R};
