@@ -1,5 +1,4 @@
-import { AxiosError } from 'axios';
-import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import UsersApi from '../../apis/UsersApi';
 
 const useGetUserInfo = () => {
@@ -7,11 +6,8 @@ const useGetUserInfo = () => {
     refetchOnWindowFocus: false,
     retry: false,
     refetchOnMount: false,
-    onError: (error: AxiosError) => {
-      console.log(error);
-      // window.location.href = '/';
-    },
   });
+  console.log(status, data);
   return { status, data };
 };
 

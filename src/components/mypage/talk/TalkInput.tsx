@@ -55,6 +55,17 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
         });
       } else {
         //TODO: 에러처리 토스트 or 모달
+        openModal({
+          modalType: 'Notice',
+          modalProps: {
+            onClick: () => {
+              closeModal();
+            },
+            closeModal,
+            type: '에러처리',
+            errorMessage: '내용을 함께 입력해주세요',
+          },
+        });
       }
       reset();
     } catch (err) {

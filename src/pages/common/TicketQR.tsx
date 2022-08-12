@@ -13,6 +13,7 @@ import io, { Socket } from 'socket.io-client';
 import { ServerToClientEvents, SocketData } from '../../apis/type/socket';
 import { useQueryClient } from 'react-query';
 import useModal from '../../hooks/useModal';
+import QRBottomSkeleton from '../../components/skeleton/QRBottomSkeleton';
 const TicketQR = ({}) => {
   const auth = useRecoilValue(authState);
   const { ticketId } = useParams();
@@ -127,34 +128,41 @@ const TicketQR = ({}) => {
                 )}
               </div>
             </QRContainer>
-            <div>
-              <UtilityButton type={'share'} onClick={onShareButtonClick} />
-              <UtilityButton type={'kakao'} onClick={onChatButtonClick} />
-            </div>
-            <Notice>
-              <div className="left">
-                <p>
-                  {data?.data.date === 'YB'
-                    ? '9월 1일 목요일'
-                    : '9월 2일 금요일'}
-                </p>
+            {status === 'success' && (
+              <>
                 <div>
-                  <Locate />
-                  <p>{data?.data.date === 'YB' ? '드림홀' : '얼라이브홀'}</p>
+                  <UtilityButton type={'share'} onClick={onShareButtonClick} />
+                  <UtilityButton type={'kakao'} onClick={onChatButtonClick} />
                 </div>
-              </div>
-              <div className="right">
-                <div>
-                  <p>티켓번호</p>
-                  <p>#{data?.data.id}</p>
-                </div>
-                <div>
-                  <p>입금자명</p>
-                  <p>{data?.data.user.name}</p>
-                </div>
-              </div>
-            </Notice>
+                <Notice>
+                  <div className="left">
+                    <p>
+                      {data?.data.date === 'YB'
+                        ? '9월 1일 목요일'
+                        : '9월 2일 금요일'}
+                    </p>
+                    <div>
+                      <Locate />
+                      <p>
+                        {data?.data.date === 'YB' ? '드림홀' : '얼라이브홀'}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="right">
+                    <div>
+                      <p>티켓번호</p>
+                      <p>#{data?.data.id}</p>
+                    </div>
+                    <div>
+                      <p>입금자명</p>
+                      <p>{data?.data.user.name}</p>
+                    </div>
+                  </div>
+                </Notice>
+              </>
+            )}
           </TicketContainer>
+          {status !== 'success' && <QRBottomSkeleton />}
         </SetMargin>
       </div>
     </Wrapper>

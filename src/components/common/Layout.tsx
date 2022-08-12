@@ -19,7 +19,7 @@ function Layout() {
       window.removeEventListener('resize', setScreenSize);
     };
   }, []);
-  const isPC = useMediaQuery({ minWidth: 768 });
+  const isPC = useMediaQuery({ minWidth: 577 });
 
   return (
     <Wrapper>
@@ -50,7 +50,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   background-color: #121212;
   /* 모바일 화면 */
-  ${media.tablet} {
+  ${media.mobile} {
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     border: none;

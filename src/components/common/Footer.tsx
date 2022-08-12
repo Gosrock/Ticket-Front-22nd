@@ -1,4 +1,4 @@
-import { ReactComponent as Gosrock } from '../../assets/icons/gosrock.svg';
+import gosrock from '../../assets/gosrock.png';
 import { ReactComponent as Insta } from '../../assets/icons/instagram.svg';
 import { ReactComponent as Youtube } from '../../assets/icons/youtube.svg';
 import { ReactComponent as Github } from '../../assets/icons/github.svg';
@@ -9,7 +9,7 @@ const Footer = () => {
     <Wrapper>
       {/* 배포 완료시 수정해야함 */}
       <a href="https://github.com/Gosrock" target="_blank">
-        <Gosrock />
+        <img src={gosrock} />
       </a>
 
       <SecondRow>
@@ -34,29 +34,26 @@ export default Footer;
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 200px;
-  background-color: ${({ theme }) => theme.palette.mono.black_footer};
+  height: 180px;
+  background-color: ${({ theme }) => theme.palette.mono.black_26};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  img {
+    width: 44px;
+    margin-bottom: 20px;
+  }
   & p {
-    color: ${({ theme }) => theme.palette.mono.white};
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 22px;
-    text-align: center;
+    ${({ theme }) => theme.typo.tag_10_B}
+    font-weight: 500;
+    color: ${({ theme }) => theme.palette.mono.font_sub};
   }
 `;
 
 const SecondRow = styled.div`
-  width: 30%;
-  max-width: 125px;
-  margin: 16px 0px 18px 0;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 24px;
+  margin-bottom: 24px;
 `;

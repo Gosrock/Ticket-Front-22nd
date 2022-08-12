@@ -9,7 +9,8 @@ import { useCookies } from 'react-cookie';
 const Init = () => {
   const [value, bind] = useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
-  const setCookie = useCookies(['accessToken'])[1];
+  const [, setCookie] = useCookies(['accessToken']);
+  const [, , removeCookie] = useCookies(['registerToken']);
   const navigate = useNavigate();
   const handleClickRegister = async () => {
     const res = await AuthApi.register(
@@ -27,7 +28,7 @@ const Init = () => {
     });
 
     console.log(res);
-    localStorage.removeItem('registerToken');
+    removeCookie('registerToken');
     setAuth({ ...auth });
     navigate('/ticketing/select', { replace: true });
   };

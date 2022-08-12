@@ -14,10 +14,10 @@ const initialState = {
   phoneNumber: null,
 };
 
-const getLocalStorage = (): IAuthType => {
+const getTokenFromCookie = (): IAuthType => {
   const cookies = new Cookies();
   const accessToken = cookies.get('accessToken');
-  const registerToken = localStorage.getItem('registerToken');
+  const registerToken = cookies.get('registerToken');
   if (accessToken) {
     // 어세스토큰이 있으면 axios 인스턴스에 커먼 헤더로 집어넣음
     axiosPrivate.defaults.headers.common[
@@ -35,5 +35,5 @@ const getLocalStorage = (): IAuthType => {
 
 export const authState = atom<IAuthType>({
   key: 'auth',
-  default: getLocalStorage(),
+  default: getTokenFromCookie(),
 });

@@ -6,12 +6,9 @@ const useGetTickets = () => {
   const { status, data } = useQuery(['ticket'], TicketApi.getTickets, {
     refetchOnWindowFocus: false,
     retry: false,
-    // refetchOnMount: false,
+    staleTime: 5 * 1000 * 60,
+    // 5분
     refetchIntervalInBackground: false,
-    onError: (error: AxiosError) => {
-      console.error(error);
-      //window.location.href = '/';
-    },
   });
 
   console.log(status, data);

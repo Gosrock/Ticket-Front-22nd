@@ -10,6 +10,7 @@ export const theme: DefaultTheme = {
       red: '#ff7785',
       mint: '#9fe8d6',
       yellow_kakao: '#ffeb00',
+      green_starbucks: '#036635',
     },
 
     mono: {
@@ -20,7 +21,6 @@ export const theme: DefaultTheme = {
       black_12: '#121212',
       black_26: '#262626',
       black_36: '#363636',
-      black_footer: '#24272B',
       font_main: '#fafafa',
       font_sub: '#b6b7b8',
       font_placeholder: '#939393',

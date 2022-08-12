@@ -19,7 +19,8 @@ const Login = () => {
   const [valueValidate, bindValidate, resetValidate] = useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
   const redirectUri = useRecoilValue(redirectState);
-  const setCookie = useCookies(['accessToken'])[1];
+  const setAccessToken = useCookies(['accessToken'])[1];
+  const setRegisterToken = useCookies(['registerToken'])[1];
   const { openModal, closeModal } = useModal();
   const { mutate: mutateSend } = useMutation(AuthApi.messageSend);
   const { mutate: mutateValidate } = useMutation(AuthApi.messageValidate);
@@ -53,10 +54,10 @@ const Login = () => {
       },
       {
         onSuccess: (data) => {
+          let date = new Date();
           if (data.data.accessToken) {
             // 회원가입 되어있는 경우
-            let date = new Date();
-            setCookie('accessToken', data.data.accessToken, {
+            setAccessToken('accessToken', data.data.accessToken, {
               expires: new Date(date.setDate(date.getDate() + 3)),
               path: '/', //accessible on all pages
               secure: true, // only accessible through HTTPS
@@ -69,7 +70,11 @@ const Login = () => {
             });
           } else {
             // 회원가입 안되어있는 경우
-            localStorage.setItem('registerToken', data.data.registerToken);
+            setRegisterToken('registerToken', data.data.registerToken, {
+              expires: new Date(date.setDate(date.getMinutes() + 10)),
+              path: '/', //accessible on all pages
+              secure: true, // only accessible through HTTPS
+            });
             setAuth({
               ...auth,
               registerToken: data.data.registerToken,

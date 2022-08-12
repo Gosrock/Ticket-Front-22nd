@@ -1,4 +1,4 @@
-import { TCustomError } from './useApiError';
+import { ICustomError } from './useApiError';
 import useModal from '../../hooks/useModal';
 
 export type TErrorCode =
@@ -21,7 +21,7 @@ const errorMessage = {
 const useErrorModal = () => {
   const { openModal, closeModal } = useModal();
 
-  const openErrorModal = (error: TCustomError) => {
+  const openErrorModal = (error: ICustomError) => {
     const code = error.code as TErrorCode;
     console.log(code);
     openModal({
