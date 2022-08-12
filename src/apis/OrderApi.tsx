@@ -10,7 +10,7 @@ import { TResponseType } from './type/commonResponse';
 
 const OrderApi = {
   // 해당 주문의 티켓 생성
-  makeOrder: async (
+  postOrder: async (
     payload: IMakeOrderReq,
   ): Promise<TResponseType<IMakeOrderRes>> => {
     const { data } = await axiosPrivate.post('/orders', payload);
