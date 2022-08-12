@@ -4,15 +4,13 @@ import { ReactComponent as CheckOutlined } from '../../assets/icons/check.svg';
 import { useState } from 'react';
 
 const CheckedTicket = () => {
-
   const [Selected, setSelected] = useState<boolean>(true);
 
   const CheckButtonClick = () => {
     setSelected(!Selected);
   };
 
- 
-    return (
+  return (
     <Wrapper>
       <Contents>
         <Item>
@@ -21,21 +19,29 @@ const CheckedTicket = () => {
           <p>입금액</p>
         </Item>
         <Line />
-          <Content>
-            <p>토스 1000-2646-5446</p>
-            <p>박도연</p>
-            <p><span>5,000원</span></p>
+        <Content>
+          <p>토스 1000-2646-5446</p>
+          <p>박도연</p>
+          <p>
+            <span>5,000원</span>
+          </p>
         </Content>
       </Contents>
-        <UnderLine/>
-        <AccountButton>
-          <span onClick={CheckButtonClick}>
-            {Selected ? <CheckOutlined cursor={"pointer"} /> : <CheckFilled cursor={"pointer"} />}
-            {Selected ?
-              <p>입금했어요</p>:<p color={"${({ theme }) => theme.palette.point.lavender}"}>입금했어요</p> }
-          </span>
-          <span><p>카카오페이로 송금하기</p></span>
-        </AccountButton>
+      <UnderLine />
+      <AccountButton>
+        <span onClick={CheckButtonClick}>
+          {Selected ? (
+            <CheckOutlined cursor={'pointer'} />
+          ) : (
+            <CheckFilled cursor={'pointer'} />
+          )}
+
+          <p>입금했어요</p>
+        </span>
+        <span>
+          <p>카카오페이로 송금하기</p>
+        </span>
+      </AccountButton>
     </Wrapper>
   );
 };
@@ -83,7 +89,6 @@ const Line = styled.hr`
 
   border: none;
   border-left: 1px solid ${({ theme }) => theme.palette.mono.black_36};
-
 `;
 
 const UnderLine = styled.hr`
@@ -93,7 +98,6 @@ const UnderLine = styled.hr`
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.palette.mono.black_36};
   margin-top: 20px;
-
 `;
 
 const AccountButton = styled.div`
@@ -112,12 +116,11 @@ const AccountButton = styled.div`
     color: ${({ theme }) => theme.palette.mono.font_sub};
     margin-bottom: 16px;
   }
-  
+
   & span {
     display: flex;
     flex-direction: row;
   }
-  
 `;
 
 const Content = styled.div`
@@ -130,7 +133,6 @@ const Content = styled.div`
     margin-bottom: 16px;
   }
 
-  
   & span {
     color: ${({ theme }) => theme.palette.point.red};
   }

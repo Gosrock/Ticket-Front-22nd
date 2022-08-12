@@ -48,6 +48,7 @@ const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
       setButtonDisabled(true);
     }
   }, [bind]);
+
   return (
     <>
       <AppBar label={'뒤로 가기'} />

@@ -13,7 +13,9 @@ const Check = () => {
         <Title>티켓 구매 전, 확인해주세요</Title>
         <CheckedTicket></CheckedTicket>
         <Content></Content>
-        <Title><p>아래 계좌로 입금하고</p>예매를 완료해주세요</Title>
+        <Title>
+          <p>아래 계좌로 입금하고</p>예매를 완료해주세요
+        </Title>
         <CheckedAccount></CheckedAccount>
       </SetMargin>
       <ButtonSet></ButtonSet>
@@ -22,7 +24,6 @@ const Check = () => {
 };
 
 export default Check;
-  
 
 const Title = styled.p`
   ${({ theme }) => theme.typo.text_18_B};
@@ -37,5 +38,3 @@ const Title = styled.p`
 const Content = styled.div`
   margin-bottom: 32px;
 `;
-
-

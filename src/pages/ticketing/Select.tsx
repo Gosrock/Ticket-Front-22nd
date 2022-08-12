@@ -4,16 +4,28 @@ import styled from 'styled-components';
 import DaySelect from '../../components/ticketing/DaySelect';
 import TicketNum from '../../components/ticketing/TicketNum';
 import ButtonSet from '../../components/common/ButtonSet';
+import { useState } from 'react';
 
+export type TSelectedDateType = {
+  day1: boolean;
+  day2: boolean;
+};
+
+export type TSelectedCountType = {
+  selected: 1 | 2 | 3;
+};
 
 const Select = () => {
-
+  const [selectedDate, setSelectedDate] = useState<TSelectedDateType>({
+    day1: false,
+    day2: false,
+  });
   return (
     <>
       <AppBar label={'뒤로가기'} />
       <SetMargin>
         <Title>날짜를 선택해 주세요</Title>
-        <DaySelect></DaySelect>
+        <DaySelect selected={selectedDate} setSelected={setSelectedDate} />
         <Content>
           <p>
             양일 모두 구매시 <span>17%</span> 할인

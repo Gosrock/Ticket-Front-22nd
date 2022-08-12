@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { bool } from 'prop-types';
 
 const TicketNum = () => {
-
-  const [isTicketNumSelected, setisTicketNumSelected] = useState<boolean>(false)
+  const [isTicketNumSelected, setisTicketNumSelected] =
+    useState<boolean>(false);
   // const [isTicketNumSelected, setisTicketNumSelected] = useState([
   //   {
   //     id: 1
@@ -20,18 +20,21 @@ const TicketNum = () => {
   // const Daylist =['1매', '2매', '3매'];
 
   // const handleClick = (idx : String) => {
-	// const newArr = Array(Daylist.length).fill(false);
+  // const newArr = Array(Daylist.length).fill(false);
   //   newArr[idx] = true;
   //   setisTicketNumSelected(newArr);
-// };
-  
+  // };
+
   const TicketNumButtonClick = () => {
     setisTicketNumSelected(!isTicketNumSelected);
   };
 
   return (
     <Wrapper>
-      <CountButton onClick={TicketNumButtonClick} className={isTicketNumSelected ? "Selected" : "NotSelected"}>
+      <CountButton
+        onClick={TicketNumButtonClick}
+        className={isTicketNumSelected ? 'Selected' : 'NotSelected'}
+      >
         <Ticket>
           <img src={ticketPNG} />
         </Ticket>
