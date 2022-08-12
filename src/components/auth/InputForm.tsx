@@ -52,7 +52,9 @@ const InputForm = ({ page, bind, onResendButtonClick }: InputFormProps) => {
         }}
         onKeyPress={(e) => {
           if (e.key === 'Enter') {
-            e.target.blur();
+            if (document.activeElement instanceof HTMLElement) {
+              document.activeElement.blur();
+            }
           }
         }}
         className="input-box"
