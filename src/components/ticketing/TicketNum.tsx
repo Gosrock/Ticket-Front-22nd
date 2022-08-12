@@ -1,9 +1,37 @@
 import styled from 'styled-components';
 import ticketPNG from '../../assets/icons/ticket-select.png';
-const DaySelect = () => {
+import { useState } from 'react';
+import { bool } from 'prop-types';
+
+const TicketNum = () => {
+
+  const [isTicketNumSelected, setisTicketNumSelected] = useState<boolean>(false)
+  // const [isTicketNumSelected, setisTicketNumSelected] = useState([
+  //   {
+  //     id: 1
+  //   },
+  //   {
+  //     id: 2
+  //   },
+  //   {
+  //     id: 3
+  //   }
+  // ]);
+  // const Daylist =['1매', '2매', '3매'];
+
+  // const handleClick = (idx : String) => {
+	// const newArr = Array(Daylist.length).fill(false);
+  //   newArr[idx] = true;
+  //   setisTicketNumSelected(newArr);
+// };
+  
+  const TicketNumButtonClick = () => {
+    setisTicketNumSelected(!isTicketNumSelected);
+  };
+
   return (
     <Wrapper>
-      <CountButton>
+      <CountButton onClick={TicketNumButtonClick} className={isTicketNumSelected ? "Selected" : "NotSelected"}>
         <Ticket>
           <img src={ticketPNG} />
         </Ticket>
@@ -24,7 +52,7 @@ const DaySelect = () => {
     </Wrapper>
   );
 };
-export default DaySelect;
+export default TicketNum;
 
 const Wrapper = styled.div`
   display: grid;
@@ -36,6 +64,7 @@ const CountButton = styled.div`
   height: 120px;
   padding: 20px;
   border-radius: 16px;
+  cursor: pointer;
   background-color: ${({ theme }) => theme.palette.mono.black_26};
 
   display: flex;
@@ -45,6 +74,14 @@ const CountButton = styled.div`
   & > p {
     text-align: center;
     ${({ theme }) => theme.typo.title_24_B};
+  }
+
+  & > .Selected {
+    background-color: ${({ theme }) => theme.palette.point.lavenderDark};
+    border-color: ${({ theme }) => theme.palette.point.lavender};
+  }
+
+  & > .NotSelected {
   }
 `;
 

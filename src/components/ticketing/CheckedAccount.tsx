@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import { ReactComponent as CheckFilled } from '../../assets/icons/checkOk.svg';
 import { ReactComponent as CheckOutlined } from '../../assets/icons/check.svg';
+import { useState } from 'react';
 
 const CheckedTicket = () => {
+
+  const [Selected, setSelected] = useState<boolean>(true);
+
+  const CheckButtonClick = () => {
+    setSelected(!Selected);
+  };
 
  
     return (
@@ -22,9 +29,10 @@ const CheckedTicket = () => {
       </Contents>
         <UnderLine/>
         <AccountButton>
-          <span>
-            <CheckOutlined/>
-            <p>입금했어요</p>
+          <span onClick={CheckButtonClick}>
+            {Selected ? <CheckOutlined cursor={"pointer"} /> : <CheckFilled cursor={"pointer"} />}
+            {Selected ?
+              <p>입금했어요</p>:<p color={"${({ theme }) => theme.palette.point.lavender}"}>입금했어요</p> }
           </span>
           <span><p>카카오페이로 송금하기</p></span>
         </AccountButton>

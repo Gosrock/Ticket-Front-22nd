@@ -5,7 +5,9 @@ import DaySelect from '../../components/ticketing/DaySelect';
 import TicketNum from '../../components/ticketing/TicketNum';
 import ButtonSet from '../../components/common/ButtonSet';
 
+
 const Select = () => {
+
   return (
     <>
       <AppBar label={'뒤로가기'} />
