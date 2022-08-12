@@ -6,6 +6,7 @@ import useTimer from '../../hooks/useTimer';
 interface InputFormProps extends HTMLAttributes<HTMLInputElement> {
   page: 'send' | 'validate' | 'init';
   bind: IBindState<string>;
+  onResendButtonClick?: () => void;
 }
 
 const formContent = {
@@ -26,7 +27,7 @@ const formContent = {
   },
 };
 
-const InputForm = ({ page, bind }: InputFormProps) => {
+const InputForm = ({ page, bind, onResendButtonClick }: InputFormProps) => {
   const [time, reset] = useTimer();
   const { value, onChange } = bind;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -74,6 +75,7 @@ const InputForm = ({ page, bind }: InputFormProps) => {
           <span
             onClick={() => {
               reset();
+              onResendButtonClick && onResendButtonClick();
             }}
           >
             재전송

@@ -32,9 +32,15 @@ type TAuthTemplateProps = {
   page: 'send' | 'validate' | 'init';
   bind: IBindState<string>;
   handleClick: () => void;
+  onResendButtonClick?: () => void;
 };
 
-const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
+const AuthTemplate = ({
+  page,
+  bind,
+  handleClick,
+  onResendButtonClick,
+}: TAuthTemplateProps) => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
   useEffect(() => {
@@ -61,7 +67,13 @@ const AuthTemplate = ({ page, bind, handleClick }: TAuthTemplateProps) => {
           <p>{renderText[page].descriptionTop}</p>
           <p>{renderText[page].descriptionBottom}</p>
         </Description>
-        <InputForm page={page} bind={bind} />
+        <InputForm
+          page={page}
+          bind={bind}
+          onResendButtonClick={
+            page === 'validate' ? onResendButtonClick : undefined
+          }
+        />
       </SetMargin>
       <ButtonSet onClick={handleClick} buttonDisabled={buttonDisabled} />
     </>

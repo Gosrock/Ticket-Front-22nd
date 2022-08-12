@@ -1,25 +1,17 @@
-import styled from 'styled-components';
-import { ReactComponent as KakaoLogo } from '../../assets/icons/kakaoLogo.svg';
+import { HTMLAttributes } from 'react';
+import styled, { css } from 'styled-components';
+import { ReactComponent as KakaoLogo } from '../../assets/icons/kakao.svg';
 import { ReactComponent as Share } from '../../assets/icons/share.svg';
 
-interface IUtilityButtonProps {
+interface IUtilityButtonProps extends HTMLAttributes<HTMLInputElement> {
   type: 'share' | 'kakao';
 }
 
-const UtilityButton = ({ type }: IUtilityButtonProps) => {
+const UtilityButton = ({ type, ...props }: IUtilityButtonProps) => {
   return (
-    <Wrapper type={type}>
-      {type === 'share' ? (
-        <Content type={type}>
-          <p>예매한 티켓 공유</p>
-          <Share />
-        </Content>
-      ) : (
-        <Content type={type}>
-          <p>고스락 채널 문의</p>
-          <KakaoLogo style={{ marginTop: '5px' }} />
-        </Content>
-      )}
+    <Wrapper type={type} {...props}>
+      <p>{type === 'share' ? '예매 티켓 공유' : '고스락 채널'}</p>
+      {type === 'share' ? <Share /> : <KakaoLogo />}
     </Wrapper>
   );
 };
@@ -28,39 +20,33 @@ export default UtilityButton;
 const Wrapper = styled.div<{
   type: 'share' | 'kakao';
 }>`
-  width: 162px;
+  width: 100%;
   height: 50px;
-  padding: 13px 17px;
-
-  background: ${({ type, theme }) =>
-    type === 'share'
-      ? theme.palette.mono.black_12
-      : theme.palette.point.yellow_kakao};
-  border-radius: 16px;
-`;
-
-const Content = styled.div<{
-  type: 'share' | 'kakao';
-}>`
-  width: 127.63px;
-  height: 24px;
+  box-sizing: border-box;
+  position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  ${({ theme }) => theme.typo.text_14_M}
+  ${({ type, theme }) =>
+    type === 'share'
+      ? css`
+          background-color: ${theme.palette.mono.black_12};
+          color: ${theme.palette.mono.white};
+        `
+      : css`
+          background-color: ${theme.palette.point.yellow_kakao};
+          color: ${theme.palette.mono.black_00};
+        `}
+  border-radius: 16px;
 
-  /* 고스락 채널 문의 */
-  & p {
-    width: 97px;
-    height: 14px;
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 100%;
-    color: ${({ type, theme }) =>
-      type === 'share'
-        ? theme.palette.mono.white
-        : theme.palette.mono.black_00};
+  cursor: pointer;
+
+  & > p {
+    position: absolute;
+    left: 10%;
+  }
+  & > svg {
+    position: absolute;
+    right: 16px;
   }
 `;

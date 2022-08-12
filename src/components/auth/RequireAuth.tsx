@@ -4,20 +4,25 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { authState } from '../../stores/auth';
 import { redirectState } from '../../stores/redirect';
+import { useCookies } from 'react-cookie';
 
 const RequireAuth = () => {
   const { pathname } = useLocation();
-  const { accessToken, registerToken, userName } = useRecoilValue(authState);
+  const { registerToken } = useRecoilValue(authState);
   const setRedirectUri = useSetRecoilState(redirectState);
+
+  const accessCookie = useCookies(['accessToken'])[0];
+  const registerCookie = useCookies(['registerToken'])[0];
+  // undefined or token
 
   useEffect(() => {
     setRedirectUri(pathname);
   }, []);
 
-  if (accessToken) {
+  if (accessCookie.accessToken) {
     // 어세스 토큰 있으면 패스
     return <Outlet />;
-  } else if (registerToken) {
+  } else if (registerCookie.registerToken) {
     // 어세스 토큰 없이 레지스터 토큰만 있으면 회원가입
     return <Navigate replace to="/auth/init" />;
   } else {

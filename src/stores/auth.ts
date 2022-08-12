@@ -1,25 +1,23 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 import { axiosPrivate } from '../apis/axios';
+import { Cookies } from 'react-cookie';
 
 export interface IAuthType {
   isAuthenticated: boolean;
-  accessToken: string | null;
   registerToken: string | null;
-  phoneNumber: string;
-  userName: string | null;
+  phoneNumber: string | null;
 }
 
 const initialState = {
   isAuthenticated: false,
-  accessToken: null,
   registerToken: null,
-  phoneNumber: '',
-  userName: null,
+  phoneNumber: null,
 };
 
-const getLocalStorage = (): IAuthType => {
-  const accessToken = localStorage.getItem('accessToken');
-  const registerToken = localStorage.getItem('registerToken');
+const getTokenFromCookie = (): IAuthType => {
+  const cookies = new Cookies();
+  const accessToken = cookies.get('accessToken');
+  const registerToken = cookies.get('registerToken');
   if (accessToken) {
     // 어세스토큰이 있으면 axios 인스턴스에 커먼 헤더로 집어넣음
     axiosPrivate.defaults.headers.common[
@@ -30,7 +28,6 @@ const getLocalStorage = (): IAuthType => {
     return {
       ...initialState,
       isAuthenticated: true,
-      accessToken,
       registerToken,
     };
   } else return { ...initialState, registerToken };
@@ -38,5 +35,5 @@ const getLocalStorage = (): IAuthType => {
 
 export const authState = atom<IAuthType>({
   key: 'auth',
-  default: getLocalStorage(),
+  default: getTokenFromCookie(),
 });

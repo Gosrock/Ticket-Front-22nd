@@ -1,53 +1,34 @@
 import AppBar from '../../components/common/AppBar';
 import SetMargin from '../../components/common/SetMargin';
 import styled from 'styled-components';
-import OrderedTicket from '../../components/mypage/OrderedTicket';
+import useGetUserInfo from '../../hooks/queries/useGetUserInfo';
+import OrderedTicketsList from '../../components/mypage/orderList/OrderedTicketsList';
 import useGetOrders from '../../hooks/queries/useGetOrders';
-import { IGetOrderRes } from '../../apis/type/order';
-import OrderedTicketSkeleton from '../../components/skeleton/OrderedTicketSkeleton';
+import NotExistTickets from '../../components/mypage/orderList/NotExistTickets';
 
 const OrderList = () => {
+  const { status: userInfoStatus, data: userInfo } = useGetUserInfo();
   const { status, data: orders } = useGetOrders();
-  const convertDate = (date: string) => {
-    const week = new Array('일', '월', '화', '수', '목', '금', '토');
-
-    const Year = date.substring(2, 4);
-    const Month = date.substring(5, 7);
-    const Day = date.substring(8, 10);
-    const DayKR = week[new Date(`2022-${Month}-${Day}`).getDay()];
-    return { Year, Month, Day, DayKR };
-  };
   return (
     <>
       <AppBar label={'마이페이지'} />
       <SetMargin>
-        <Title>
-          {/* user info api 만들어지면 수정 */}
-          <span>한규진</span> 님의 티켓 주문 목록
-        </Title>
-        <List>
-          {status === 'success' ? (
-            !!orders &&
-            orders.data.map((el: IGetOrderRes) => {
-              const { Year, Month, Day, DayKR } = convertDate(el.createdAt);
-              return (
-                <OrderedTicket
-                  key={el.id}
-                  status={el.status}
-                  createdat={`${Year}.${Month}.${Day} (${DayKR})`}
-                  id={el.id}
-                  selection={el.selection}
-                  ticketCount={el.ticketCount}
-                ></OrderedTicket>
-              );
-            })
-          ) : (
-            <>
-              <OrderedTicketSkeleton />
-              <OrderedTicketSkeleton />
-            </>
-          )}
-        </List>
+        {status === 'success' && !!orders && orders.data.length === 0 ? (
+          <NotExistTickets />
+        ) : (
+          <>
+            {userInfoStatus === 'success' && !!userInfo ? (
+              <Title>
+                <span>{userInfo.data.name}</span> 님의 티켓 주문 목록
+              </Title>
+            ) : (
+              <Title>
+                <span>🎸🥁🎸</span> 님의 티켓 주문 목록
+              </Title>
+            )}
+            <OrderedTicketsList status={status} orders={orders?.data} />
+          </>
+        )}
       </SetMargin>
     </>
   );
@@ -65,6 +46,7 @@ const Title = styled.p`
 `;
 
 const List = styled.div`
+  padding-bottom: 16px;
   & > * {
     margin-top: 16px;
   }

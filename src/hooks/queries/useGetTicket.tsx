@@ -1,41 +1,23 @@
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { IGetTicketReq, IGetTicketRes } from '../../apis/type/ticket';
 import { AxiosError } from 'axios';
 import TicketApi from '../../apis/TicketApi';
 
-import TicketMockApi from '../../apis/mock/TicketMockApi';
-
-const useGetTicket = (params: IGetTicketReq) => {
-  const { data } = useQuery(
-    ['ticket', `${params.uuid}`],
-    TicketApi.getTickets,
+const useGetTicket = (uuid: string) => {
+  const { status, data } = useQuery(
+    ['ticket', `${uuid}`],
+    () => TicketApi.getTicket(uuid),
     {
       refetchOnWindowFocus: false,
       retry: false,
       // refetchOnMount: false,
       refetchIntervalInBackground: false,
       onError: (error: AxiosError) => {
-        alert(error);
-        window.location.href = '/';
+        console.error(error);
+        //window.location.href = '/';
       },
     },
   );
-
-  // const { data } = useQuery(
-  //   ['ticket', `${params.uuid}`],
-  //   TicketMockApi.getTicketMock,
-  //   {
-  //     refetchOnWindowFocus: false,
-  //     retry: false,
-  //     // refetchOnMount: false,
-  //     refetchIntervalInBackground: false,
-  //     onError: (error: AxiosError) => {
-  //       alert(error);
-  //       window.location.href = '/';
-  //     },
-  //   },
-  // );
-  return data;
+  return { status, data };
 };
 
 export default useGetTicket;
