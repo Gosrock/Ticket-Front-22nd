@@ -5,7 +5,6 @@ export interface ITeamData {
   members: Array<{
     parts: string;
     name: string;
-    blank?: boolean;
   }>;
 }
 
@@ -106,7 +105,22 @@ export const YBData: Array<ITeamData> = [
   {
     date: 'YB',
     order: 4,
-    teamName: '니여친뺐어',
+    teamName: '돌주먹정권',
+    members: [
+      {
+        parts: 'V',
+        name: '김민우',
+      },
+      {
+        parts: 'G',
+        name: '김의현',
+      },
+    ],
+  },
+  {
+    date: 'YB',
+    order: 5,
+    teamName: '김의현',
     members: [
       {
         parts: 'V',
@@ -128,25 +142,12 @@ export const YBData: Array<ITeamData> = [
         parts: 'D',
         name: '반성준',
       },
-      {
-        parts: 'blank',
-        name: 'blank',
-        blank: true,
-      },
-      {
-        parts: 'V',
-        name: '김민우',
-      },
-      {
-        parts: 'G',
-        name: '김의현',
-      },
     ],
   },
   {
     date: 'YB',
-    order: 5,
-    teamName: '김인영팀',
+    order: 6,
+    teamName: '눈빨간 볼나비',
     members: [
       {
         parts: 'V',
@@ -188,8 +189,8 @@ export const YBData: Array<ITeamData> = [
   },
   {
     date: 'YB',
-    order: 6,
-    teamName: '최민혁팀',
+    order: 7,
+    teamName: 'Ohio',
     members: [
       {
         parts: 'V',
@@ -347,7 +348,7 @@ export const OBData: Array<ITeamData> = [
   {
     date: 'OB',
     order: 5,
-    teamName: '김지석팀',
+    teamName: '쉽지않네',
     members: [
       {
         parts: 'V',

@@ -12,6 +12,7 @@ import ad4 from './ad4.png';
 import Header from '../../components/landing/Header';
 import LocateSection from '../../components/landing/LocateSection';
 import IntroSection from '../../components/landing/IntroSection';
+import TeamSection from '../../components/landing/teams/TeamSection';
 
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
@@ -65,6 +66,7 @@ const Landing = () => {
           <img src={ad4} />
         </Adcard>
       </Defaultbox>
+      <TeamSection />
       <Footer />
     </Wrapper>
   );

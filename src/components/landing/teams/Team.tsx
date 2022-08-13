@@ -1,34 +1,31 @@
-import { HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
-import { ReactComponent as KakaoLogo } from '../../assets/icons/kakao.svg';
-import { ReactComponent as Share } from '../../assets/icons/share.svg';
 import { ITeamData } from './TeamData';
-import { media } from '../../../styles/theme';
 
-const Team = ({ date, order, teamName, members }: ITeamData) => {
+interface ITeam extends ITeamData {
+  isPC: boolean;
+}
+
+const Team = ({ date, order, teamName, members, isPC }: ITeam) => {
   return (
-    <Wrapper date={date}>
+    <Wrapper date={date} isPC={isPC}>
       <p>
         #{order} {teamName}
       </p>
-      <Members date={date}>
+      <Members date={date} isPC={isPC}>
         {members.map(
           (
             el: {
               parts: string;
               name: string;
-              blank?: boolean;
             },
             idx: number,
           ) => {
-            return el.blank !== true ? (
+            return (
               <div key={idx}>
                 <p>
                   {el.parts} {el.name}
                 </p>
               </div>
-            ) : (
-              <div className="blank blank_width" />
             );
           },
         )}
@@ -40,8 +37,8 @@ export default Team;
 
 const Wrapper = styled.div<{
   date: 'YB' | 'OB';
+  isPC: boolean;
 }>`
-  width: 100%;
   box-sizing: border-box;
   display: flex;
   justify-content: end;
@@ -56,23 +53,29 @@ const Wrapper = styled.div<{
         `}
   border-radius: 24px;
 
-  ${media.pc} {
-    padding: 40px 20px 40px 28px;
-  }
-  ${media.mobile} {
-    padding: 28px 8px 40px 16px;
-    /* width: 298px; */
-  }
+  ${({ isPC }) =>
+    isPC
+      ? css`
+          width: 382px;
+          padding: 40px 20px 40px 28px;
+        `
+      : css`
+          width: 299px;
+          padding: 28px 8px 40px 16px;
+          margin: 0 18px;
+        `}
 
   & > p {
-    ${media.pc} {
-      ${({ theme }) => theme.typo.landing.text_36_B};
-      margin-bottom: 51px;
-    }
-    ${media.mobile} {
-      ${({ theme }) => theme.typo.landing.text_22_B};
-      margin-bottom: 32px;
-    }
+    ${({ theme, isPC }) =>
+      isPC
+        ? css`
+            ${theme.typo.landing.text_36_B}
+            margin-bottom: 51px;
+          `
+        : css`
+            ${theme.typo.landing.text_22_B}
+            margin-bottom: 32px;
+          `}
 
     ${({ date, theme }) =>
       date === 'YB'
@@ -87,6 +90,7 @@ const Wrapper = styled.div<{
 
 const Members = styled.div<{
   date: 'YB' | 'OB';
+  isPC: boolean;
 }>`
   width: 100%;
 
@@ -100,14 +104,16 @@ const Members = styled.div<{
     text-align: center;
     margin: 0 8px 8px 0px;
 
-    ${media.pc} {
-      padding: 18px;
-      height: 38px;
-    }
-    ${media.mobile} {
-      padding: 16px;
-      height: 30px;
-    }
+    ${({ isPC }) =>
+      isPC
+        ? css`
+            padding: 18px;
+            height: 38px;
+          `
+        : css`
+            padding: 16px;
+            height: 30px;
+          `}
 
     border-radius: 19px;
     ${({ date, theme }) =>
@@ -122,24 +128,14 @@ const Members = styled.div<{
           `}
 
     & > p {
-      ${media.pc} {
-        ${({ theme }) => theme.typo.landing.text_18_B}
-      }
-      ${media.mobile} {
-        ${({ theme }) => theme.typo.text_14_M}
-      }
-    }
-  }
-
-  .blank {
-    width: 100%;
-    background: none;
-    padding: 0;
-    ${media.pc} {
-      height: 32px;
-    }
-    ${media.mobile} {
-      height: 22px;
+      ${({ theme, isPC }) =>
+        isPC
+          ? css`
+              ${theme.typo.landing.text_18_B}
+            `
+          : css`
+              ${theme.typo.text_14_M}
+            `}
     }
   }
 `;

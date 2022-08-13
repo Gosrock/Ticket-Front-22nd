@@ -42,37 +42,12 @@ export const 와이비 = Template.bind({});
   ],
 };
 
-export const 와이비blank = Template.bind({});
-와이비blank.args = {
+export const 와이비2 = Template.bind({});
+와이비2.args = {
   date: 'YB',
   order: 4,
-  teamName: '금예인팀',
+  teamName: '돌주먹망치',
   members: [
-    {
-      parts: 'V',
-      name: '박준서',
-    },
-    {
-      parts: 'G',
-      name: '김민우',
-    },
-    {
-      parts: 'B',
-      name: '강나연',
-    },
-    {
-      parts: 'K',
-      name: '금예인',
-    },
-    {
-      parts: 'D',
-      name: '반성준',
-    },
-    {
-      parts: 'blank',
-      name: 'blank',
-      blank: true,
-    },
     {
       parts: 'V',
       name: '김민우',
