@@ -15,6 +15,6 @@ const Wrapper = styled.div`
   padding: 0px 18px;
   box-sizing: border-box;
   max-width: 836px;
-  /*  border: 1px solid red; */
+  border: 1px solid red;
   margin: 0 auto;
 `;
