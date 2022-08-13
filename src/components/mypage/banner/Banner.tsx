@@ -76,7 +76,7 @@ const Wrapper = styled.div<{
       ${({ type }) =>
         type === 'talk'
           ? css`
-              color: ${({ theme }) => theme.palette.point.green_starbucks};
+              color: ${({ theme }) => theme.palette.point.red};
             `
           : css`
               color: ${({ theme }) => theme.palette.mono.black_12};

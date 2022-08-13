@@ -26,6 +26,7 @@ const Wrapper = styled.div`
   width: 150px;
   height: 120px;
   padding: 84px 12px 6px 12px;
+  margin-left: 18px;
 
   cursor: pointer;
 `;
