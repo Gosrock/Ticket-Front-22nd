@@ -201,7 +201,8 @@ const Container = styled.div<{
         `}
 
   & > p {
-    margin-left: 29px;
+    max-width: 800px;
+    margin: 0 18px;
     margin-bottom: 60px;
     ${({ type }) =>
       type === 'YB'
@@ -244,8 +245,11 @@ const NotSwiper = styled.div<{
     }
   }
 
+  & > div:first-child {
+    margin: 0 0 0 18px;
+  }
   & > div:last-child {
-    margin: 100px 0 0 36px;
+    margin: 100px 18px 0 36px;
     & > div {
       ${({ type }) =>
         type === 'OB' &&
