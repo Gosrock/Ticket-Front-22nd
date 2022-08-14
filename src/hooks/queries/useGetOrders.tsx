@@ -6,7 +6,6 @@ const useGetOrders = () => {
   const { status, data } = useQuery(['orders'], OrderApi.getOrders, {
     refetchOnWindowFocus: false,
     retry: false,
-    staleTime: 5 * 1000 * 60,
     refetchIntervalInBackground: false,
   });
   console.log(status, data);
