@@ -54,7 +54,7 @@ declare module 'styled-components' {
       normal: '0 3px 8px 0 rgb(0 0 0 / 10%)';
     };
     animate: {
-      fadeIn: string;
+      LandingfadeIn: string;
     };
   }
 }

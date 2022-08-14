@@ -97,14 +97,14 @@ export const theme: DefaultTheme = {
     normal: '0 3px 8px 0 rgb(0 0 0 / 10%)',
   },
   animate: {
-    fadeIn: `@keyframes fadeIn {
+    LandingfadeIn: `@keyframes LandingfadeIn {
       from {
         opacity: 0;
-        transform: translate(0, 0);
+        transform: translateY(0);
       }
       to {
         opacity: 1;
-        transform: translate(0, -50%);
+        transform: translateY(-50%);
       }
     }`,
   },

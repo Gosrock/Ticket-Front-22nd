@@ -51,7 +51,7 @@ const Wrapper = styled.div<{ visible: boolean }>`
   ${({ visible }) =>
     visible &&
     css`
-      animation: 0.5s forwards fadeIn;
+      animation: 0.5s forwards LandingfadeIn;
     `}
-  ${({ theme }) => theme.animate.fadeIn}
+  ${({ theme }) => theme.animate.LandingfadeIn}
 `;

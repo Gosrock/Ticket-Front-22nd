@@ -5,29 +5,27 @@ import MarginContainer from './MarginContainer';
 const Header = ({ isPC }: { isPC: boolean }) => {
   const { scrollY } = useScroll();
   return (
-    <Wrapper scrollY={scrollY}>
+    <Wrapper scrollY={scrollY} isPC={isPC}>
       <MarginContainer>
+        <a
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.innerHTML = 'toward the top';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.innerHTML = 'gosrock.';
+          }}
+        >
+          gosrock.
+        </a>
         {isPC ? (
-          <>
-            <a
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.innerHTML = 'toward the top';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.innerHTML = 'gosrock.';
-              }}
-            >
-              gosrock.
-            </a>
-            <Nav>
-              <a href="#yb">DAY1</a>
-              <a href="#ob">DAY2</a>
-              <a href="#info">유의사항</a>
-            </Nav>
-          </>
+          <Nav>
+            <a href="#yb">DAY1</a>
+            <a href="#ob">DAY2</a>
+            <a href="#info">유의사항</a>
+          </Nav>
         ) : (
           <button>예매하러 가기</button>
         )}
@@ -38,9 +36,9 @@ const Header = ({ isPC }: { isPC: boolean }) => {
 
 export default Header;
 
-const Wrapper = styled.div<{ scrollY: number }>`
+const Wrapper = styled.div<{ scrollY: number; isPC: boolean }>`
   position: fixed;
-  height: 80px;
+  height: ${({ isPC }) => (isPC ? '80px;' : '60px')};
   width: 100%;
   background-color: ${({ scrollY }) =>
     scrollY > 30 ? `rgba(255, 255, 255, 0.9)` : `rgba(255, 255, 255, 0.0)`};
@@ -72,13 +70,18 @@ const Wrapper = styled.div<{ scrollY: number }>`
     button {
       margin-left: auto;
       padding: 12px 12px;
-      background-color: ${({ theme }) => theme.palette.mono.black_12};
+      background-color: ${({ theme, scrollY }) =>
+        scrollY > 30
+          ? theme.palette.mono.black_12
+          : theme.palette.mono.font_main};
       border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: ${({ theme }) => theme.palette.mono.white};
-      ${({ theme }) => theme.typo.text_14_M}
+      color: ${({ theme, scrollY }) =>
+        scrollY > 30 ? theme.palette.mono.white : theme.palette.mono.black_12};
+      ${({ theme, isPC }) =>
+        isPC ? theme.typo.text_14_M : theme.typo.text_12_M}
       &:active {
         background-color: ${({ theme }) => theme.palette.mono.black_26};
       }
