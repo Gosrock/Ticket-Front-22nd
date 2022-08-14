@@ -16,7 +16,7 @@ interface ITeams {
 
 const Teams = ({ isPC, type }: ITeams) => {
   const setWindowWidth = useState<number>(window.innerWidth)[1];
-  let slidesCount = window.innerWidth / 298;
+  let slidesCount = window.innerWidth / 335;
   const handleWidthResize = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -34,8 +34,7 @@ const Teams = ({ isPC, type }: ITeams) => {
     },
   };
   const swiperParams = {
-    spaceBetween: 30,
-    // 원래 간격이 18px 이긴한데, 18로 하면 간격이 매우 작게 나와서 30으로 일단 해둠
+    spaceBetween: -10,
     slidesPerView: slidesCount,
     modules: [Pagination, Autoplay],
     pagination: pagination,
@@ -183,7 +182,7 @@ const Wrapper = styled.div<{
             color: ${({ theme }) => theme.palette.mono.font_main};
           `
         : css`
-            color: ${({ theme }) => theme.palette.mono.black_36};
+            color: #29292a;
           `}
   }
 `;
@@ -242,6 +241,9 @@ const NotSwiper = styled.div<{
     }
   }
 
+  & > div:first-child {
+    margin: 0 0 0 18px;
+  }
   & > div:last-child {
     margin: 100px 0 0 36px;
   }
