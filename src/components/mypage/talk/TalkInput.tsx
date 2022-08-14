@@ -23,6 +23,7 @@ const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
   const { mutate } = useMutation(UsersApi.sendTalk, {
     onSuccess: () => {
       queryClient.invalidateQueries('talks');
+      queryClient.invalidateQueries('talksCount');
     },
   });
 

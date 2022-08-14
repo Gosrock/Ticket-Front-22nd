@@ -50,6 +50,9 @@ const Bubble = styled.div<{ mine: boolean }>`
 
   & > p {
     white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
     ${({ theme }) => theme.typo.text_12_M};
     line-height: 150%;
     color: ${({ theme }) => theme.palette.mono.black_36};
