@@ -13,7 +13,7 @@ const useGetTicket = (uuid: string) => {
       refetchIntervalInBackground: false,
       onError: (error: AxiosError) => {
         console.error(error);
-        //window.location.href = '/';
+        window.location.href = '/404';
       },
     },
   );
