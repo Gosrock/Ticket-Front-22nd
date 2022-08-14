@@ -10,6 +10,16 @@ interface IOrderedTicketProps extends IDepositStatusProps {
   ticketCount: number;
 }
 
+const renderContent = {
+  YB: <p>9월 1일 목요일</p>,
+  OB: <p>9월 2일 금요일</p>,
+  BOTH: (
+    <p>
+      양일권 <span>(할인 적용)</span>
+    </p>
+  ),
+};
+
 const OrderedTicket = ({
   status,
   createdat,
@@ -30,13 +40,11 @@ const OrderedTicket = ({
         <Content>
           <p>{createdat}</p>
           <p>{id}</p>
-          {selection === 'BOTH' ? (
-            <p>
-              양일권 <span>(할인 적용)</span>
-            </p>
-          ) : (
-            <p>{selection}</p>
-          )}
+          {selection === 'YB'
+            ? renderContent['YB']
+            : selection === 'OB'
+            ? renderContent['OB']
+            : renderContent['BOTH']}
           <p>{ticketCount}매</p>
         </Content>
       </Contents>

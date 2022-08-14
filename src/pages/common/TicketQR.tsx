@@ -50,6 +50,7 @@ const TicketQR = ({}) => {
           if (data.success) {
             console.log(data);
             queryClient.invalidateQueries(['ticket', `${ticketId}`]);
+            queryClient.invalidateQueries('ticket');
           } else {
             console.log(data);
             if (data.message === '[입장실패]이미 입장 완료된 티켓입니다') {

@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useScroll from '../../hooks/useScroll';
 import MarginContainer from './MarginContainer';
 
 const Header = ({ isPC }: { isPC: boolean }) => {
   const { scrollY } = useScroll();
+  const navigate = useNavigate();
   return (
     <Wrapper scrollY={scrollY} isPC={isPC}>
       <MarginContainer>
@@ -27,7 +29,13 @@ const Header = ({ isPC }: { isPC: boolean }) => {
             <a href="#info">유의사항</a>
           </Nav>
         ) : (
-          <button>예매하러 가기</button>
+          <button
+            onClick={() => {
+              navigate('/ticketing/select');
+            }}
+          >
+            예매하러 가기
+          </button>
         )}
       </MarginContainer>
     </Wrapper>

@@ -1,5 +1,5 @@
 export interface IBannerDataProps {
-  type: 'talk' | 'location' | 'developers' | 'kakao';
+  type: 'talk' | 'location' | 'developers' | 'kakao' | 'account';
   title: string;
   subtitle: string;
 }
@@ -24,5 +24,10 @@ export const bannerData: Array<IBannerDataProps> = [
     type: 'kakao',
     subtitle: '궁금한게 있을 때',
     title: '고스락 카카오 채널',
+  },
+  {
+    type: 'account',
+    subtitle: '알고 싶어요',
+    title: '입금 계좌',
   },
 ];
