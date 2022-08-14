@@ -34,9 +34,18 @@ const Banners = () => {
           closeModal,
         },
       }),
+    // 카카오 채널
     () =>
       window.Kakao.Channel.chat({
         channelPublicId: '_QxeZBT',
+      }),
+    // 입금 계좌
+    () =>
+      openModal({
+        modalType: 'Location',
+        modalProps: {
+          closeModal,
+        },
       }),
   ];
 
