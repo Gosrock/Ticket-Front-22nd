@@ -183,4 +183,8 @@ const InputWindow = styled.div<{ isOpen: boolean }>`
       background-color: none;
     }
   }
+
+  & > svg {
+    cursor: pointer;
+  }
 `;

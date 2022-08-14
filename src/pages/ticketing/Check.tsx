@@ -9,16 +9,18 @@ import { IOptionType, optionState } from '../../stores/option';
 import { useEffect, useState } from 'react';
 import useModal from '../../hooks/useModal';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import OrderApi from '../../apis/OrderApi';
 
 const Check = ({}) => {
   const option = useRecoilValue(optionState);
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const [selected, setSelected] = useState<boolean>(false);
   const { openModal, closeModal } = useModal();
   const { mutate } = useMutation(OrderApi.postOrder, {
     onSuccess: () => {
+      queryClient.invalidateQueries('ticket');
       navigate('/mypage');
     },
   });

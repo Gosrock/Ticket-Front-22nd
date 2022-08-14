@@ -1,13 +1,10 @@
-import { useQuery, useQueryClient, useMutation } from 'react-query';
-import { AxiosError } from 'axios';
+import { useQuery } from 'react-query';
 import TicketApi from '../../apis/TicketApi';
 
 const useGetTickets = () => {
   const { status, data } = useQuery(['ticket'], TicketApi.getTickets, {
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     retry: false,
-    staleTime: 5 * 1000 * 60,
-    // 5분
     refetchIntervalInBackground: false,
   });
 
