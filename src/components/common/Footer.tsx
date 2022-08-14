@@ -8,23 +8,32 @@ const Footer = () => {
   return (
     <Wrapper>
       {/* 배포 완료시 수정해야함 */}
-      <a href="https://github.com/Gosrock" target="_blank">
-        <img src={gosrock} />
-      </a>
+      <img src={gosrock} />
 
       <SecondRow>
-        <a href="https://github.com/Gosrock" target="_blank">
+        <button
+          onClick={() => {
+            window.open('https://github.com/Gosrock');
+          }}
+        >
           <Github />
-        </a>
-        <a href="https://www.instagram.com/gosrock_archive/" target="_blank">
+        </button>
+        <button
+          onClick={() => {
+            'https://www.instagram.com/gosrock_archive/';
+          }}
+        >
           <Insta />
-        </a>
-        <a
-          href="https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ"
-          target="_blank"
+        </button>
+        <button
+          onClick={() => {
+            window.open(
+              'https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ',
+            );
+          }}
         >
           <Youtube />
-        </a>
+        </button>
       </SecondRow>
       <p>© GOSROCK. 2022 All rights reserved</p>
     </Wrapper>
