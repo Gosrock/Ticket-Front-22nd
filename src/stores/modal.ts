@@ -21,11 +21,17 @@ export type TDevelopersModal = {
   modalProps: any;
 };
 
+export type TAccountModal = {
+  modalType: typeof MODAL_TYPES.Account;
+  modalProps: any;
+};
+
 export type ModalType =
   | TNoticeModal
   | TCheckBeforeSendModal
   | TLocationModal
-  | TDevelopersModal;
+  | TDevelopersModal
+  | TAccountModal;
 export const modalState = atom<ModalType | null>({
   key: 'modalState',
   default: null,

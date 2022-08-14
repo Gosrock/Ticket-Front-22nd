@@ -147,7 +147,14 @@ const Wrapper = styled.div<{
     background: ${({ theme }) => theme.palette.mono.black_36};
   }
   .swiper-pagination-bullet-active {
-    background: ${({ theme }) => theme.palette.point.lavender};
+    ${({ type, theme }) =>
+      type === 'YB'
+        ? css`
+            background: ${theme.palette.point.lavender};
+          `
+        : css`
+            background: ${theme.palette.point.red};
+          `}
   }
 
   ${({ type }) =>

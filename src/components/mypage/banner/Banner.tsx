@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as ChatHeartRed } from '../../../assets/icons/chatHeartRed.svg';
 import { ReactComponent as Marker } from '../../../assets/icons/marker.svg';
+import { ReactComponent as Card } from '../../../assets/icons/card.svg';
 import { ReactComponent as Footprint } from '../../../assets/icons/footprint.svg';
 import { ReactComponent as KakaoChannel } from '../../../assets/icons/kakaoChannel.svg';
 
 interface IBannerProps {
-  type: 'talk' | 'location' | 'developers' | 'kakao';
+  type: 'talk' | 'location' | 'developers' | 'kakao' | 'account';
   title: string;
   subtitle: string;
   onClick: () => void;
@@ -18,6 +19,7 @@ const Banner = ({ type, title, subtitle, onClick }: IBannerProps) => {
       {type === 'location' && <Marker />}
       {type === 'developers' && <Footprint />}
       {type === 'kakao' && <KakaoChannel />}
+      {type === 'account' && <Card />}
       <div>
         <p>{subtitle}</p>
         <p>
@@ -30,7 +32,7 @@ const Banner = ({ type, title, subtitle, onClick }: IBannerProps) => {
 export default Banner;
 
 const Wrapper = styled.div<{
-  type: 'talk' | 'location' | 'developers' | 'kakao';
+  type: 'talk' | 'location' | 'developers' | 'kakao' | 'account';
 }>`
   position: relative;
   width: calc(100% - 36px);
