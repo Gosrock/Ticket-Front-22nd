@@ -5,8 +5,12 @@ const TeamSection = () => {
   const isPC = useMediaQuery({ minWidth: 820 });
   return (
     <>
-      <Teams isPC={isPC} type="YB" />
-      <Teams isPC={isPC} type="OB" />
+      <div id="yb">
+        <Teams isPC={isPC} type="YB" />
+      </div>
+      <div id="ob">
+        <Teams isPC={isPC} type="OB" />
+      </div>
     </>
   );
 };

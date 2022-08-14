@@ -9,14 +9,9 @@ import ContentSection from '../../components/landing/ContentSection';
 import TeamSection from '../../components/landing/teams/TeamSection';
 import CurrentSection from '../../components/landing/CurrentSection';
 import InfoSection from '../../components/landing/InfoSection';
-
+import FixedButton from '../../components/landing/FixedButton';
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
-  const navigate = useNavigate();
-  // const tickets = useGetTickets();
-  // console.log(tickets);
-  // const ticket = useGetTicket({ uuid: '0' });
-  // console.log(ticket);
 
   return (
     <Wrapper>
@@ -38,6 +33,8 @@ const Landing = () => {
       <InfoSection isPC={isPC} />
       {/* 푸터 */}
       <Footer />
+      {/* 하단고정버튼 */}
+      {isPC && <FixedButton />}
     </Wrapper>
   );
 };

@@ -1,4 +1,5 @@
 import 'styled-components';
+import { StringLiteralLike } from 'typescript';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -51,6 +52,9 @@ declare module 'styled-components' {
     };
     boxShadow: {
       normal: '0 3px 8px 0 rgb(0 0 0 / 10%)';
+    };
+    animate: {
+      fadeIn: string;
     };
   }
 }

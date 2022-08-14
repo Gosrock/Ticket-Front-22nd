@@ -2,9 +2,18 @@ import styled from 'styled-components';
 import AnimatedNumbers from 'react-animated-numbers';
 import TicketApi from '../../apis/TicketApi';
 import { useQuery } from 'react-query';
+import { useEffect, useState } from 'react';
 const CurrentSection = ({ isPC }: { isPC: boolean }) => {
-  const { data } = useQuery('count', TicketApi.getTicketCount);
-  const ticketCount = data?.data.count;
+  const [ticketCount, setTicketCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      const data = await TicketApi.getTicketCount();
+      setTicketCount(data.data.count);
+    };
+    fetchCount();
+  }, []);
+
   return (
     <Wrapper isPC={isPC}>
       <h3>지금&nbsp;</h3>

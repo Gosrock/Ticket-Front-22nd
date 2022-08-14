@@ -3,7 +3,7 @@ import MarginContainer from './MarginContainer';
 
 const InfoSection = ({ isPC }: { isPC: boolean }) => {
   return (
-    <Wrapper isPC={isPC}>
+    <Wrapper isPC={isPC} id="info">
       <MarginContainer>
         <h1>공연 유의사항 안내</h1>
         <div>
