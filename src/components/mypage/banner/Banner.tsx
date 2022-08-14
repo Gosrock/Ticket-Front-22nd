@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as ChatHeartRed } from '../../../assets/icons/chatHeartRed.svg';
 import { ReactComponent as Marker } from '../../../assets/icons/marker.svg';
+import { ReactComponent as Card } from '../../../assets/icons/card.svg';
 import { ReactComponent as Footprint } from '../../../assets/icons/footprint.svg';
 import { ReactComponent as KakaoChannel } from '../../../assets/icons/kakaoChannel.svg';
 
@@ -18,7 +19,7 @@ const Banner = ({ type, title, subtitle, onClick }: IBannerProps) => {
       {type === 'location' && <Marker />}
       {type === 'developers' && <Footprint />}
       {type === 'kakao' && <KakaoChannel />}
-      {type === 'account' && <Marker />}
+      {type === 'account' && <Card />}
       <div>
         <p>{subtitle}</p>
         <p>

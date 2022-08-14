@@ -2,6 +2,7 @@ import { useQueryClient } from 'react-query';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { modalState } from '../../stores/modal';
+import Account from './Account';
 import CheckBeforeSend from './CheckBeforeSend';
 import Developers from './Developers';
 import Location from './Location';
@@ -12,6 +13,7 @@ export const MODAL_TYPES = {
   CheckBeforeSend: 'CheckBeforeSend',
   Location: 'Location',
   Developers: 'Developers',
+  Account: 'Account',
 } as const;
 
 const ModalComponents: any = {
@@ -19,6 +21,7 @@ const ModalComponents: any = {
   [MODAL_TYPES.CheckBeforeSend]: CheckBeforeSend,
   [MODAL_TYPES.Location]: Location,
   [MODAL_TYPES.Developers]: Developers,
+  [MODAL_TYPES.Account]: Account,
 };
 
 const GlobalModal = () => {
@@ -50,7 +53,7 @@ const Modal = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +69,7 @@ const Overlay = styled.div`
 `;
 
 const Container = styled.div`
-  z-index: 110;
+  z-index: 10;
   width: 100%;
   max-width: 400px;
   margin: 36px;

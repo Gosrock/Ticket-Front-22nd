@@ -42,7 +42,7 @@ const Banners = () => {
     // 입금 계좌
     () =>
       openModal({
-        modalType: 'Location',
+        modalType: 'Account',
         modalProps: {
           closeModal,
         },
