@@ -11,9 +11,15 @@ import CurrentSection from '../../components/landing/CurrentSection';
 import InfoSection from '../../components/landing/InfoSection';
 import FixedButton from '../../components/landing/FixedButton';
 import TitleSection from '../../components/landing/TitleSection';
+import { useToast } from '../../hooks/useToast';
+import { useEffect } from 'react';
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
+  const { fireToast } = useToast();
 
+  useEffect(() => {
+    fireToast('스크롤을 아래로 내려주세요');
+  }, []);
   return (
     <Wrapper>
       {/* 헤더 */}
