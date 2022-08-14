@@ -54,7 +54,6 @@ const Teams = ({ isPC, type }: ITeams) => {
             <p>9월 1일 목요일</p>
             <p>저녁 7시</p>
           </Container>
-          :
         </>
       ) : (
         <>
