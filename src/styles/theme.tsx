@@ -96,6 +96,18 @@ export const theme: DefaultTheme = {
   boxShadow: {
     normal: '0 3px 8px 0 rgb(0 0 0 / 10%)',
   },
+  animate: {
+    LandingfadeIn: `@keyframes LandingfadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%);
+      }
+    }`,
+  },
 };
 
 const customMediaQuery = (maxWidth: number): string =>

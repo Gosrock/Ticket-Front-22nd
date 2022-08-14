@@ -14,6 +14,12 @@ const TicketApi = {
     const { data } = await axiosPrivate.get('/tickets');
     return data;
   },
+
+  // 티켓 매수
+  getTicketCount: async (): Promise<TResponseType<{ count: number }>> => {
+    const { data } = await axiosPublic.get('/tickets/count');
+    return data;
+  },
 };
 
 export default TicketApi;

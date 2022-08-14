@@ -1,4 +1,3 @@
-import { userInfo } from 'os';
 import { useEffect } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -8,7 +7,6 @@ import { useCookies } from 'react-cookie';
 
 const RequireAuth = () => {
   const { pathname } = useLocation();
-  const { registerToken } = useRecoilValue(authState);
   const setRedirectUri = useSetRecoilState(redirectState);
 
   const accessCookie = useCookies(['accessToken'])[0];
