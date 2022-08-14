@@ -375,7 +375,7 @@ export const OBData: Array<ITeamData> = [
   {
     date: 'OB',
     order: 6,
-    teamName: '서도철팀',
+    teamName: '서도철',
     members: [
       {
         parts: 'V',

@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { ITeamData, OBData, YBData } from './TeamData';
 import Team from './Team';
+import MarginContainer from '../MarginContainer';
 
 interface ITeams {
   isPC: boolean;
@@ -67,32 +68,36 @@ const Teams = ({ isPC, type }: ITeams) => {
       )}
       {isPC ? (
         type === 'YB' ? (
-          <NotSwiper type={type}>
-            <div>
-              <Team {...YBData[0]} isPC={isPC} />
-              <Team {...YBData[1]} isPC={isPC} />
-              <Team {...YBData[2]} isPC={isPC} />
-              <Team {...YBData[3]} isPC={isPC} />
-            </div>
-            <div>
-              <Team {...YBData[4]} isPC={isPC} />
-              <Team {...YBData[5]} isPC={isPC} />
-              <Team {...YBData[6]} isPC={isPC} />
-            </div>
-          </NotSwiper>
+          <MarginContainer>
+            <NotSwiper type={type}>
+              <div>
+                <Team {...YBData[0]} isPC={isPC} />
+                <Team {...YBData[1]} isPC={isPC} />
+                <Team {...YBData[2]} isPC={isPC} />
+                <Team {...YBData[3]} isPC={isPC} />
+              </div>
+              <div>
+                <Team {...YBData[4]} isPC={isPC} />
+                <Team {...YBData[5]} isPC={isPC} />
+                <Team {...YBData[6]} isPC={isPC} />
+              </div>
+            </NotSwiper>
+          </MarginContainer>
         ) : (
-          <NotSwiper type={type}>
-            <div>
-              <Team {...OBData[0]} isPC={isPC} />
-              <Team {...OBData[1]} isPC={isPC} />
-              <Team {...OBData[2]} isPC={isPC} />
-            </div>
-            <div>
-              <Team {...OBData[3]} isPC={isPC} />
-              <Team {...OBData[4]} isPC={isPC} />
-              <Team {...OBData[5]} isPC={isPC} />
-            </div>
-          </NotSwiper>
+          <MarginContainer>
+            <NotSwiper type={type}>
+              <div>
+                <Team {...OBData[0]} isPC={isPC} />
+                <Team {...OBData[1]} isPC={isPC} />
+                <Team {...OBData[2]} isPC={isPC} />
+              </div>
+              <div>
+                <Team {...OBData[3]} isPC={isPC} />
+                <Team {...OBData[4]} isPC={isPC} />
+                <Team {...OBData[5]} isPC={isPC} />
+              </div>
+            </NotSwiper>
+          </MarginContainer>
         )
       ) : (
         <Swiper {...swiperParams}>
@@ -196,13 +201,11 @@ const Container = styled.div<{
           box-sizing: border-box;
           max-width: 836px;
         `
-      : css`
-          margin-top: -53px;
-        `}
+      : css``}
 
   & > p {
-    margin-left: 29px;
     margin-bottom: 60px;
+    margin-left: 18px;
     ${({ type }) =>
       type === 'YB'
         ? css`
@@ -229,13 +232,9 @@ const Container = styled.div<{
 const NotSwiper = styled.div<{
   type: 'YB' | 'OB';
 }>`
-  margin: 0 auto 82px auto;
-  box-sizing: border-box;
-  max-width: 836px;
-
   display: flex;
   flex-direction: row;
-
+  margin-bottom: 72px;
   & > div {
     display: flex;
     flex-direction: column;
@@ -246,17 +245,5 @@ const NotSwiper = styled.div<{
 
   & > div:last-child {
     margin: 100px 0 0 36px;
-    & > div {
-      ${({ type }) =>
-        type === 'OB' &&
-        css`
-          :nth-child(1) {
-            margin-bottom: 88px;
-          }
-          :nth-child(2) {
-            margin-bottom: 94px;
-          }
-        `}
-    }
   }
 `;
