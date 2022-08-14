@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import AppBar from '../../components/common/AppBar';
 import SetMargin from '../../components/common/SetMargin';
@@ -11,7 +11,7 @@ const Talk = () => {
   const { data, isFetchingNextPage, Observation } = useGetTalks();
   const { status: countStatus, count } = useGetTalksCount();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const talkListRef = useRef<HTMLDivElement>(null);
   return (
     <Wrapper>
       <AppBar label={'마이페이지'} />
@@ -20,8 +20,12 @@ const Talk = () => {
           <span>고스락</span> 응원 톡{' '}
           <span>({countStatus === 'success' ? count : '...'})</span>
         </h1>
-        <TalkInput isOpen={isOpen} setIsOpen={setIsOpen} />
-        <TalkListWrapper isOpen={isOpen}>
+        <TalkInput
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          talkListRef={talkListRef}
+        />
+        <TalkListWrapper isOpen={isOpen} ref={talkListRef}>
           {data?.pages.map((talkList) => (
             <TalkList talkList={talkList.talkList} key={talkList.lastId} />
           ))}
@@ -59,4 +63,5 @@ const TalkListWrapper = styled.div<{ isOpen: boolean }>`
           height: calc(var(--vh, 1vh) * 100 - 186px);
         `} //291, 186
   overflow-y: auto;
+  scroll-behavior: smooth;
 `;
