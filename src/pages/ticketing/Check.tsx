@@ -67,7 +67,7 @@ const Check = ({}) => {
 
 export default Check;
 
-const Title = styled.p`
+const Title = styled.div`
   ${({ theme }) => theme.typo.text_18_B};
   color: ${({ theme }) => theme.palette.mono.white_fa};
   margin-bottom: 16px;
