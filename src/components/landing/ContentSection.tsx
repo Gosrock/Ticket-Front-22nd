@@ -107,7 +107,8 @@ const Card = styled.div<{ top: boolean; isPC: boolean }>`
   & > div {
     position: relative;
     & > p {
-      ${({ theme }) => theme.typo.title_24_B}
+      ${({ isPC, theme }) =>
+        isPC ? theme.typo.title_24_B : theme.typo.text_18_B}
       color: ${({ theme }) => theme.palette.mono.black_36};
       ${({ isPC, top }) =>
         isPC

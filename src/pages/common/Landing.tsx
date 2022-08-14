@@ -8,6 +8,7 @@ import IntroSection from '../../components/landing/IntroSection';
 import ContentSection from '../../components/landing/ContentSection';
 import TeamSection from '../../components/landing/teams/TeamSection';
 import CurrentSection from '../../components/landing/CurrentSection';
+import InfoSection from '../../components/landing/InfoSection';
 
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
@@ -22,7 +23,7 @@ const Landing = () => {
       {/* 헤더 */}
       <Header isPC={isPC} />
       {/* 대문 */}
-      <Title isPC={isPC}></Title>
+      <Title isPC={isPC} />
       {/* 인트로 */}
       <IntroSection isPC={isPC} />
       {/* 공연장 정보 */}
@@ -33,6 +34,9 @@ const Landing = () => {
       <CurrentSection isPC={isPC} />
       {/* 세션 정보 */}
       <TeamSection />
+      {/* 공연 유의사항 안내 */}
+      <InfoSection isPC={isPC} />
+      {/* 푸터 */}
       <Footer />
     </Wrapper>
   );
