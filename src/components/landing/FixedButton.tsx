@@ -7,7 +7,7 @@ const FixedButton = () => {
   const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    if (scrollY > 500 && scrollY < 7200) {
+    if (scrollY > 400 && scrollY < 7200) {
       setVisible(true);
     } else {
       setVisible(false);
@@ -24,7 +24,7 @@ const FixedButton = () => {
 export default FixedButton;
 const Wrapper = styled.div<{ visible: boolean }>`
   position: fixed;
-  right: 30px;
+  right: 80px;
   bottom: 64px;
 
   display: ${({ visible }) => (visible ? 'fixed' : 'none')};

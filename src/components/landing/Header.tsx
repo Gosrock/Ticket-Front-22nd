@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import useScroll from '../../hooks/useScroll';
 import MarginContainer from './MarginContainer';
 
 const Header = ({ isPC }: { isPC: boolean }) => {
+  const { scrollY } = useScroll();
   return (
-    <Wrapper>
+    <Wrapper scrollY={scrollY}>
       <MarginContainer>
         {isPC ? (
           <>
@@ -36,11 +38,12 @@ const Header = ({ isPC }: { isPC: boolean }) => {
 
 export default Header;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ scrollY: number }>`
   position: fixed;
   height: 80px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: ${({ scrollY }) =>
+    scrollY > 30 ? `rgba(255, 255, 255, 0.9)` : `rgba(255, 255, 255, 0.0)`};
   backdrop-filter: saturate(100%) blur(20px);
   filter: drop-shadow(0px 4px 25px rgba(0, 0, 0, 0.1));
 
@@ -48,7 +51,10 @@ const Wrapper = styled.div`
   & > div {
     ${({ theme }) => theme.typo.text_16_R}
     font-weight: 500;
-    color: ${({ theme }) => theme.palette.mono.black_00};
+    color: ${({ theme, scrollY }) =>
+      scrollY > 30
+        ? theme.palette.mono.black_00
+        : theme.palette.mono.font_main};
     display: flex;
     justify-content: center; //space-between,
     align-items: center;

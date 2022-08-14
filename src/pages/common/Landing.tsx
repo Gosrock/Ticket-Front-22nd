@@ -10,6 +10,7 @@ import TeamSection from '../../components/landing/teams/TeamSection';
 import CurrentSection from '../../components/landing/CurrentSection';
 import InfoSection from '../../components/landing/InfoSection';
 import FixedButton from '../../components/landing/FixedButton';
+import TitleSection from '../../components/landing/TitleSection';
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
 
@@ -18,7 +19,7 @@ const Landing = () => {
       {/* 헤더 */}
       <Header isPC={isPC} />
       {/* 대문 */}
-      <Title isPC={isPC} />
+      <TitleSection isPC={isPC} />
       {/* 인트로 */}
       <IntroSection isPC={isPC} />
       {/* 공연장 정보 */}
@@ -43,10 +44,4 @@ export default Landing;
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.mono.white};
-`;
-
-const Title = styled.div<{ isPC: boolean }>`
-  height: ${({ isPC }) => (isPC ? '700px' : '440px')};
-  width: 100%;
-  background-color: ${({ theme }) => theme.palette.point.yellow_kakao};
 `;
