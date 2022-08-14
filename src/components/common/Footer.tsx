@@ -3,7 +3,9 @@ import { ReactComponent as Insta } from '../../assets/icons/instagram.svg';
 import { ReactComponent as Youtube } from '../../assets/icons/youtube.svg';
 import { ReactComponent as Github } from '../../assets/icons/github.svg';
 import styled from 'styled-components';
-
+//'https://github.com/Gosrock'
+//'https://www.instagram.com/gosrock_archive/'
+// 'https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ'
 const Footer = () => {
   return (
     <Wrapper>
@@ -11,29 +13,27 @@ const Footer = () => {
       <img src={gosrock} />
 
       <SecondRow>
-        <button
-          onClick={() => {
-            window.open('https://github.com/Gosrock');
-          }}
+        <a
+          href="https://github.com/Gosrock"
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <Github />
-        </button>
-        <button
-          onClick={() => {
-            'https://www.instagram.com/gosrock_archive/';
-          }}
+        </a>
+        <a
+          href="https://www.instagram.com/gosrock_archive/"
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <Insta />
-        </button>
-        <button
-          onClick={() => {
-            window.open(
-              'https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ',
-            );
-          }}
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ"
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <Youtube />
-        </button>
+        </a>
       </SecondRow>
       <p>© GOSROCK. 2022 All rights reserved</p>
     </Wrapper>
@@ -65,4 +65,7 @@ const SecondRow = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 24px;
   margin-bottom: 24px;
+  & > a {
+    z-index: 11;
+  }
 `;
