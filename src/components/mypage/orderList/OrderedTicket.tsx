@@ -32,7 +32,7 @@ const OrderedTicket = ({
           <p>{id}</p>
           {selection === 'BOTH' ? (
             <p>
-              {selection} <span>(할인 적용)</span>
+              양일권 <span>(할인 적용)</span>
             </p>
           ) : (
             <p>{selection}</p>

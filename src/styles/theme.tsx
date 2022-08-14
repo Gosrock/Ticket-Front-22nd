@@ -72,9 +72,41 @@ export const theme: DefaultTheme = {
     tag_10_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
       10,
     )};line-height: 100%;font-weight: 700;`,
+    landing: {
+      title_48_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+        48,
+      )};line-height: 100%;font-weight: 700;`,
+      text_36_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+        36,
+      )};line-height: 100%;font-weight: 700;`,
+      title_24_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+        24,
+      )};line-height: 100%;font-weight: 700;`,
+      text_18_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+        18,
+      )};line-height: 100%;font-weight: 700;`,
+      count_96_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+        96,
+      )};line-height: 100%;font-weight: 700;`,
+      text_22_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
+        22,
+      )};line-height: 100%;font-weight: 700;`,
+    },
   },
   boxShadow: {
     normal: '0 3px 8px 0 rgb(0 0 0 / 10%)',
+  },
+  animate: {
+    LandingfadeIn: `@keyframes LandingfadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%);
+      }
+    }`,
   },
 };
 
