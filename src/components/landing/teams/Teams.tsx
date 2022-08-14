@@ -70,14 +70,14 @@ const Teams = ({ isPC, type }: ITeams) => {
             <NotSwiper type={type}>
               <div>
                 <Team {...YBData[0]} isPC={isPC} />
-                <Team {...YBData[1]} isPC={isPC} />
                 <Team {...YBData[2]} isPC={isPC} />
-                <Team {...YBData[3]} isPC={isPC} />
+                <Team {...YBData[4]} isPC={isPC} />
+                <Team {...YBData[6]} isPC={isPC} />
               </div>
               <div>
-                <Team {...YBData[4]} isPC={isPC} />
+                <Team {...YBData[1]} isPC={isPC} />
+                <Team {...YBData[3]} isPC={isPC} />
                 <Team {...YBData[5]} isPC={isPC} />
-                <Team {...YBData[6]} isPC={isPC} />
               </div>
             </NotSwiper>
           </MarginContainer>
@@ -86,12 +86,12 @@ const Teams = ({ isPC, type }: ITeams) => {
             <NotSwiper type={type}>
               <div>
                 <Team {...OBData[0]} isPC={isPC} />
-                <Team {...OBData[1]} isPC={isPC} />
                 <Team {...OBData[2]} isPC={isPC} />
+                <Team {...OBData[4]} isPC={isPC} />
               </div>
               <div>
+                <Team {...OBData[1]} isPC={isPC} />
                 <Team {...OBData[3]} isPC={isPC} />
-                <Team {...OBData[4]} isPC={isPC} />
                 <Team {...OBData[5]} isPC={isPC} />
               </div>
             </NotSwiper>
@@ -241,9 +241,6 @@ const NotSwiper = styled.div<{
     }
   }
 
-  & > div:first-child {
-    margin: 0 0 0 18px;
-  }
   & > div:last-child {
     margin: 100px 0 0 36px;
   }

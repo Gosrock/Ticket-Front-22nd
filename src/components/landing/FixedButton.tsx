@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import useScroll from '../../hooks/useScroll';
 
 const FixedButton = () => {
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (scrollY > 400 && scrollY < 7200) {
       setVisible(true);
@@ -15,8 +16,20 @@ const FixedButton = () => {
   }, [scrollY]);
   return (
     <Wrapper visible={visible}>
-      <button>마이페이지</button>
-      <button>예매하러 가기</button>
+      <button
+        onClick={() => {
+          navigate('/mypage');
+        }}
+      >
+        마이페이지
+      </button>
+      <button
+        onClick={() => {
+          navigate('/ticketing/select');
+        }}
+      >
+        예매하러 가기
+      </button>
     </Wrapper>
   );
 };
