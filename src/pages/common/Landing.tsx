@@ -44,4 +44,14 @@ export default Landing;
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.mono.white};
+
+  .sub2::after {
+    content: '실시간 예매한 총 티켓 매수 기준';
+    ${({ theme }) => theme.typo.tag_10_B}
+    font-weight: 400;
+    position: absolute;
+    color: ${({ theme }) => theme.palette.mono.font_sub};
+    right: 20px;
+    bottom: -18px;
+  }
 `;

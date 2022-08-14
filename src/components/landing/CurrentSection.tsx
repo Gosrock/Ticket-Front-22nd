@@ -15,7 +15,7 @@ const CurrentSection = ({ isPC }: { isPC: boolean }) => {
   }, []);
 
   return (
-    <Wrapper isPC={isPC}>
+    <Wrapper isPC={isPC} className="sub2">
       <h3>지금&nbsp;</h3>
       <div>
         &nbsp;
@@ -55,7 +55,7 @@ const Wrapper = styled.div<{ isPC: boolean }>`
   width: 100%;
   background-color: #eaeaec;
   height: ${({ isPC }) => (isPC ? '296px' : '200px')};
-
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
