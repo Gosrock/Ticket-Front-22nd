@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import useScroll from '../../hooks/useScroll';
+import { authState } from '../../stores/auth';
 import MarginContainer from './MarginContainer';
 
 const Header = ({ isPC }: { isPC: boolean }) => {
   const { scrollY } = useScroll();
   const navigate = useNavigate();
+  const { isAuthenticated } = useRecoilValue(authState);
   return (
     <Wrapper scrollY={scrollY} isPC={isPC}>
       <MarginContainer>
@@ -31,10 +34,10 @@ const Header = ({ isPC }: { isPC: boolean }) => {
         ) : (
           <button
             onClick={() => {
-              navigate('/ticketing/select');
+              navigate(`${isAuthenticated ? '/mypage' : 'ticketing/select'}`);
             }}
           >
-            예매하러 가기
+            {isAuthenticated ? '마이페이지' : '바로 예매하기'}
           </button>
         )}
       </MarginContainer>
@@ -77,7 +80,7 @@ const Wrapper = styled.div<{ scrollY: number; isPC: boolean }>`
 
     button {
       margin-left: auto;
-      padding: 12px 12px;
+      padding: 12px 16px;
       background-color: ${({ theme, scrollY }) =>
         scrollY > 30
           ? theme.palette.mono.black_12

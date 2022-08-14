@@ -13,6 +13,7 @@ import FixedButton from '../../components/landing/FixedButton';
 import TitleSection from '../../components/landing/TitleSection';
 import { useToast } from '../../hooks/useToast';
 import { useEffect } from 'react';
+import NavigateSection from '../../components/landing/NavigateSection';
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
   const { fireToast } = useToast();
@@ -39,6 +40,7 @@ const Landing = () => {
       {/* 공연 유의사항 안내 */}
       <InfoSection isPC={isPC} />
       {/* 푸터 */}
+      <NavigateSection isPC={isPC} />
       <Footer />
       {/* 하단고정버튼 */}
       {isPC && <FixedButton />}

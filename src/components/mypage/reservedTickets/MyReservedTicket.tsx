@@ -6,6 +6,8 @@ import { convertDate } from '../../../utils/convertDate';
 
 import { useNavigate } from 'react-router-dom';
 import { ITicket } from '../../../apis/type/ticket';
+import { useSetRecoilState } from 'recoil';
+import { optionState } from '../../../stores/option';
 
 interface IMyReservedTicket {
   date: 'YB' | 'OB';
@@ -15,7 +17,7 @@ interface IMyReservedTicket {
 
 const MyReservedTicket = ({ date, tickets, status }: IMyReservedTicket) => {
   const navigate = useNavigate();
-
+  const setDateOption = useSetRecoilState(optionState);
   return (
     <Wrapper>
       {date === 'YB' ? (
