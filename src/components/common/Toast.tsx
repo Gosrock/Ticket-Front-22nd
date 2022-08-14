@@ -23,7 +23,7 @@ export const Wrapper = styled.div<{ isClosing: boolean }>`
   opacity: 0;
   background: rgba(0, 0, 0, 0.35);
   color: #fff;
-  z-index: 10000;
+  z-index: 10;
 
   ${({ isClosing }) =>
     isClosing

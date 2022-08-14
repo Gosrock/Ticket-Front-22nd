@@ -3,25 +3,34 @@ import { ReactComponent as Insta } from '../../assets/icons/instagram.svg';
 import { ReactComponent as Youtube } from '../../assets/icons/youtube.svg';
 import { ReactComponent as Github } from '../../assets/icons/github.svg';
 import styled from 'styled-components';
-
+//'https://github.com/Gosrock'
+//'https://www.instagram.com/gosrock_archive/'
+// 'https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ'
 const Footer = () => {
   return (
     <Wrapper>
       {/* 배포 완료시 수정해야함 */}
-      <a href="https://github.com/Gosrock" target="_blank">
-        <img src={gosrock} />
-      </a>
+      <img src={gosrock} />
 
       <SecondRow>
-        <a href="https://github.com/Gosrock" target="_blank">
+        <a
+          href="https://github.com/Gosrock"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <Github />
         </a>
-        <a href="https://www.instagram.com/gosrock_archive/" target="_blank">
+        <a
+          href="https://www.instagram.com/gosrock_archive/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <Insta />
         </a>
         <a
           href="https://www.youtube.com/channel/UCBjYErlHCG0vfcdDmaeOIxQ"
           target="_blank"
+          rel="noreferrer noopener"
         >
           <Youtube />
         </a>
@@ -56,4 +65,7 @@ const SecondRow = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 24px;
   margin-bottom: 24px;
+  & > a {
+    z-index: 11;
+  }
 `;

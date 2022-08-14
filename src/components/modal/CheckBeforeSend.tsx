@@ -67,7 +67,9 @@ const Content = styled.div`
   width: 100%;
   height: 144px;
   overflow-y: auto;
-
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: hidden;
   &::-webkit-scrollbar {
     width: 3px;
   }

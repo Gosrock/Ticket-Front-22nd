@@ -11,18 +11,20 @@ import useModal from '../../../hooks/useModal';
 export interface ITalkInputProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  talkListRef: React.RefObject<HTMLDivElement>;
 }
 
-const TalkInput = ({ isOpen, setIsOpen }: ITalkInputProps) => {
+const TalkInput = ({ isOpen, setIsOpen, talkListRef }: ITalkInputProps) => {
   const [value, bind, reset] = useInput<string>('');
   const { status, data } = useGetUserInfo();
   const { openModal, closeModal } = useModal();
   const queryClient = useQueryClient();
-  //const data = queryClient.getQueryData('users') as TResponseType<IUsersRes>;
-
+  console.log(talkListRef);
   const { mutate } = useMutation(UsersApi.sendTalk, {
     onSuccess: () => {
       queryClient.invalidateQueries('talks');
+      queryClient.invalidateQueries('talksCount');
+      talkListRef.current!.scrollTo(0, 0);
     },
   });
 
@@ -182,5 +184,9 @@ const InputWindow = styled.div<{ isOpen: boolean }>`
     &::-webkit-scrollbar-track {
       background-color: none;
     }
+  }
+
+  & > svg {
+    cursor: pointer;
   }
 `;
