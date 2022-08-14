@@ -17,7 +17,9 @@ const ContentSection = ({ isPC }: { isPC: boolean }) => {
             <h2>편하게</h2>
           </Title>
           <Card top={true} isPC={isPC}>
-            <img src={message} />
+            <div>
+              <img src={message} />
+            </div>
             <div>
               <p>
                 <span>문자인증</span>을 통해 더 쉽고 빠르게
@@ -26,7 +28,9 @@ const ContentSection = ({ isPC }: { isPC: boolean }) => {
             </div>
           </Card>
           <Card top={true} isPC={isPC}>
-            <img src={twodays} />
+            <div>
+              <img src={twodays} />
+            </div>
             <div>
               <p>전례없는 이틀간의 공연,</p>
               <p>
@@ -50,7 +54,9 @@ const ContentSection = ({ isPC }: { isPC: boolean }) => {
             </div>
           </Card>
           <Card top={false} isPC={isPC}>
-            <img src={talk} />
+            <div>
+              <img src={talk} />
+            </div>
             <div>
               <p>두구두구두구!</p>
               <p>여러분의 응원을 남겨주세요</p>
@@ -163,6 +169,8 @@ const Card = styled.div<{ top: boolean; isPC: boolean }>`
         : css`
             box-sizing: border-box;
             margin: 0 18px;
+            width: calc(100% - 36px);
+            height: auto;
           `}
   }
   .sub {
