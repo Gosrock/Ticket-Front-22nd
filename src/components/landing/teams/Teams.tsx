@@ -241,9 +241,6 @@ const NotSwiper = styled.div<{
     }
   }
 
-  & > div:first-child {
-    margin: 0 0 0 18px;
-  }
   & > div:last-child {
     margin: 100px 0 0 36px;
   }
