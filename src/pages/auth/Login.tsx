@@ -62,7 +62,7 @@ const Login = () => {
               path: '/', //accessible on all pages
               secure: true, // only accessible through HTTPS
             });
-
+            console.log(data.data.accessToken);
             axiosPrivate.defaults.headers.common.Authorization = `Bearer ${data.data.accessToken}`;
             setAuth({
               ...auth,

@@ -12,7 +12,7 @@ const RequireAuth = () => {
   const accessCookie = useCookies(['accessToken'])[0];
   const registerCookie = useCookies(['registerToken'])[0];
   // undefined or token
-
+  console.log(accessCookie);
   useEffect(() => {
     setRedirectUri(pathname);
   }, []);

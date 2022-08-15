@@ -46,7 +46,7 @@ const Check = ({}) => {
 
   return (
     <>
-      <AppBar label={'마이페이지'} />
+      <AppBar label={'뒤로가기'} />
       <SetMargin>
         <Title>티켓 구매 전, 확인해주세요</Title>
         <CheckedTicket option={option} />

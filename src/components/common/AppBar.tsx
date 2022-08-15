@@ -5,17 +5,22 @@ import { ReactComponent as Arrow } from '../../assets/icons/arrow.svg';
 type AppBarProps = {
   /* label */
   label: string;
+  target?: string;
 };
 
-const AppBar = ({ label }: AppBarProps) => {
+const AppBar = ({ label, target }: AppBarProps) => {
   const navigate = useNavigate();
-  const onClickAppBar = () => {
-    navigate(-1);
+  const onClickAppBar = (target: string | undefined) => {
+    if (target) {
+      navigate(target);
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
     <Wrapper>
-      <Arrow onClick={onClickAppBar} />
+      <Arrow onClick={() => onClickAppBar(target)} />
       <p>{label}</p>
     </Wrapper>
   );
