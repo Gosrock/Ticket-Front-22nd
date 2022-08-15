@@ -10,6 +10,7 @@ export function useToast() {
   const fireToast = (content: string) => {
     setToasts({ content: content, isClosing: false });
     setTimeout(() => removeToast(content), 1500);
+    setTimeout(() => setToasts({ content: '', isClosing: false }), 2000);
   };
 
   return { toasts, fireToast };
