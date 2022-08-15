@@ -29,20 +29,16 @@ const AuthApi = {
   },
 
   // 회원가입 : 입금자명 입력
-  register: async (
-    payload: TRegisterReqType,
-    registerToken: string | null,
-  ): Promise<TResponseType<TRegisterResType>> => {
+  register: async (payload: {
+    payload: TRegisterReqType;
+    registerToken: string;
+  }): Promise<TResponseType<TRegisterResType>> => {
     // 레지스터토큰 받아서 헤더로 끼고 요청
-    if (registerToken) {
-      const { data } = await axiosPublic.post('/auth/register', payload, {
-        headers: { registerToken: `Bearer ${registerToken}` },
-      });
-      console.log(data);
-      return data;
-    } else {
-      throw new Error('no registerToken');
-    }
+    const { data } = await axiosPublic.post('/auth/register', payload.payload, {
+      headers: { registerToken: `Bearer ${payload.registerToken}` },
+    });
+    console.log(data);
+    return data;
   },
 };
 

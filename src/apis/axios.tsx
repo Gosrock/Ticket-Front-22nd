@@ -13,7 +13,7 @@ export const axiosPrivate = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// 토큰 오류시 만료된 토큰 지우고 알려주기
+/* // 토큰 오류시 만료된 토큰 지우고 알려주기
 axiosPrivate.interceptors.response.use(
   (response) => {
     return response;
@@ -42,3 +42,4 @@ axiosPrivate.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+ */

@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { useCallback } from 'react';
+import code401Handler from './code401Handler';
 import defaultHandler from './defaultHandler';
 import useErrorModal from './useErrorModal';
 
@@ -30,6 +31,7 @@ const useApiError = () => {
   const { openErrorModal } = useErrorModal();
 
   const handleError = useCallback((axiosError: AxiosError) => {
+    console.log(axiosError);
     const errorResponse = axiosError.response?.data as TCustomErrorResponse;
     const error = errorResponse.error;
     const status = error.statusCode;
@@ -50,6 +52,9 @@ const useApiError = () => {
       // 문자메시지 발송 실패
       case 500:
         defaultHandler(error);
+        break;
+      case 401:
+        code401Handler(error);
         break;
       default:
         defaultHandler(error);
