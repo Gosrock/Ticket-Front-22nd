@@ -153,7 +153,7 @@ const Card = styled.div<{ top: boolean; isPC: boolean }>`
       color: ${({ theme }) => theme.palette.mono.white};
       ${({ isPC, theme }) =>
         isPC ? theme.typo.text_14_M : theme.typo.text_12_M}
-      margin-top: 30px;
+      margin-top: ${({ isPC }) => (isPC ? '30px' : '18px')};
       margin-left: ${({ isPC }) => !isPC && '18px'};
       &:active {
         background-color: ${({ theme }) => theme.palette.mono.black_26};

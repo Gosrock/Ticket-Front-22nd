@@ -42,6 +42,7 @@ declare module 'styled-components' {
       appbar_18_R: string;
       tag_10_B: string;
       landing: {
+        title_Main: string;
         title_48_B: string;
         text_36_B: string;
         title_24_B: string;

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import alive from '../../assets/landing/alive.png';
 import dream from '../../assets/landing/dream.png';
-import { media } from '../../styles/theme';
+import { calcRem, media } from '../../styles/theme';
 import MarginContainer from './MarginContainer';
 const LocateSection = ({ isPC }: { isPC: boolean }) => {
   return (
@@ -99,7 +99,7 @@ const Map = styled.div<{ isPC: boolean }>`
             height: 350px;
           `
         : css`
-            width: 60vw;
+            width: 55vw;
             max-width: 350px;
             min-width: 200px;
             height: auto;
@@ -124,9 +124,10 @@ const Textbox = styled.div`
   ${media.custom(680)} {
     & > h1 {
       ${({ theme }) => theme.typo.landing.title_24_B}
+      font-size : ${calcRem(28)};
     }
     & > h3 {
-      ${({ theme }) => theme.typo.text_12_M}
+      ${({ theme }) => theme.typo.text_14_M}
 
       margin-top: 24px;
       margin-bottom: 4px;

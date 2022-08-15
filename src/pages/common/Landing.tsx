@@ -16,11 +16,6 @@ import { useEffect } from 'react';
 import NavigateSection from '../../components/landing/NavigateSection';
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
-  const { fireToast } = useToast();
-
-  useEffect(() => {
-    fireToast('스크롤을 아래로 내려주세요');
-  }, []);
   return (
     <Wrapper>
       {/* 헤더 */}

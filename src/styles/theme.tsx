@@ -73,6 +73,7 @@ export const theme: DefaultTheme = {
       10,
     )};line-height: 100%;font-weight: 700;`,
     landing: {
+      title_Main: `font-family: 'AmericanTypewriterBold';line-height: 100%;font-weight: 700;`,
       title_48_B: `font-family: 'Noto Sans KR';font-size: ${calcRem(
         48,
       )};line-height: 100%;font-weight: 700;`,
