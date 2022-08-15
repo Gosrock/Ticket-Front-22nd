@@ -15,7 +15,6 @@ const renderContent = {
 };
 
 const CheckedTicket = ({ option }: { option: IOptionType }) => {
-  const auth = useRecoilValue(authState);
   const { status, data } = useGetUserInfo();
   return (
     <Wrapper>
