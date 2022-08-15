@@ -9,6 +9,7 @@ import TicketQR from './pages/common/TicketQR';
 import RequireAuth from './components/auth/RequireAuth';
 import useApiError from './apis/error/useApiError';
 import { useQueryClient } from 'react-query';
+import RefuseAuth from './components/auth/RefuseAuth';
 
 function App() {
   const { handleError } = useApiError();
@@ -26,7 +27,9 @@ function App() {
     <Routes location={location}>
       <Route path="/" element={<Landing />} />
       <Route element={<Layout />}>
-        <Route path="/auth/*" element={<AuthRouter />} />
+        <Route element={<RefuseAuth />}>
+          <Route path="/auth/*" element={<AuthRouter />} />
+        </Route>
         <Route element={<RequireAuth />}>
           <Route path="/mypage/*" element={<MypageRouter />} />
           <Route path="/ticketing/*" element={<TicketingRouter />} />

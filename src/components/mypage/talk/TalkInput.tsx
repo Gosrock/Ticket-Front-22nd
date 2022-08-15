@@ -48,7 +48,8 @@ const TalkInput = ({ isOpen, setIsOpen, talkListRef }: ITalkInputProps) => {
             onClick: () => {
               mutate({ nickName, content });
               closeModal();
-              console.log('asdf');
+
+              reset();
             },
             closeModal,
             content,
@@ -69,8 +70,8 @@ const TalkInput = ({ isOpen, setIsOpen, talkListRef }: ITalkInputProps) => {
           },
         });
       }
-      reset();
     } catch (err) {
+      reset();
       console.error(err);
     }
   };
