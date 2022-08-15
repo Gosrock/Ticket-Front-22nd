@@ -44,11 +44,19 @@ const AuthTemplate = ({
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
 
   useEffect(() => {
-    if (page === 'send' && bind.value.length === 11) {
+    if (
+      page === 'send' &&
+      bind.value.length === 11 &&
+      !bind.value.match(/[^0-9]/gi)
+    ) {
       setButtonDisabled(false);
     } else if (page === 'validate' && bind.value.length === 4) {
       setButtonDisabled(false);
-    } else if (page === 'init' && bind.value.length > 0) {
+    } else if (
+      page === 'init' &&
+      bind.value.length > 0 &&
+      bind.value.length < 5
+    ) {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
