@@ -119,7 +119,7 @@ const TicketQR = ({}) => {
 
   return (
     <Wrapper>
-      {auth.isAuthenticated ? <AppBar label="마이페이지" /> : null}
+      {location.state ? <AppBar label="마이페이지" target="/mypage" /> : null}
       <div>
         <SetMargin>
           <TicketContainer>
