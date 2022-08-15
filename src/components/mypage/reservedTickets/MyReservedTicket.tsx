@@ -47,7 +47,11 @@ const MyReservedTicket = ({ date, tickets, status }: IMyReservedTicket) => {
                     status={el.status}
                     createdat={`${Month}/${Day} ${Hour}:${Minute}`}
                     id={el.id}
-                    onClick={() => navigate(`/tickets/${el.uuid}`)}
+                    onClick={() =>
+                      navigate(`/tickets/${el.uuid}`, {
+                        state: { from: 'mypage' },
+                      })
+                    }
                   />
                 );
               })}

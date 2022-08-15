@@ -115,7 +115,7 @@ const Card = styled.div<{ top: boolean; isPC: boolean }>`
     & > p {
       ${({ isPC, theme }) =>
         isPC ? theme.typo.title_24_B : theme.typo.text_18_B}
-      color: ${({ theme }) => theme.palette.mono.black_36};
+      color: ${({ theme }) => theme.palette.mono.black_26};
       ${({ isPC, top }) =>
         isPC
           ? top &&
@@ -138,7 +138,7 @@ const Card = styled.div<{ top: boolean; isPC: boolean }>`
       &:first-child {
         margin-top: 30px;
       }
-      &:last-child {
+      &:nth-child(2) {
         margin-top: 10px;
       }
     }

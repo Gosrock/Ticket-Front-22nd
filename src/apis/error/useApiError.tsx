@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import code401Handler from './code401Handler';
 import defaultHandler from './defaultHandler';
 import useErrorModal from './useErrorModal';
-
+import useHandle401 from './code401Handler';
 export interface ICustomError {
   error: string;
   statusCode: number;
@@ -29,13 +29,13 @@ function isValidationError(error: any): error is IValidationError {
 
 const useApiError = () => {
   const { openErrorModal } = useErrorModal();
-
+  const { handle401 } = useHandle401();
   const handleError = useCallback((axiosError: AxiosError) => {
     console.log(axiosError);
     const errorResponse = axiosError.response?.data as TCustomErrorResponse;
     const error = errorResponse.error;
     const status = error.statusCode;
-
+    console.log(status);
     switch (status) {
       // BadRequestException | ValidationError
       case 400:
@@ -54,7 +54,8 @@ const useApiError = () => {
         defaultHandler(error);
         break;
       case 401:
-        code401Handler(error);
+        openErrorModal(error);
+        handle401(error);
         break;
       default:
         defaultHandler(error);
