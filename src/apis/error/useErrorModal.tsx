@@ -9,8 +9,10 @@ export type TErrorCode =
   | 'Auth-0001'
   | 'Auth-9000'
   | 'Auth-5000'
+  | 'Auth-1000'
+  | 'Auth-1001'
   | 'Auth-1002'
-  | 'Auth-1000';
+  | 'Auth-1003';
 
 const errorMessage = {
   ValidationError: '잘못된 값이 입력되었어요',
@@ -18,8 +20,10 @@ const errorMessage = {
   'Auth-0001': '인증번호가 일치하지 않습니다',
   'Auth-9000': '잠시 뒤에 다시 시도해주세요',
   'Auth-5000': '문자 발송에 실패했어요\n카카오 채널로 문의주세요',
-  'Auth-1002': '이미 가입된 번호입니다',
   'Auth-1000': '로그인이 만료되었어요',
+  'Auth-1001': '이미 가입된 번호입니다',
+  'Auth-1002': '이미 가입된 번호입니다',
+  'Auth-1003': '이미 가입된 번호입니다',
 };
 
 const useErrorModal = () => {
