@@ -42,6 +42,12 @@ const InputForm = ({ page, bind, onResendButtonClick }: InputFormProps) => {
     }, 300);
   }, []);
 
+  useEffect(() => {
+    if (page === 'validate') {
+      reset();
+    }
+  }, [page]);
+
   return (
     <Wrapper>
       <input

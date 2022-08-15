@@ -6,12 +6,16 @@ import { toastState } from '../../stores/toast';
 function Toast() {
   const { content, isClosing } = useRecoilValue(toastState);
 
-  return <Wrapper isClosing={isClosing}>{content}</Wrapper>;
+  return (
+    <Wrapper isClosing={isClosing} content={content}>
+      {content}
+    </Wrapper>
+  );
 }
 
 export default Toast;
 
-export const Wrapper = styled.div<{ isClosing: boolean }>`
+export const Wrapper = styled.div<{ isClosing: boolean; content: string }>`
   position: fixed;
   bottom: 50px;
   left: 50%;
@@ -24,6 +28,12 @@ export const Wrapper = styled.div<{ isClosing: boolean }>`
   background: rgba(0, 0, 0, 0.35);
   color: #fff;
   z-index: 10;
+
+  ${({ content }) =>
+    content.length === 0 &&
+    css`
+      display: none;
+    `}
 
   ${({ isClosing }) =>
     isClosing

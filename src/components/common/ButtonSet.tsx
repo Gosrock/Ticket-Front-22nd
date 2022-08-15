@@ -1,7 +1,8 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import SetMargin from './SetMargin';
 import { darken } from 'polished';
+import { throttle } from 'lodash';
 
 interface ButtonSetProps extends HTMLAttributes<HTMLButtonElement> {
   label?: string;
@@ -13,8 +14,22 @@ const ButtonSet = ({
   buttonDisabled = true,
   ...props
 }: ButtonSetProps) => {
+  const [height, setHeight] = useState<number>();
+  const handleWidthResize = throttle(() => {
+    setHeight(window.innerHeight);
+  }, 100);
+  useEffect(() => {
+    console.log(height);
+  }, [height]);
+  useEffect(() => {
+    window.addEventListener('resize', handleWidthResize);
+    return () => {
+      window.addEventListener('resize', handleWidthResize);
+    };
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper height={height}>
       <SetMargin>
         <button disabled={buttonDisabled} {...props}>
           {label}
@@ -26,7 +41,7 @@ const ButtonSet = ({
 
 export default ButtonSet;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ height: number | undefined }>`
   width: 100%;
   height: 84px;
   position: absolute;
@@ -34,6 +49,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ height }) =>
+    height &&
+    height < 400 &&
+    css`
+      display: none;
+    `}
 
   background: linear-gradient(
     180deg,

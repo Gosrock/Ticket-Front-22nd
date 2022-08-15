@@ -4,7 +4,6 @@ import { axiosPrivate } from '../axios';
 import { ICustomError } from './useApiError';
 import { useNavigate } from 'react-router-dom';
 const useHandle401 = () => {
-  const { openModal, closeModal } = useModal();
   const navigate = useNavigate();
   const removeCookie = useCookies(['accessToken'])[2];
 
