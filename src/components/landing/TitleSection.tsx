@@ -27,7 +27,7 @@ const TitleSection = ({ isPC }: { isPC: boolean }) => {
             <h1>Invites You</h1>
             <img src={band} />
           </Title>
-          <Scroll>
+          <Scroll isPC={isPC}>
             <p>스크롤을 아래로 내려주세요</p>
             <ChevronDown />
           </Scroll>
@@ -73,7 +73,7 @@ const BackGround = styled.div<{ isPC: boolean }>`
   background-position: center center;
 `;
 
-const Scroll = styled.div`
+const Scroll = styled.div<{ isPC: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,9 @@ const Scroll = styled.div`
   bottom: 50px;
   left: 50%;
   transform: translate3d(-50%, 0, 0);
-  ${({ theme }) => theme.typo.landing.text_18_B};
+  ${({ theme, isPC }) =>
+    isPC ? theme.typo.landing.text_18_B : theme.typo.text_14_M};
+  font-weight: 700;
   animation: 1.2s ease-in-out TitleFadeIn5;
   @keyframes TitleFadeIn5 {
     0% {
