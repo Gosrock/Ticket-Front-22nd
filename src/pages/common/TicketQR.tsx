@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import AppBar from '../../components/common/AppBar';
@@ -14,9 +14,12 @@ import { ServerToClientEvents, SocketData } from '../../apis/type/socket';
 import { useQueryClient } from 'react-query';
 import useModal from '../../hooks/useModal';
 import QRBottomSkeleton from '../../components/skeleton/QRBottomSkeleton';
+
 const TicketQR = ({}) => {
   const auth = useRecoilValue(authState);
   const { ticketId } = useParams();
+  const location = useLocation();
+  console.log(location.state);
   const [socket, setSocket] = useState<Socket<ServerToClientEvents>>();
   const { openModal, closeModal } = useModal();
   const { data, status } = ticketId
