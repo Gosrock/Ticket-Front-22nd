@@ -131,6 +131,10 @@ export const YBData: Array<ITeamData> = [
         name: '김민우',
       },
       {
+        parts: 'G',
+        name: '엄지민',
+      },
+      {
         parts: 'B',
         name: '강나연',
       },

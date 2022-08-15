@@ -27,7 +27,7 @@ export const bannerData: Array<IBannerDataProps> = [
   },
   {
     type: 'account',
-    subtitle: '알고 싶어요',
-    title: '입금 계좌',
+    subtitle: '',
+    title: '입금 계좌 보기',
   },
 ];
