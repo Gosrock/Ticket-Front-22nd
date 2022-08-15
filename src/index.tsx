@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
+import './assets/fonts/fontStyle.css';
 import App from './App';
 import GlobalModal from './components/modal/GlobalModal';
 import { GlobalStyle } from './styles/global-style';
