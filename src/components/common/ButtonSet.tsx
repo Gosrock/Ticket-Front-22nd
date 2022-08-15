@@ -44,7 +44,7 @@ export default ButtonSet;
 const Wrapper = styled.div<{ height: number | undefined }>`
   width: 100%;
   height: 84px;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   display: flex;
   justify-content: center;
