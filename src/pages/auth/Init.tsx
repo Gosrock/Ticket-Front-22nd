@@ -5,6 +5,8 @@ import AuthTemplate from '../../components/auth/AuthTemplate';
 import useInput from '../../hooks/useInput';
 import { authState } from '../../stores/auth';
 import { useCookies } from 'react-cookie';
+import { axiosPrivate } from '../../apis/axios';
+import { useMutation } from 'react-query';
 
 const Init = () => {
   const [value, bind] = useInput<string>('');
@@ -12,25 +14,30 @@ const Init = () => {
   const [, setCookie] = useCookies(['accessToken']);
   const [, , removeCookie] = useCookies(['registerToken']);
   const navigate = useNavigate();
+  const { mutate } = useMutation(AuthApi.register, {
+    onSuccess: (res) => {
+      let date = new Date();
+      setCookie('accessToken', res.data.accessToken, {
+        expires: new Date(date.setDate(date.getDate() + 3)),
+        path: '/', //accessible on all pages
+        secure: true, // only accessible through HTTPS
+      });
+
+      console.log(res);
+      removeCookie('registerToken');
+      axiosPrivate.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${res.data.accessToken}`;
+      navigate('/ticketing/select', { replace: true });
+    },
+  });
   const handleClickRegister = async () => {
-    const res = await AuthApi.register(
-      {
+    mutate({
+      payload: {
         name: value,
       },
-      auth.registerToken,
-    );
-
-    let date = new Date();
-    setCookie('accessToken', res.data.accessToken, {
-      expires: new Date(date.setDate(date.getDate() + 3)),
-      path: '/', //accessible on all pages
-      secure: true, // only accessible through HTTPS
+      registerToken: auth.registerToken!,
     });
-
-    console.log(res);
-    removeCookie('registerToken');
-    setAuth({ ...auth });
-    navigate('/ticketing/select', { replace: true });
   };
 
   return (

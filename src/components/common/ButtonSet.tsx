@@ -29,7 +29,7 @@ export default ButtonSet;
 const Wrapper = styled.div`
   width: 100%;
   height: 84px;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   display: flex;
   justify-content: center;
