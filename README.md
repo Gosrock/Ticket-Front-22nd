@@ -49,13 +49,10 @@
 
 <br/>
 
-## 4. 기획, 디자인
+## 4. 웹페이지 뷰
+
 - [Figma 링크](https://www.figma.com/file/J6HVLxWGuCFgAQUCdWBUsT/%EA%B3%A0%EC%8A%A4%EB%9D%BD-%ED%8B%B0%EC%BC%93%EC%98%88%EB%A7%A4?node-id=2026%3A6310)
 - [관련 포스팅](https://9yujin.tistory.com/56?category=1025360)
-
-<br/>
-
-## 5. 뷰
 
 <details>
 <summary><h4>로그인, 인증</h4></summary>
@@ -94,7 +91,7 @@
 
 <br/>
 
-## 6. 폴더 구조
+## 5. 폴더 구조
 
 ```bash
 ├── .github # 액션 워크플로우 세팅
@@ -117,7 +114,7 @@
 
 <br/>
 
-## 7. 참여자
+## 6. 참여자
 <table>
     <tr align="center">
         <td><B>Leader • Front-end • UI/UX<B></td>
