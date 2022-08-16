@@ -9,15 +9,25 @@ interface IPurchaseTicketProps {
 
 const PurchaseTicket = ({ isFirst, onClick }: IPurchaseTicketProps) => {
   return (
-    <Wrapper onClick={onClick}>
-      <ToTicketing>
-        {isFirst ? <p>예매하러 가기</p> : <p>또 예매할래요</p>}
-        <Ticket style={{ width: '30px' }} />
-      </ToTicketing>
-    </Wrapper>
+    <Container>
+      <Wrapper onClick={onClick}>
+        <ToTicketing>
+          {isFirst ? <p>예매하러 가기</p> : <p>또 예매할래요</p>}
+          <Ticket style={{ width: '30px' }} />
+        </ToTicketing>
+      </Wrapper>
+    </Container>
   );
 };
 export default PurchaseTicket;
+
+const Container = styled.div`
+  width: 168px;
+  margin: 0 0 0 16px;
+
+  display: flex;
+  justify-content: start;
+`;
 
 const Wrapper = styled.div`
   border-radius: 16px;
@@ -26,7 +36,6 @@ const Wrapper = styled.div`
   width: 150px;
   height: 120px;
   padding: 84px 12px 6px 12px;
-  margin-left: 18px;
 
   cursor: pointer;
 `;
