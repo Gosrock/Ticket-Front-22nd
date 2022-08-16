@@ -39,7 +39,6 @@ const Login = () => {
       { phoneNumber: valueSend },
       {
         onSuccess: (data) => {
-          console.log(data);
           setAuth({
             ...auth,
             phoneNumber: data.data.phoneNumber,
