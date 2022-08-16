@@ -68,6 +68,7 @@ const InputForm = ({ page, bind, onResendButtonClick }: InputFormProps) => {
         placeholder={formContent[page].placeholder}
         ref={inputRef}
         maxLength={formContent[page].limit}
+        autoComplete="off"
       />
       <div className="input-indicator">
         {page === 'validate' && (
