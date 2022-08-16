@@ -15,11 +15,15 @@ import { useQueryClient } from 'react-query';
 import useModal from '../../hooks/useModal';
 import QRBottomSkeleton from '../../components/skeleton/QRBottomSkeleton';
 
+interface IState {
+  from: string;
+}
+
 const TicketQR = ({}) => {
   const auth = useRecoilValue(authState);
   const { ticketId } = useParams();
   const location = useLocation();
-  console.log(location.state);
+  const state = location.state as IState;
   const [socket, setSocket] = useState<Socket<ServerToClientEvents>>();
   const { openModal, closeModal } = useModal();
   const { data, status } = ticketId
@@ -119,7 +123,9 @@ const TicketQR = ({}) => {
 
   return (
     <Wrapper>
-      {location.state ? <AppBar label="마이페이지" target="/mypage" /> : null}
+      {state && state.from === 'mypage' ? (
+        <AppBar label="마이페이지" target="/mypage" />
+      ) : null}
       <div>
         <SetMargin>
           <TicketContainer>

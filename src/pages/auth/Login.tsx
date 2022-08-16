@@ -69,7 +69,10 @@ const Login = () => {
               registerToken: data.data.registerToken,
             });
           }
-          navigate(redirectUri || '/mypage');
+          navigate(redirectUri || '/mypage', {
+            replace: true,
+            state: { from: 'auth' },
+          });
         },
       },
     );

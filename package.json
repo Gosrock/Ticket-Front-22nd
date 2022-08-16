@@ -10,6 +10,7 @@
     "@types/node": "^16.11.43",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
     "polished": "^4.2.2",

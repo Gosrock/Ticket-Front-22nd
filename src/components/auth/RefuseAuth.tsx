@@ -25,9 +25,6 @@ const RefuseAuth = () => {
       },
     });
     return <Navigate replace to="/mypage" />;
-  } else if (registerToken) {
-    // 어세스 토큰 없이 레지스터 토큰만 있으면 회원가입
-    return <Navigate replace to="/auth/init" />;
   } else {
     // 둘 다 없으면 로그인 페이지로
     return <Outlet />;
