@@ -1,16 +1,20 @@
 ![Frame 34257](https://user-images.githubusercontent.com/55226431/184820864-e8573a2b-b48d-4eb9-a5f7-25ecf7192ec6.png)
 
-<br/><br/>
+<br/>
 
 # 고스락 티켓 2.0<img src="https://user-images.githubusercontent.com/55226431/184821608-3b631082-fefa-48cf-b9d3-bf4902ddcbff.png" align=left width=100>
 
 > 22번째 정기공연 [We are GOSROCK, Invites you] • <b>프론트엔드</b> 레포지토리
 
+<br/><br/>
+
+## 1. 서비스 소개
+
 <img width="100%" alt="readme" src="https://user-images.githubusercontent.com/55226431/184920291-3959f18b-4578-4681-b476-c9a2bf7dfc48.png">
 
 <br/><br/>
 
-## 사용 스택
+## 2. 사용 스택
 
 <div align="left">
 <div>
@@ -34,7 +38,7 @@
 
 <br/>
 
-## Gosrock.band
+## 3. Gosrock.band
 - [Storybook](https://gosrock.github.io/Ticket-Front-22nd/?path=/story/common-inputform--%ED%9C%B4%EB%8C%80%ED%8F%B0%EB%B2%88%ED%98%B8-%EC%9E%85%EB%A0%A5)
 - <b>[랜딩페이지](https://gosrock.band)</b>
 
@@ -45,7 +49,7 @@
 
 <br/>
 
-## 기획, 디자인
+## 4. 기획, 디자인
 - [Figma 링크](https://www.figma.com/file/J6HVLxWGuCFgAQUCdWBUsT/%EA%B3%A0%EC%8A%A4%EB%9D%BD-%ED%8B%B0%EC%BC%93%EC%98%88%EB%A7%A4?node-id=2026%3A6310)
 - [관련 포스팅](https://9yujin.tistory.com/56?category=1025360)
 
@@ -53,7 +57,7 @@
 
 
 
-## 폴더 구조
+## 5. 폴더 구조
 
 ```bash
 ├── .github # 액션 워크플로우 세팅
@@ -76,7 +80,7 @@
 
 <br/>
 
-## 참여자
+## 6. 참여자
 <table>
     <tr align="center">
         <td><B>기획 • UI/UX • 프론트 팀장<B></td>
