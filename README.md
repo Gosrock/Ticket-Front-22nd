@@ -34,11 +34,24 @@
 
 <br/>
 
+## Gosrock.band
+- [Storybook](https://gosrock.github.io/Ticket-Front-22nd/?path=/story/common-inputform--%ED%9C%B4%EB%8C%80%ED%8F%B0%EB%B2%88%ED%98%B8-%EC%9E%85%EB%A0%A5)
+- <b>[랜딩페이지](https://gosrock.band)</b>
+
+<div>
+<img src="https://user-images.githubusercontent.com/55226431/184898011-ab04c9e6-cc5d-4393-960b-80f00dbd3a00.gif" align='left' width="31%" >
+<img src='https://user-images.githubusercontent.com/55226431/184899062-41d422ff-19f8-4ab7-993d-abd83bccf5db.gif' width='69%'>
+</div>
+
+<br/>
+
 ## 기획, 디자인
 - [Figma 링크](https://www.figma.com/file/J6HVLxWGuCFgAQUCdWBUsT/%EA%B3%A0%EC%8A%A4%EB%9D%BD-%ED%8B%B0%EC%BC%93%EC%98%88%EB%A7%A4?node-id=2026%3A6310)
 - [관련 포스팅](https://9yujin.tistory.com/56?category=1025360)
 
 <br/>
+
+
 
 ## 폴더 구조
 
