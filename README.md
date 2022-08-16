@@ -6,7 +6,7 @@
 
 > 22번째 정기공연 [We are GOSROCK, Invites you] • <b>프론트엔드</b> 레포지토리
 
-<img width="100%" alt="readme" src="https://user-images.githubusercontent.com/55226431/184882909-ff460464-c1d0-4c47-abd3-9c39c0520a98.png">
+<img width="100%" alt="readme" src="https://user-images.githubusercontent.com/55226431/184920291-3959f18b-4578-4681-b476-c9a2bf7dfc48.png">
 
 <br/><br/>
 
