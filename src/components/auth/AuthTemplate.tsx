@@ -68,7 +68,7 @@ const AuthTemplate = ({
       {page === 'send' ? (
         <AppBar label={'홈으로'} target="/" />
       ) : (
-        <AppBar label={'뒤로 가기'} />
+        <AppBar label={'뒤로가기'} />
       )}
       <SetMargin>
         <Title>

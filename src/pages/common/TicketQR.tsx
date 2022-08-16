@@ -19,7 +19,7 @@ const TicketQR = ({}) => {
   const auth = useRecoilValue(authState);
   const { ticketId } = useParams();
   const location = useLocation();
-  console.log(location.state);
+  const state = location.state as any;
   const [socket, setSocket] = useState<Socket<ServerToClientEvents>>();
   const { openModal, closeModal } = useModal();
   const { data, status } = ticketId
@@ -119,7 +119,9 @@ const TicketQR = ({}) => {
 
   return (
     <Wrapper>
-      {location.state ? <AppBar label="마이페이지" target="/mypage" /> : null}
+      {state.from === 'mypage' ? (
+        <AppBar label="마이페이지" target="/mypage" />
+      ) : null}
       <div>
         <SetMargin>
           <TicketContainer>

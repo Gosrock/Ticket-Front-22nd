@@ -11,6 +11,7 @@ const useHandle401 = () => {
     localStorage.removeItem('accessToken');
     // 새로운 토큰 저장
     axiosPrivate.defaults.headers.common.Authorization = '';
+    navigate('/');
   };
 
   return { handle401 };

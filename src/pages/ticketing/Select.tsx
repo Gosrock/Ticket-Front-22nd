@@ -5,7 +5,7 @@ import DaySelect from '../../components/ticketing/DaySelect';
 import TicketCount from '../../components/ticketing/TicketCount';
 import ButtonSet from '../../components/common/ButtonSet';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { optionState } from '../../stores/option';
 
@@ -16,6 +16,8 @@ export type TSelectedDateType = {
 
 const Select = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const state = location.state as any;
   const [option, setOption] = useRecoilState(optionState);
   const [selectedDate, setSelectedDate] = useState<TSelectedDateType>({
     day1: false,
@@ -51,7 +53,11 @@ const Select = () => {
 
   return (
     <>
-      <AppBar label={'뒤로가기'} />
+      {state.from !== 'auth' ? (
+        <AppBar label={'뒤로가기'} />
+      ) : (
+        <div style={{ marginTop: '80px' }}></div>
+      )}
       <SetMargin>
         <Title>날짜를 선택해 주세요</Title>
         <DaySelect selected={selectedDate} setSelected={setSelectedDate} />
