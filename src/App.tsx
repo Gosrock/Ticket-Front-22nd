@@ -10,6 +10,7 @@ import RequireAuth from './components/auth/RequireAuth';
 import useApiError from './apis/error/useApiError';
 import { useQueryClient } from 'react-query';
 import RefuseAuth from './components/auth/RefuseAuth';
+import useGAPageTracking from './components/common/GAPageTracking';
 
 function App() {
   const { handleError } = useApiError();
@@ -22,7 +23,7 @@ function App() {
       },
     },
   });
-
+  useGAPageTracking();
   return (
     <Routes location={location}>
       <Route path="/" element={<Landing />} />

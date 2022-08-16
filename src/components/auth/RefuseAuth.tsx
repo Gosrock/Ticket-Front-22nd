@@ -12,7 +12,6 @@ const RefuseAuth = () => {
   const registerToken = localStorage.getItem('registerToken');
   // undefined or token
   const location = useLocation();
-  console.log(location.pathname);
   if (accessToken) {
     // 어세스 토큰 있으면 마이페이지로 되돌려버림
     openModal({
