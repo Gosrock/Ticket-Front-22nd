@@ -15,7 +15,7 @@ const Init = () => {
   const { mutate } = useMutation(AuthApi.register, {
     onSuccess: (res) => {
       localStorage.setItem('accessToken', res.data.accessToken);
-      console.log(res);
+
       localStorage.removeItem('registerToken');
       axiosPrivate.defaults.headers.common[
         'Authorization'

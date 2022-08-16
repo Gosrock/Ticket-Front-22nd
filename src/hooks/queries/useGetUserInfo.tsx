@@ -7,7 +7,7 @@ const useGetUserInfo = () => {
     retry: false,
     refetchOnMount: false,
   });
-  console.log(status, data);
+
   return { status, data };
 };
 

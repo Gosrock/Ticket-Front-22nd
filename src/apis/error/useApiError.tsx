@@ -31,16 +31,14 @@ const useApiError = () => {
   const { openErrorModal } = useErrorModal();
   const { handle401 } = useHandle401();
   const handleError = useCallback((axiosError: AxiosError) => {
-    console.log(axiosError);
     const errorResponse = axiosError.response?.data as TCustomErrorResponse;
     const error = errorResponse.error;
     const status = error.statusCode;
-    console.log(status);
+
     switch (status) {
       // BadRequestException | ValidationError
       case 400:
         if (isValidationError(error)) {
-          console.log(error.validationErrorInfo);
         } else {
           openErrorModal(error);
         }

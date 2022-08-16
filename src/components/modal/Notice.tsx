@@ -44,7 +44,6 @@ const noticeContent = {
 };
 
 const Notice = ({ onClick, type, errorMessage }: NoticeProps) => {
-  console.log(errorMessage);
   return (
     <Wrapper>
       <Head>

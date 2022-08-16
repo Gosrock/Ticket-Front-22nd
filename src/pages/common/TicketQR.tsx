@@ -37,7 +37,7 @@ const TicketQR = ({}) => {
       // JavaScript key를 인자로 주고 SDK 초기화
       window.Kakao.init(KAKAO_APP_KEY);
       // SDK 초기화 여부를 확인하자.
-      console.log(window.Kakao.isInitialized());
+      //console.log(window.Kakao.isInitialized());
     }
   }, []);
 
@@ -55,11 +55,9 @@ const TicketQR = ({}) => {
         const ticketIdForSocket = ticketId as keyof ServerToClientEvents;
         socket.on(ticketIdForSocket, (data: SocketData) => {
           if (data.success) {
-            console.log(data);
             queryClient.invalidateQueries(['ticket', `${ticketId}`]);
             queryClient.invalidateQueries('ticket');
           } else {
-            console.log(data);
             if (data.message === '[입장실패]이미 입장 완료된 티켓입니다') {
               openModal({
                 modalType: 'Notice',
@@ -87,7 +85,6 @@ const TicketQR = ({}) => {
         });
       }
     }
-    console.log(socket);
   }, [socket]);
 
   const onShareButtonClick = () => {
