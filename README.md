@@ -83,10 +83,10 @@
 ## 6. 참여자
 <table>
     <tr align="center">
-        <td><B>기획 • UI/UX • 프론트 팀장<B></td>
-        <td><B>프론트<B></td>
-        <td><B>프론트<B></td>
-        <td><B>프론트<B></td>
+        <td><B>Leader • Front-end • UI/UX<B></td>
+        <td><B>Front-end<B></td>
+        <td><B>Front-end<B></td>
+        <td><B>Front-end<B></td>
     </tr>
     <tr align="center">
         <td><B>한규진<B></td>
