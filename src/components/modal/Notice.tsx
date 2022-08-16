@@ -3,6 +3,8 @@ import { ReactComponent as AlreadyEntered } from '../../assets/illusts/undraw_co
 import { ReactComponent as WrongDate } from '../../assets/illusts/undraw_access_denied_re_awnf.svg';
 import { ReactComponent as NewMessage } from '../../assets/illusts/undraw_new_message_re_fp03.svg';
 import { ReactComponent as Notify } from '../../assets/illusts/undraw_notify_re_65on.svg';
+import { ReactComponent as Love } from '../../assets/illusts/undraw_with_love_re_1q3m.svg';
+
 import ModalButton from '../common/ModalButton';
 export type NoticeProps = {
   onClick: () => void;
@@ -26,6 +28,18 @@ const noticeContent = {
   에러처리: {
     illust: <Notify />,
     text: '',
+  },
+  티켓예매: {
+    illust: <Love />,
+    text: (
+      <>
+        <p>
+          티켓 예매에 성공했어요
+          <br />
+          마이페이지에서 확인해주세요
+        </p>
+      </>
+    ),
   },
 };
 
@@ -64,7 +78,9 @@ const Head = styled.div`
   & > p {
     margin-top: 28px;
     ${({ theme }) => theme.typo.text_18_B}
+    line-height: 120%;
     font-size: 16px;
     color: ${({ theme }) => theme.palette.mono.black_00};
+    text-align: center;
   }
 `;

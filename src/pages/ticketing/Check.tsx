@@ -4,16 +4,18 @@ import styled from 'styled-components';
 import ButtonSet from '../../components/common/ButtonSet';
 import CheckedTicket from '../../components/ticketing/CheckedTicket';
 import CheckedAccount from '../../components/ticketing/CheckedAccount';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { IOptionType, optionState } from '../../stores/option';
 import { useEffect, useState } from 'react';
 import useModal from '../../hooks/useModal';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from 'react-query';
 import OrderApi from '../../apis/OrderApi';
+import { useToast } from '../../hooks/useToast';
 
 const Check = ({}) => {
-  const option = useRecoilValue(optionState);
+  const [option, setOption] = useRecoilState(optionState);
+  const { fireToast } = useToast();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const [selected, setSelected] = useState<boolean>(false);
@@ -21,7 +23,17 @@ const Check = ({}) => {
   const { mutate } = useMutation(OrderApi.postOrder, {
     onSuccess: () => {
       queryClient.invalidateQueries('ticket');
-      navigate('/mypage');
+      setOption({ count: 1, date: null });
+      openModal({
+        modalType: 'Notice',
+        modalProps: {
+          onClick: () => {
+            closeModal();
+            navigate('/mypage');
+          },
+          type: '티켓예매',
+        },
+      });
     },
   });
   useEffect(() => {
@@ -31,7 +43,7 @@ const Check = ({}) => {
         modalProps: {
           onClick: () => {
             closeModal();
-            navigate('/ticketing/select');
+            navigate('/mypage');
           },
           type: '에러처리',
           errorMessage: '잘못된 접근입니다',
