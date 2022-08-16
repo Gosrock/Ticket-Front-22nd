@@ -18,11 +18,11 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/Storybook-FF4785?style=flat-square&logo=storybook&logoColor=white">
 </div>
-
 <div>
 <img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=reactquery&logoColor=white">
 <img src="https://img.shields.io/badge/Recoil-121212?style=flat-square&logo=react&logoColor=white">
-<img src="https://img.shields.io/badge/Styled Components-DB7093?style=flat-square&logo=styled-components&logoColor=white">
+<img src="https://img.shields.io/badge/Styled-DB7093?style=flat-square&logo=styled-components&logoColor=white">
+<img src="https://img.shields.io/badge/Socket.io-010101?style=flat-square&logo=socket.io&logoColor=white">
 </div>
 <div>
 <img src="https://img.shields.io/badge/ESlint-4B32C3?style=flat-square&logo=eslint&logoColor=white">
@@ -60,3 +60,41 @@
 │   └── index.tsx
 └── # configs
 ```
+
+## 참여자
+<table>
+    <tr align="center">
+        <td><B>기획 • UI/UX • 프론트 팀장<B></td>
+        <td><B>프론트<B></td>
+        <td><B>프론트<B></td>
+        <td><B>프론트<B></td>
+    </tr>
+    <tr align="center">
+        <td><B>한규진<B></td>
+        <td><B>정상훈<B></td>
+        <td><B>서예진<B></td>
+        <td><B>김주안<B></td>
+    </tr>
+    <tr align="center">
+        <td>
+            <img src="https://github.com/9yujin.png?size=100">
+            <br>
+            <a href="https://github.com/9yujin"><I>9yujin</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/wjdtkdgns.png?size=100" width="100">
+            <br>
+            <a href="https://github.com/wjdtkdgns"><I>wjdtkdgns</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/Jordizzin.png?size=100">
+            <br>
+            <a href="https://github.com/Jordizzin"><I>Jordizzin</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/duan-3.png?size=100" width="100">
+            <br>
+            <a href="https://github.com/duan-3"><I>duan-3</I></a>
+        </td>
+    </tr>
+</table>
