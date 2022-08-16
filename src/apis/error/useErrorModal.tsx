@@ -1,12 +1,12 @@
 import { ICustomError } from './useApiError';
 import useModal from '../../hooks/useModal';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 
 export type TErrorCode =
   | 'ValidationError'
   | 'Auth-0000'
   | 'Auth-0001'
+  | 'Auth-0002'
   | 'Auth-9000'
   | 'Auth-5000'
   | 'Auth-1000'
@@ -18,6 +18,7 @@ const errorMessage = {
   ValidationError: '잘못된 값이 입력되었어요',
   'Auth-0000': '인증번호의 기한이 만료되었어요',
   'Auth-0001': '인증번호가 일치하지 않습니다',
+  'Auth-0002': '이미 가입된 번호입니다',
   'Auth-9000': (
     <span>
       과도한 요청이에요
@@ -33,25 +34,25 @@ const errorMessage = {
     </div>
   ),
   'Auth-1000': '로그인이 만료되었어요',
-  'Auth-1001': '이미 가입된 번호입니다',
-  'Auth-1002': '이미 가입된 번호입니다',
-  'Auth-1003': '이미 가입된 번호입니다',
+  'Auth-1001': '로그인이 만료되었어요',
+  'Auth-1002': '로그인이 만료되었어요',
+  'Auth-1003': '로그인이 만료되었어요',
 };
 
 const useErrorModal = () => {
   const { openModal, closeModal } = useModal();
-  const [, , removeCookie] = useCookies(['registerToken']);
   const navigate = useNavigate();
   const openErrorModal = (error: ICustomError) => {
     const code = error.code as TErrorCode;
+    console.log(error);
     openModal({
       modalType: 'Notice',
       modalProps: {
         onClick: () => {
           closeModal();
-          if (code === 'Auth-1002') {
+          if (code === 'Auth-0002') {
             navigate('/');
-            removeCookie('registerToken');
+            localStorage.removeItem('registerToken');
           }
         },
         type: '에러처리',
