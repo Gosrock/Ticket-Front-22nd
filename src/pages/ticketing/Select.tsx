@@ -14,10 +14,14 @@ export type TSelectedDateType = {
   day2: boolean;
 };
 
+interface IState {
+  from: string;
+}
+
 const Select = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const state = location.state as any;
+  const state = location.state as IState;
   const [option, setOption] = useRecoilState(optionState);
   const [selectedDate, setSelectedDate] = useState<TSelectedDateType>({
     day1: false,
@@ -53,7 +57,7 @@ const Select = () => {
 
   return (
     <>
-      {state.from !== 'auth' ? (
+      {state && state.from !== 'auth' ? (
         <AppBar label={'뒤로가기'} />
       ) : (
         <div style={{ marginTop: '80px' }}></div>
