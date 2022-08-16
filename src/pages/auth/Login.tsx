@@ -7,7 +7,6 @@ import useInput from '../../hooks/useInput';
 import { authState } from '../../stores/auth';
 import { redirectState } from '../../stores/redirect';
 import NotFound from '../common/NotFound';
-import { useCookies } from 'react-cookie';
 import { useMutation } from 'react-query';
 import useModal from '../../hooks/useModal';
 import { useEffect } from 'react';
@@ -19,8 +18,6 @@ const Login = () => {
   const [valueValidate, bindValidate, resetValidate] = useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
   const redirectUri = useRecoilValue(redirectState);
-  const setAccessToken = useCookies(['accessToken'])[1];
-  const setRegisterToken = useCookies(['registerToken'])[1];
   const { openModal, closeModal } = useModal();
   const { mutate: mutateSend } = useMutation(AuthApi.messageSend);
   const { mutate: mutateValidate } = useMutation(AuthApi.messageValidate);
@@ -57,11 +54,7 @@ const Login = () => {
           let date = new Date();
           if (data.data.accessToken) {
             // 회원가입 되어있는 경우
-            setAccessToken('accessToken', data.data.accessToken, {
-              expires: new Date(date.setDate(date.getDate() + 3)),
-              path: '/', //accessible on all pages
-              secure: true, // only accessible through HTTPS
-            });
+            localStorage.setItem('accessToken', data.data.accessToken);
             console.log(data.data.accessToken);
             axiosPrivate.defaults.headers.common.Authorization = `Bearer ${data.data.accessToken}`;
             setAuth({
@@ -70,11 +63,7 @@ const Login = () => {
             });
           } else {
             // 회원가입 안되어있는 경우
-            setRegisterToken('registerToken', data.data.registerToken, {
-              expires: new Date(date.setDate(date.getMinutes() + 10)),
-              path: '/', //accessible on all pages
-              secure: true, // only accessible through HTTPS
-            });
+            localStorage.setItem('registerToken', data.data.registerToken);
             setAuth({
               ...auth,
               registerToken: data.data.registerToken,

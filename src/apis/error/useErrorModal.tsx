@@ -1,7 +1,6 @@
 import { ICustomError } from './useApiError';
 import useModal from '../../hooks/useModal';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 
 export type TErrorCode =
   | 'ValidationError'
@@ -40,7 +39,6 @@ const errorMessage = {
 
 const useErrorModal = () => {
   const { openModal, closeModal } = useModal();
-  const [, , removeCookie] = useCookies(['registerToken']);
   const navigate = useNavigate();
   const openErrorModal = (error: ICustomError) => {
     const code = error.code as TErrorCode;
@@ -51,7 +49,7 @@ const useErrorModal = () => {
           closeModal();
           if (code === 'Auth-1002') {
             navigate('/');
-            removeCookie('registerToken');
+            localStorage.removeItem('registerToken');
           }
         },
         type: '에러처리',
