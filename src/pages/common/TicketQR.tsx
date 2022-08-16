@@ -40,7 +40,6 @@ const TicketQR = ({}) => {
       //console.log(window.Kakao.isInitialized());
     }
   }, []);
-
   useEffect(() => {
     if (ticketId) {
       if (!socket) {
