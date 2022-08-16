@@ -19,7 +19,7 @@ const TalkInput = ({ isOpen, setIsOpen, talkListRef }: ITalkInputProps) => {
   const { status, data } = useGetUserInfo();
   const { openModal, closeModal } = useModal();
   const queryClient = useQueryClient();
-  console.log(talkListRef);
+
   const { mutate } = useMutation(UsersApi.sendTalk, {
     onSuccess: () => {
       queryClient.invalidateQueries('talks');

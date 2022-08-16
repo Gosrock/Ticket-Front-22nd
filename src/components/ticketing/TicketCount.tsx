@@ -10,10 +10,6 @@ type TicketNumSelectProps = {
 };
 
 const TickeCount = ({ selected, setSelected }: TicketNumSelectProps) => {
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
-
   return (
     <Wrapper>
       <CountButton

@@ -10,10 +10,6 @@ type DaySelectProps = {
 };
 
 const DaySelect = ({ selected, setSelected }: DaySelectProps) => {
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
-
   const onDateButtonClick = (date: 'day1' | 'day2') => {
     setSelected({ ...selected, [date]: !selected[date] });
   };

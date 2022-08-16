@@ -44,7 +44,7 @@ const useErrorModal = () => {
   const navigate = useNavigate();
   const openErrorModal = (error: ICustomError) => {
     const code = error.code as TErrorCode;
-    console.log(error);
+
     openModal({
       modalType: 'Notice',
       modalProps: {

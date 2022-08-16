@@ -7,7 +7,6 @@ type QRCodeProps = {
 };
 
 const QRCodeBox = ({ uuid, status }: QRCodeProps) => {
-  console.log(status);
   return (
     <Wrapper>
       <div>

@@ -16,7 +16,6 @@ const useTimer = () => {
     let timer: ReturnType<typeof setInterval>;
     const tick = () => {
       savedCallback.current && savedCallback.current();
-      //console.log('tick');
     };
     if (isRunning) {
       timer = setInterval(tick, 1000);

@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import AuthApi from '../../apis/AuthApi';
 import { axiosPrivate } from '../../apis/axios';
@@ -10,6 +10,10 @@ import NotFound from '../common/NotFound';
 import { useMutation } from 'react-query';
 import useModal from '../../hooks/useModal';
 import { useEffect } from 'react';
+
+interface IState {
+  from: string;
+}
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,19 +27,22 @@ const Login = () => {
   const { mutate: mutateValidate } = useMutation(AuthApi.messageValidate);
 
   useEffect(() => {
-    if (step === '2' && auth.phoneNumber === null) {
-      console.log('redirect');
-      //navigate('/');
+    if (step === '2' && auth.inProcess === false) {
+      navigate('/auth/login/1');
     }
   }, [step]);
 
   const handleClickMessageSend = async () => {
+    setAuth({ ...auth, inProcess: true });
     navigate('/auth/login/2');
     mutateSend(
       { phoneNumber: valueSend },
       {
         onSuccess: (data) => {
-          setAuth({ ...auth, phoneNumber: data.data.phoneNumber });
+          setAuth({
+            ...auth,
+            phoneNumber: data.data.phoneNumber,
+          });
           resetSend();
         },
         onError: () => navigate('/auth/login/1'),
@@ -55,7 +62,7 @@ const Login = () => {
           if (data.data.accessToken) {
             // 회원가입 되어있는 경우
             localStorage.setItem('accessToken', data.data.accessToken);
-            console.log(data.data.accessToken);
+
             axiosPrivate.defaults.headers.common.Authorization = `Bearer ${data.data.accessToken}`;
             setAuth({
               ...auth,
