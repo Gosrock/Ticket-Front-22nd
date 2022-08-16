@@ -12,68 +12,37 @@ export const YBData: Array<ITeamData> = [
   {
     date: 'YB',
     order: 1,
-    teamName: '돈까스 망치',
+    teamName: 'Ohio',
     members: [
       {
         parts: 'V',
-        name: '김원진',
+        name: '한지예',
       },
       {
         parts: 'G',
-        name: '김민우',
+        name: '한혜수',
       },
       {
         parts: 'G',
-        name: '노경민',
+        name: '이한결',
       },
       {
         parts: 'B',
-        name: '한규진',
+        name: '이예성',
       },
       {
         parts: 'K',
-        name: '김민준',
+        name: '최민혁',
       },
       {
         parts: 'D',
-        name: '채승희',
+        name: '박찬혁',
       },
     ],
   },
   {
     date: 'YB',
     order: 2,
-    teamName: '락스타 애옹이',
-    members: [
-      {
-        parts: 'V',
-        name: '이예지',
-      },
-      {
-        parts: 'G',
-        name: '정윤지',
-      },
-      {
-        parts: 'G',
-        name: '문창일',
-      },
-      {
-        parts: 'B',
-        name: '이찬',
-      },
-      {
-        parts: 'K',
-        name: '서재은',
-      },
-      {
-        parts: 'D',
-        name: '고윤정',
-      },
-    ],
-  },
-  {
-    date: 'YB',
-    order: 3,
     teamName: '전채관람가',
     members: [
       {
@@ -104,22 +73,7 @@ export const YBData: Array<ITeamData> = [
   },
   {
     date: 'YB',
-    order: 4,
-    teamName: '돌주먹정권',
-    members: [
-      {
-        parts: 'V',
-        name: '김민우',
-      },
-      {
-        parts: 'G',
-        name: '김의현',
-      },
-    ],
-  },
-  {
-    date: 'YB',
-    order: 5,
+    order: 3,
     teamName: '김의현',
     members: [
       {
@@ -150,7 +104,7 @@ export const YBData: Array<ITeamData> = [
   },
   {
     date: 'YB',
-    order: 6,
+    order: 4,
     teamName: '눈빨간 볼나비',
     members: [
       {
@@ -193,32 +147,78 @@ export const YBData: Array<ITeamData> = [
   },
   {
     date: 'YB',
-    order: 7,
-    teamName: 'Ohio',
+    order: 5,
+    teamName: '락스타 애옹이',
     members: [
       {
         parts: 'V',
-        name: '한지예',
+        name: '이예지',
       },
       {
         parts: 'G',
-        name: '한혜수',
+        name: '정윤지',
       },
       {
         parts: 'G',
-        name: '이한결',
+        name: '문창일',
       },
       {
         parts: 'B',
-        name: '이예성',
+        name: '이찬',
       },
       {
         parts: 'K',
-        name: '최민혁',
+        name: '서재은',
       },
       {
         parts: 'D',
-        name: '박찬혁',
+        name: '고윤정',
+      },
+    ],
+  },
+  {
+    date: 'YB',
+    order: 6,
+    teamName: '돌주먹정권',
+    members: [
+      {
+        parts: 'V',
+        name: '김민우',
+      },
+      {
+        parts: 'G',
+        name: '김의현',
+      },
+    ],
+  },
+  {
+    date: 'YB',
+    order: 7,
+    teamName: '돈까스 망치',
+    members: [
+      {
+        parts: 'V',
+        name: '김원진',
+      },
+      {
+        parts: 'G',
+        name: '김민우',
+      },
+      {
+        parts: 'G',
+        name: '노경민',
+      },
+      {
+        parts: 'B',
+        name: '한규진',
+      },
+      {
+        parts: 'K',
+        name: '김민준',
+      },
+      {
+        parts: 'D',
+        name: '채승희',
       },
     ],
   },
@@ -228,31 +228,27 @@ export const OBData: Array<ITeamData> = [
   {
     date: 'OB',
     order: 1,
-    teamName: '무회',
+    teamName: '서도철',
     members: [
       {
         parts: 'V',
-        name: '박정표',
+        name: '이준영',
       },
       {
         parts: 'G',
-        name: '김태광',
-      },
-      {
-        parts: 'G',
-        name: '김민석',
+        name: '김하영',
       },
       {
         parts: 'B',
-        name: '박상범',
+        name: '봉세환',
       },
       {
         parts: 'K',
-        name: '최민혁',
+        name: '서예진',
       },
       {
         parts: 'D',
-        name: '김정선',
+        name: '이찬진',
       },
     ],
   },
@@ -313,39 +309,31 @@ export const OBData: Array<ITeamData> = [
   {
     date: 'OB',
     order: 4,
-    teamName: 'A789',
+    teamName: '무회',
     members: [
       {
         parts: 'V',
-        name: '양훈석',
-      },
-      {
-        parts: 'C',
-        name: '김하영',
+        name: '박정표',
       },
       {
         parts: 'G',
-        name: '오상훈',
-      },
-      {
-        parts: 'G,D',
-        name: '정원우',
+        name: '김태광',
       },
       {
         parts: 'G',
-        name: '오상호',
-      },
-      {
-        parts: 'D',
-        name: '박상우',
-      },
-      {
-        parts: 'K',
-        name: '이새롬',
+        name: '김민석',
       },
       {
         parts: 'B',
-        name: '장문석',
+        name: '박상범',
+      },
+      {
+        parts: 'K',
+        name: '최민혁',
+      },
+      {
+        parts: 'D',
+        name: '김정선',
       },
     ],
   },
@@ -379,27 +367,39 @@ export const OBData: Array<ITeamData> = [
   {
     date: 'OB',
     order: 6,
-    teamName: '서도철',
+    teamName: 'A789',
     members: [
       {
         parts: 'V',
-        name: '이준영',
+        name: '양훈석',
       },
       {
-        parts: 'G',
+        parts: 'C',
         name: '김하영',
       },
       {
-        parts: 'B',
-        name: '봉세환',
+        parts: 'G',
+        name: '오상훈',
       },
       {
-        parts: 'K',
-        name: '서예진',
+        parts: 'G,D',
+        name: '정원우',
+      },
+      {
+        parts: 'G',
+        name: '오상호',
       },
       {
         parts: 'D',
-        name: '이찬진',
+        name: '박상우',
+      },
+      {
+        parts: 'K',
+        name: '이새롬',
+      },
+      {
+        parts: 'B',
+        name: '장문석',
       },
     ],
   },
