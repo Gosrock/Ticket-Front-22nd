@@ -4,27 +4,19 @@ import AuthApi from '../../apis/AuthApi';
 import AuthTemplate from '../../components/auth/AuthTemplate';
 import useInput from '../../hooks/useInput';
 import { authState } from '../../stores/auth';
-import { useCookies } from 'react-cookie';
 import { axiosPrivate } from '../../apis/axios';
 import { useMutation } from 'react-query';
 
 const Init = () => {
   const [value, bind] = useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
-  const [, setCookie] = useCookies(['accessToken']);
-  const [, , removeCookie] = useCookies(['registerToken']);
+
   const navigate = useNavigate();
   const { mutate } = useMutation(AuthApi.register, {
     onSuccess: (res) => {
-      let date = new Date();
-      setCookie('accessToken', res.data.accessToken, {
-        expires: new Date(date.setDate(date.getDate() + 3)),
-        path: '/', //accessible on all pages
-        secure: true, // only accessible through HTTPS
-      });
-
+      localStorage.setItem('accessToken', res.data.accessToken);
       console.log(res);
-      removeCookie('registerToken');
+      localStorage.removeItem('registerToken');
       axiosPrivate.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${res.data.accessToken}`;

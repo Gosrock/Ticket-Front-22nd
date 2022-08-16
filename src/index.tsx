@@ -10,7 +10,6 @@ import App from './App';
 import GlobalModal from './components/modal/GlobalModal';
 import { GlobalStyle } from './styles/global-style';
 import { theme } from './styles/theme';
-import { CookiesProvider } from 'react-cookie';
 import Toast from './components/common/Toast';
 
 const root = ReactDOM.createRoot(
@@ -25,12 +24,10 @@ root.render(
       <GlobalStyle />
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
-          <CookiesProvider>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <App />
-            <GlobalModal />
-            <Toast />
-          </CookiesProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <App />
+          <GlobalModal />
+          <Toast />
         </QueryClientProvider>
       </RecoilRoot>
     </ThemeProvider>
