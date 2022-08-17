@@ -141,6 +141,9 @@ const Title = styled.div<{ isOpen: boolean }>`
       cursor: pointer;
     }
   }
+  svg {
+    cursor: pointer;
+  }
 `;
 
 const InputWindow = styled.div<{ isOpen: boolean }>`
