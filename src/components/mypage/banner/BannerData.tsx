@@ -7,7 +7,7 @@ export interface IBannerDataProps {
 export const bannerData: Array<IBannerDataProps> = [
   {
     type: 'location',
-    subtitle: '헤메지 마세요',
+    subtitle: '헤매지 마세요',
     title: '공연장 정보',
   },
   {
