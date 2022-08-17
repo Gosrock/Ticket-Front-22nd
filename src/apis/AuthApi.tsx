@@ -15,7 +15,7 @@ const AuthApi = {
     payload: TMessageSendReqType,
   ): Promise<TResponseType<TMessageSendResType>> => {
     const { data } = await axiosPublic.post('/auth/message/send', payload);
-    console.log(data);
+
     return data;
   },
 
@@ -24,7 +24,7 @@ const AuthApi = {
     payload: TMessageValidateReqType,
   ): Promise<TResponseType<TMessageValidateResType>> => {
     const { data } = await axiosPublic.post('/auth/message/validate', payload);
-    console.log(data);
+
     return data;
   },
 
@@ -37,7 +37,7 @@ const AuthApi = {
     const { data } = await axiosPublic.post('/auth/register', payload.payload, {
       headers: { registerToken: `Bearer ${payload.registerToken}` },
     });
-    console.log(data);
+
     return data;
   },
 };

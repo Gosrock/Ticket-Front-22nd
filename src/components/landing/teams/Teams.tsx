@@ -52,7 +52,7 @@ const Teams = ({ isPC, type }: ITeams) => {
           <p>YB</p>
           <Container type={type} isPC={isPC}>
             <p>9월 1일 목요일</p>
-            <p>저녁 7시</p>
+            <p>저녁 6시</p>
           </Container>
         </>
       ) : (

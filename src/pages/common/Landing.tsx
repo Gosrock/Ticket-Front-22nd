@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import NavigateSection from '../../components/landing/NavigateSection';
 const Landing = () => {
   const isPC = useMediaQuery({ minWidth: 768 });
+  const isButtonFloat = useMediaQuery({ minWidth: 820 });
   return (
     <Wrapper>
       {/* 헤더 */}
@@ -38,7 +39,7 @@ const Landing = () => {
       <NavigateSection isPC={isPC} />
       <Footer />
       {/* 하단고정버튼 */}
-      {isPC && <FixedButton />}
+      {isButtonFloat && <FixedButton />}
     </Wrapper>
   );
 };

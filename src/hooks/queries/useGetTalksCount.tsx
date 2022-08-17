@@ -13,7 +13,7 @@ const useGetTalksCount = () => {
     },
   });
   const count = data?.data.commentNum;
-  console.log(data);
+
   return { status, count };
 };
 

@@ -39,7 +39,7 @@ const Wrapper = styled.div<{ visible: boolean }>`
   position: fixed;
   right: 80px;
   bottom: 64px;
-
+  z-index: 5;
   display: ${({ visible }) => (visible ? 'fixed' : 'none')};
   button {
     padding: 16px 24px;

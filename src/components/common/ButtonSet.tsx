@@ -18,9 +18,7 @@ const ButtonSet = ({
   const handleWidthResize = throttle(() => {
     setHeight(window.innerHeight);
   }, 100);
-  useEffect(() => {
-    console.log(height);
-  }, [height]);
+  useEffect(() => {}, [height]);
   useEffect(() => {
     window.addEventListener('resize', handleWidthResize);
     return () => {

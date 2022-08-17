@@ -21,7 +21,7 @@ const Mypage = () => {
       // JavaScript key를 인자로 주고 SDK 초기화
       window.Kakao.init(KAKAO_APP_KEY);
       // SDK 초기화 여부를 확인하자.
-      console.log(window.Kakao.isInitialized());
+      //console.log(window.Kakao.isInitialized());
     }
   }, []);
 

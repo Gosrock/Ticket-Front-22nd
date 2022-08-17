@@ -5,12 +5,14 @@ export interface IAuthType {
   isAuthenticated: boolean;
   registerToken: string | null;
   phoneNumber: string | null;
+  inProcess: boolean;
 }
 
 const initialState = {
   isAuthenticated: false,
   registerToken: null,
   phoneNumber: null,
+  inProcess: false,
 };
 
 const getTokenFromLocalStorage = (): IAuthType => {

@@ -6,21 +6,23 @@ import useInput from '../../hooks/useInput';
 import { authState } from '../../stores/auth';
 import { axiosPrivate } from '../../apis/axios';
 import { useMutation } from 'react-query';
+import { redirectState } from '../../stores/redirect';
 
 const Init = () => {
   const [value, bind] = useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
+  const redirectUri = useRecoilValue(redirectState);
 
   const navigate = useNavigate();
   const { mutate } = useMutation(AuthApi.register, {
     onSuccess: (res) => {
       localStorage.setItem('accessToken', res.data.accessToken);
-      console.log(res);
+
       localStorage.removeItem('registerToken');
       axiosPrivate.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${res.data.accessToken}`;
-      navigate('/ticketing/select', { replace: true });
+      navigate(redirectUri || '/mypage', { replace: true });
     },
   });
   const handleClickRegister = async () => {

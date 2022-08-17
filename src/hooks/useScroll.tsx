@@ -7,8 +7,6 @@ const useScroll = () => {
     setScrollY(window.scrollY);
   }, 100);
 
-  console.log(scrollY); //check point!!!
-
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);

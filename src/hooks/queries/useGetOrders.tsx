@@ -8,7 +8,7 @@ const useGetOrders = () => {
     retry: false,
     refetchIntervalInBackground: false,
   });
-  console.log(status, data);
+
   return { status, data };
 };
 

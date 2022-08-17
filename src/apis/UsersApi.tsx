@@ -12,7 +12,7 @@ const UsersApi = {
   // 응원톡 전송하기
   sendTalk: async (payload: TSendTalkReq): Promise<TResponseType<ITalk>> => {
     const { data } = await axiosPrivate.post('/users/comment', payload);
-    console.log(data);
+
     return data;
   },
 
@@ -21,7 +21,7 @@ const UsersApi = {
     const { data } = await axiosPrivate.get(
       `users/comment?lastId=${pageParam}`,
     );
-    console.log(data);
+
     return {
       talkList: data.data.list,
       lastId: data.data.meta.lastId,
