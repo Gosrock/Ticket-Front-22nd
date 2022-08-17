@@ -29,9 +29,9 @@ const Location = ({ closeModal }: LocationProps) => {
         >
           <div>
             <p>
-              <span>DAY1</span> YB 공연
+              <span>DAY2</span> OB 공연
             </p>
-            <p>드림홀 (서교동 양화로 64)</p>
+            <p>얼라이브홀 (서교동 독막로7길 20)</p>
           </div>
           <ArrowShort />
         </Button>

@@ -92,6 +92,7 @@ const Button = styled.button`
   justify-content: space-between;
   align-items: center;
   padding: 12px;
+  cursor: default;
 
   & > div {
     text-align: left;
