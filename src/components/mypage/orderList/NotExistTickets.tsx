@@ -18,7 +18,7 @@ const NotExistTickets = () => {
 export default NotExistTickets;
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: calc(100% - 36px);
   height: calc(100% - 160px);
 
   position: fixed;
