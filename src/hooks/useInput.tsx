@@ -21,7 +21,7 @@ const useInput = <T,>(initialValue: T) => {
     },
   };
 
-  return [value, bind, reset] as const;
+  return [value, bind, reset, setValue] as const;
 };
 
 export default useInput;
