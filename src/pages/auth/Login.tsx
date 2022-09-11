@@ -19,7 +19,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { step } = useParams();
   const [valueSend, bindSend, resetSend] = useInput<string>('');
-  const [valueValidate, bindValidate, resetValidate] = useInput<string>('');
+  const [valueValidate, bindValidate, resetValidate, setValueValidate] =
+    useInput<string>('');
   const [auth, setAuth] = useRecoilState(authState);
   const redirectUri = useRecoilValue(redirectState);
   const { openModal, closeModal } = useModal();
@@ -44,6 +45,7 @@ const Login = () => {
             phoneNumber: data.data.phoneNumber,
           });
           resetSend();
+          setValueValidate(data.data.validationNumber);
         },
         onError: () => navigate('/auth/login/1'),
       },
