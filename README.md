@@ -52,38 +52,37 @@
 ## 4. 웹페이지 뷰
 
 - [Figma 링크](https://www.figma.com/file/J6HVLxWGuCFgAQUCdWBUsT/%EA%B3%A0%EC%8A%A4%EB%9D%BD-%ED%8B%B0%EC%BC%93%EC%98%88%EB%A7%A4?node-id=2026%3A6310)
-- [관련 포스팅](https://9yujin.tistory.com/56?category=1025360)
 
 <details>
-<summary><h4>로그인, 인증</h4></summary>
+<summary><b>로그인, 인증</b></summary>
 <div>
 <img src="https://user-images.githubusercontent.com/55226431/184935269-357fbb5b-8637-4fc9-bcc4-27ee9e0d3b44.png" width='100%'>
 </div>
 </details>
 
 <details>
-<summary><h4>티켓 예매</h4></summary>
+<summary><b>티켓 예매</b></summary>
 <div>
 <img src="https://user-images.githubusercontent.com/55226431/184935315-ceebf79f-3de3-4a3e-aaaf-fa2b68ef5375.png" width='100%'>
 </div>
 </details>
 
 <details>
-<summary><h4>티켓 QR (실시간 소켓 통신을 통한 입장확인)</h4></summary>
+<summary><b>티켓 QR (실시간 소켓 통신을 통한 입장확인)</b></summary>
 <div>
 <img src="https://user-images.githubusercontent.com/55226431/184935407-3736a8d4-f946-4484-a598-10e5a857c635.png" width='100%'>
 </div>
 </details>
 
 <details>
-<summary><h4>응원톡</h4></summary>
+<summary><b>응원톡</b></summary>
 <div>
 <img src="https://user-images.githubusercontent.com/55226431/184935454-98f1e572-f7cc-4d52-8306-c47e6ac21bbc.png" width='100%'>
 </div>
 </details>
 
 <details>
-<summary><h4>마이페이지</h4></summary>
+<summary><b>마이페이지</b></summary>
 <div>
 <img src="https://user-images.githubusercontent.com/55226431/184935486-498e561b-1eba-4dc7-9faa-8996f678483f.png" width='100%'>
 </div>
@@ -91,7 +90,19 @@
 
 <br/>
 
-## 5. 폴더 구조
+## 5. 관련 포스팅
+
+- [[고스락 티켓 2.0] 기획, 디자인 개편](https://9yujin.tistory.com/56?category=1025360)
+- [[고스락 티켓 2.0] 로그인 과정 (라우팅, Axios)](https://9yujin.tistory.com/57?category=1025360)
+- [[고스락 티켓 2.0] 모달 전역으로 관리하기 with TypeScript](https://9yujin.tistory.com/58?category=1025360)
+- [[고스락 티켓 2.0] React Query 공통 에러 핸들링](https://9yujin.tistory.com/59?category=1025360)
+- [[고스락 티켓 2.0] 무한스크롤 with useInfiniteQuery](https://9yujin.tistory.com/61?category=1025360)
+- [[고스락 티켓 2.0] 타입스크립트에서 Socket.io-client 사용하기](https://9yujin.tistory.com/62?category=1025360)
+- [[고스락 티켓 2.0] 랜딩페이지, GA, 마무리](https://9yujin.tistory.com/63?category=1025360)
+
+<br>
+
+## 6. 폴더 구조
 
 ```bash
 ├── .github # 액션 워크플로우 세팅
@@ -114,7 +125,7 @@
 
 <br/>
 
-## 6. 참여자
+## 7. 참여자
 <table>
     <tr align="center">
         <td><B>Leader • Front-end • UI/UX<B></td>
